@@ -1,0 +1,21 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+
+  .login-banner {
+    height: 100vh;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .login__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    justify-self: center;
+  }
+}

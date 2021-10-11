@@ -1,0 +1,7 @@
+const authTypes = {
+  FETCH_AUTH_PENDING: 'FETCH_AUTH_PENDING',
+  FETCH_AUTH_SUCCESS: 'FETCH_AUTH_SUCCESS',
+  FETCH_AUTH_FAILURE: 'FETCH_AUTH_FAILURE',
+};
+
+export default authTypes;

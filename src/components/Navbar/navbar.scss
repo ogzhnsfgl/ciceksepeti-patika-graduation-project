@@ -1,0 +1,57 @@
+header {
+  width: 100%;
+  height: 8rem;
+  background-color: rgba(255, 255, 255, 1);
+  margin-bottom: 2rem;
+}
+
+.navbar {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 8rem;
+  }
+
+  &-logo {
+    display: flex;
+    align-items: center;
+    height: 8rem;
+    img {
+      height: 4rem;
+    }
+  }
+
+  &-btn-group {
+    .navbar-btn {
+      width: 12.5rem;
+      height: 4rem;
+      color: rgba(75, 156, 226, 1);
+      background-color: rgba(240, 248, 255, 1);
+      border: none;
+      border-radius: 0.8rem;
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .btn-login::before {
+      content: '';
+      height: 1.3rem;
+      width: 1.5rem;
+      background: url('../../assets/icons/user-ico.png') no-repeat;
+      display: inline-block;
+      margin-right: 0.3rem;
+      line-height: 4rem;
+    }
+    .btn-add-product::before {
+      content: '';
+      height: 1.3rem;
+      width: 1.5rem;
+      background: url('../../assets/icons/add-ico.png') no-repeat;
+      display: inline-block;
+      margin-right: 0.3rem;
+      line-height: 4rem;
+    }
+  }
+}

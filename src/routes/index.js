@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -13,13 +13,6 @@ const AddProduct = lazy(() => import('pages/AddProduct'));
 
 /* Created paths array */
 const routerPaths = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home,
-    exact: true,
-    props: {},
-  },
   {
     path: '/login',
     name: 'login',
@@ -42,13 +35,6 @@ const routerPaths = [
     props: {},
   },
   {
-    path: '/productDetail',
-    name: 'productDetail',
-    component: ProductDetail,
-    exact: false,
-    props: {},
-  },
-  {
     path: '/addProduct',
     name: 'addProduct',
     component: AddProduct,
@@ -62,6 +48,8 @@ const Routes = (
   <Router>
     <Switch>
       <Suspense fallback={<div>Loading...</div>}>
+        <Route path="/" component={Home} exact />
+        <Route path="/productdetail/:id" component={ProductDetail} />
         {routerPaths.map(({ path, name, component, props }) => (
           <ProtectedRoute
             key={name}

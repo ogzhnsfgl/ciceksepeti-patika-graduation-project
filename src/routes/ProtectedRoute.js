@@ -1,37 +1,34 @@
 import PropTypes from 'prop-types';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
-/* Control route is protected or not */
-const unprotectedRouteConditions = ['/login', '/register', '/'];
-// TODO: Refoctor condition
-const isUnProtectedRoute = (path) => unprotectedRouteConditions.includes(path);
+// TODO: Refactor condition
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  /* Check the route is protected or not? */
-  if (isUnProtectedRoute(rest.path)) {
+  const isAuthenticated = localStorage.getItem('isAuthenticated');
+
+  if (rest.path === '/login' || rest.path === '/register') {
     return (
       <Route
         {...rest}
         render={(props) =>
-          /* If user already logged in go Home */
-          localStorage.getItem('user') ? (
+          isAuthenticated ? (
             <Redirect to={{ pathname: '/', state: { from: rest.location } }} />
           ) : (
-            /* Else go Login or Register */
             <Component {...props} />
           )
         }
       />
     );
   }
+
   return (
     <Route
       {...rest}
       render={(props) =>
-        localStorage.getItem('user') ? (
-          <Component {...props} />
-        ) : (
+        !isAuthenticated ? (
           <Redirect to={{ pathname: '/', state: { from: rest.location } }} />
+        ) : (
+          <Component {...props} />
         )
       }
     />
