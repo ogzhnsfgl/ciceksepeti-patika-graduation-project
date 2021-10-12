@@ -6,8 +6,10 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
   background-color: rgba(242, 242, 242, 1);
+}
+* {
+  font-family: 'Nunito', sans-serif !important;
 }
 
 button {

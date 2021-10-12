@@ -75,6 +75,7 @@
                 }
             }
         ],
+        "react/forbid-prop-types":"off",
         "no-param-reassign": "off",
         "react-hooks/exhaustive-deps": "warn",
         "react-hooks/rules-of-hooks": "error",

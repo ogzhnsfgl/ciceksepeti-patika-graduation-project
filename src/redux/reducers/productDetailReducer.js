@@ -3,7 +3,7 @@ import productDetailTypes from 'redux/constants/productDetailTypes';
 const initialState = {
   product: null,
   isPending: true,
-  error: false,
+  error: null,
 };
 
 const productDetailReducer = (state = initialState, action) => {

@@ -14,10 +14,21 @@ const fetchAuthPending = () => ({
 });
 
 const fetchAuth = (user, signType) => async (dispatch) => {
+  // eslint-disable-next-line no-debugger
+  debugger;
   dispatch(fetchAuthPending());
   return request
     .post(`/authorization/${signType}`, user)
-    .then((res) => dispatch(fetchAuthSuccess(res)))
+    .then((res) => {
+      console.log('res.data :>> ', res.data);
+      if (res.data.status === 409) {
+        dispatch(fetchAuthFailure(res.data));
+      } else {
+        dispatch(fetchAuthSuccess(res.data));
+        localStorage.setItem('isAuthenticated', res.data.access_token);
+        localStorage.setItem('email', user.email);
+      }
+    })
     .catch((err) => dispatch(fetchAuthFailure(err)));
 };
 

@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import { Redirect, Route, withRouter } from 'react-router-dom';
 
-// TODO: Refactor condition
-
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated');
 

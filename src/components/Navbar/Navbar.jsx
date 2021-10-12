@@ -1,29 +1,49 @@
 import './navbar.scss';
 
 import logo from 'assets/images/logo.svg';
-import React from 'react';
+import checkAuth from 'helpers/checkAuth';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => (
-  <header className="navbar">
-    <div className="container navbar-wrapper">
-      <div className="navbar-logo">
-        <img src={logo} alt="logo" />
-      </div>
-      <div className="navbar-btn-group">
-        <Link to="/addproduct">
-          <button type="button" className="navbar-btn btn-add-product">
-            Ürün Ekle
-          </button>
+const Navbar = () => {
+  const [isAuth, setisAuth] = useState(checkAuth());
+
+  useEffect(() => {
+    setisAuth(checkAuth());
+  }, []);
+
+  return (
+    <header className="navbar">
+      <div className="container navbar-wrapper">
+        <Link to="/">
+          <div className="navbar-logo">
+            <img src={logo} alt="logo" />
+          </div>
         </Link>
-        <Link to="/login">
-          <button type="button" className="navbar-btn btn-login">
-            Giriş Yap
-          </button>
-        </Link>
+        <div className="navbar-btn-group">
+          <Link to="/addproduct">
+            <button type="button" className="navbar-btn btn-add-product">
+              Ürün Ekle
+            </button>
+          </Link>
+          {!isAuth && (
+            <Link to="/login">
+              <button type="button" className="navbar-btn btn-login">
+                Giriş Yap
+              </button>
+            </Link>
+          )}
+          {isAuth && (
+            <Link to="/account">
+              <button type="button" className="navbar-btn btn-login">
+                Hesabım
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 export default Navbar;

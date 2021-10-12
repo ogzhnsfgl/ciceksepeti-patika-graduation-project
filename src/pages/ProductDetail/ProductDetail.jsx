@@ -17,15 +17,13 @@ const ProductDetail = () => {
 
   useEffect(() => {
     let mounted = false;
-    if (!mounted && !productDetail?.product?.id) {
-      dispatch(fetchProductDetail('3LA82AzBz9NGeEq4LZf7'));
+    if (!mounted) {
+      dispatch(fetchProductDetail(id));
     }
     return () => {
       mounted = true;
     };
-  }, [dispatch, productDetail?.product?.id]);
-
-  console.log('productDetail', productDetail);
+  }, [dispatch, id]);
 
   if (isPending && product === null) {
     return (
@@ -39,7 +37,7 @@ const ProductDetail = () => {
     return (
       <>
         <Navbar />
-        <div>error:{error}</div>;
+        <div>error:{error.message}</div>;
       </>
     );
   }
@@ -48,8 +46,6 @@ const ProductDetail = () => {
   return (
     <>
       <Navbar />
-
-      <p>{id}</p>
       <div className="container">
         <div className="product__detail">
           <div className="product__detail-img">

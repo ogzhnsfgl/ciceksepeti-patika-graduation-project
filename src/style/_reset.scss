@@ -132,3 +132,9 @@ a {
   text-decoration: none;
   color: unset;
 }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}

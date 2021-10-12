@@ -18,8 +18,8 @@ const fetchCategory = () => async (dispatch) => {
   dispatch(fetchCategoryPending());
 
   return request
-    .get('//detail/category/all')
-    .then((res) => dispatch(fetchCategorySuccess(res)))
+    .get('/detail/category/all')
+    .then((res) => dispatch(fetchCategorySuccess(res.data)))
     .catch((err) => dispatch(fetchCategoryFailure(err)));
 };
 

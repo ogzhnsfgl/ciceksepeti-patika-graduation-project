@@ -1,14 +1,17 @@
 import './form.scss';
 
 import Button from 'components/Button/Button';
+import checkAuth from 'helpers/checkAuth';
 import checkValidField from 'helpers/formValidation';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import fetchAuth from 'redux/actions/authAction';
 
 const Form = ({ formType }) => {
+  const history = useHistory();
+
   const initialState = {
     email: '',
     password: '',
@@ -29,6 +32,7 @@ const Form = ({ formType }) => {
 
   const dispatch = useDispatch();
   const btnText = formType === 'signin' ? 'Giriş Yap' : 'Üye Ol';
+  const userState = useSelector((state) => state.auth);
 
   const handleOnChange = (e) => {
     switch (e.target.name) {
@@ -56,7 +60,6 @@ const Form = ({ formType }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (emailValid && passwordValid) {
       dispatch(fetchAuth({ email, password }, formType));
     } else {
@@ -64,6 +67,16 @@ const Form = ({ formType }) => {
       alert('Email veya şifreniz hatalı!');
     }
   };
+
+  useEffect(() => {
+    if (userState.error) {
+      console.log('error');
+    }
+    if (checkAuth()) {
+      history.push('/');
+    }
+  }, [history, userState]);
+
   return (
     <div className="form__wrapper">
       <div className="form__header">

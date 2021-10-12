@@ -1,0 +1,51 @@
+.account__info {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0.8rem;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.8rem 1.3rem;
+
+    p {
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: rgba(82, 82, 82, 1);
+    }
+  }
+}
+
+.account__content {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0.8rem;
+  margin-top: 1rem;
+  &-wrapper {
+    // padding: 0.8rem 1.3rem;
+  }
+
+  .content-header {
+    display: flex;
+    border-bottom: 1px solid rgba(242, 242, 242, 1);
+
+    & > * {
+      padding: 1.5rem 0 0.8rem 0;
+      margin: 0 1.3rem;
+      color: rgba(177, 177, 177, 1);
+      font-size: 1.5rem;
+    }
+
+    .selected {
+      color: rgba(75, 156, 226, 1);
+      border-bottom: 1px solid rgba(75, 156, 226, 1);
+    }
+  }
+
+  .offer-list {
+    margin-top: 2rem;
+    padding: 1.3rem 1.3rem;
+  }
+}
