@@ -1,8 +1,10 @@
 const currencyFormetter = (price) =>
-  parseInt(price, 10)
+  parseFloat(price, 10)
     .toLocaleString('tr-TR', {
       style: 'currency',
       currency: 'TRY',
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
     })
     .slice(1);
 
