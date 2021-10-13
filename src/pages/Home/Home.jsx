@@ -58,7 +58,6 @@ const Home = () => {
     !isPendingProducts &&
     products
   ) {
-    console.log('selectedCategory :>> ', selectedCategory);
     filteredProducts = products.filter(
       (product) => product.category.title.trim() === selectedCategory.trim()
     );

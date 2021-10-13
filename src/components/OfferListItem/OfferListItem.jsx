@@ -1,37 +1,46 @@
 import './offerListItem.scss';
 
+import OfferListInfo from 'components/OfferListInfo/OfferListInfo';
+import currencyFormetter from 'helpers/currenyFormater';
+import propTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const OfferListItem = () => {
-  const deneme = 1;
-  console.log('deneme :>> ', deneme);
+const OfferListItem = ({ item, type }) => {
+  const { product, offeredPrice } = item;
+
   return (
     <>
       <div className="offer__item">
         <div className="offer__item-wrapper">
-          <div className="offer__item-content">
-            <img src="https://picsum.photos/200/300" alt="item-img" />
-            <div className="offer__item-content-detail">
-              <p className="product-title">Title</p>
-              <p className="product-offer">
-                Alınan Teklif: <span className="offer-price">122,00 TL</span>
-              </p>
+          <Link to={`productdetail/${product.id}`}>
+            <div className="offer__item-content">
+              <img src={product.imageUrl} alt="item-img" />
+              <div className="offer__item-content-detail">
+                <p className="product-title">{product.title}</p>
+                <p className="product-offer">
+                  {type === 'receivedOffers'
+                    ? 'Alınan Teklif: '
+                    : 'Verilen Teklif: '}
+                  <span className="offer-price">
+                    {currencyFormetter(offeredPrice)} TL
+                  </span>
+                </p>
+              </div>
             </div>
-          </div>
+          </Link>
           <div className="offer__item-wrapper-btn-group">
-            <button type="button" className="btn-accept">
-              Onayla
-            </button>
-            <button type="button" className="btn-reject">
-              Reddet
-            </button>
-            {/* <p className="text-confirm">Onaylandı</p> */}
-            {/* <p className="text-rejected">Onaylandı</p> */}
+            <OfferListInfo type={type} item={item} />
           </div>
         </div>
       </div>
     </>
   );
+};
+
+OfferListItem.propTypes = {
+  item: propTypes.object.isRequired,
+  type: propTypes.string.isRequired,
 };
 
 export default OfferListItem;

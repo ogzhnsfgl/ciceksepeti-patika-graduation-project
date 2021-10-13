@@ -29,7 +29,7 @@
   padding: 3rem 0;
 
   & > * {
-    padding: 1rem;
+    padding: 0.4rem;
   }
 
   .input__group {
@@ -69,6 +69,18 @@
     margin-top: 2rem;
     border: none;
     font-size: 1.5rem;
+  }
+
+  .hidden {
+    visibility: hidden;
+    // line-height: 1.5rem;
+    height: 2rem;
+  }
+  .warning {
+    visibility: visible;
+    font-size: 1.2rem;
+    color: rgb(235, 50, 50);
+    padding: 0.4rem 0.6rem;
   }
 }
 

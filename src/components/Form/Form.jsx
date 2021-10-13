@@ -19,6 +19,8 @@ const Form = ({ formType }) => {
     emailValid: false,
     passwordValid: false,
     passwordTouched: false,
+    showEmailWarning: false,
+    showPasswordWarning: false,
   };
   const [formControl, setformControl] = useState(initialState);
   const {
@@ -28,6 +30,8 @@ const Form = ({ formType }) => {
     passwordValid,
     emailTouched,
     passwordTouched,
+    showEmailWarning,
+    showPasswordWarning,
   } = formControl;
 
   const dispatch = useDispatch();
@@ -61,10 +65,32 @@ const Form = ({ formType }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (emailValid && passwordValid) {
+      setformControl({
+        ...formControl,
+        showEmailWarning: false,
+        showPasswordWarning: false,
+      });
       dispatch(fetchAuth({ email, password }, formType));
     } else {
-      // eslint-disable-next-line no-alert
-      alert('Email veya şifreniz hatalı!');
+      if (!emailValid && passwordValid)
+        setformControl({
+          ...formControl,
+          showEmailWarning: true,
+          showPasswordWarning: false,
+        });
+      if (emailValid && !passwordValid)
+        setformControl({
+          ...formControl,
+          showPasswordWarning: true,
+          showEmailWarning: false,
+        });
+
+      if (!emailValid && !passwordValid)
+        setformControl({
+          ...formControl,
+          showEmailWarning: true,
+          showPasswordWarning: true,
+        });
     }
   };
 
@@ -101,6 +127,9 @@ const Form = ({ formType }) => {
             value={email}
             onChange={(e) => handleOnChange(e)}
           />
+          <p className={showEmailWarning ? 'warning' : 'hidden'}>
+            Lütfen geçerli bir mail giriniz!
+          </p>
         </div>
 
         <div className="input__group">
@@ -113,6 +142,9 @@ const Form = ({ formType }) => {
             value={password}
             onChange={(e) => handleOnChange(e)}
           />
+          <p className={showPasswordWarning ? 'warning' : 'hidden'}>
+            Şifre 8 karakterden kısa olamaz!
+          </p>
         </div>
 
         <Button className="form__group-btn" text={btnText} clickEvent={null} />

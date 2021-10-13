@@ -72,8 +72,21 @@
         display: flex;
         align-items: center;
       }
+      .text-offered {
+        color: rgba(75, 156, 226, 1);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
       .text-rejected {
         color: rgba(247, 116, 116, 1);
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .text-purchased {
+        color: rgba(70, 175, 50, 1);
         height: 100%;
         display: flex;
         align-items: center;

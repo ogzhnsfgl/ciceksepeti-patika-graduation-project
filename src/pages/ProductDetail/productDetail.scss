@@ -3,6 +3,8 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 1);
   padding: 1.5rem 1.6rem;
+  border-radius: 0.8rem;
+  margin-bottom: 5rem;
   &-img {
     min-width: 50%;
     img {
@@ -43,6 +45,22 @@
       }
     }
 
+    .content-given-offer {
+      background-color: rgba(242, 242, 242, 1);
+      color: rgba(177, 177, 177, 1);
+      width: 20rem;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      font-size: 1.5rem;
+      .given-price {
+        color: rgba(82, 82, 82, 1);
+        font-weight: 700;
+        &::after {
+          content: ' TL';
+        }
+      }
+    }
+
     .content-buttons {
       margin: 2rem 0;
       .btn {
@@ -60,6 +78,14 @@
       .btn-offer {
         background-color: rgba(240, 248, 255, 1);
         color: rgba(75, 156, 226, 1);
+      }
+      .btn-soldout {
+        background-color: rgba(255, 240, 226, 1);
+        color: rgba(250, 173, 96, 1);
+      }
+      .btn-disabled {
+        opacity: 0.8;
+        cursor: default;
       }
     }
 
