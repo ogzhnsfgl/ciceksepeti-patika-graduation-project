@@ -1,4 +1,4 @@
-import rejectOfferTypes from 'redux/constants/givenOffersTypes';
+import rejectOfferTypes from 'redux/constants/rejectOfferTypes';
 import authRequest from 'service/authRequest';
 
 const postRejectOfferPending = () => ({

@@ -1,4 +1,4 @@
-import receivedOffersTypes from 'redux/constants/givenOffersTypes';
+import receivedOffersTypes from 'redux/constants/receivedOffersTypes';
 import authRequest from 'service/authRequest';
 
 const fetchReceivedOffersPending = () => ({
