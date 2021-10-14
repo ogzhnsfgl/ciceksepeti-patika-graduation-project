@@ -1,0 +1,153 @@
+@import '../ConfirmModal/confirmModal.scss';
+
+.modal-content {
+  width: 48rem;
+}
+.modal-content-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  & > span {
+    cursor: pointer;
+  }
+}
+
+.modal-content-body {
+  margin-top: 1rem;
+  width: 100%;
+  .product-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+    padding: 0.6rem;
+    background-color: rgba(240, 248, 255, 1);
+    margin-bottom: 1rem;
+    &-left {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      color: rgba(82, 82, 82, 1);
+      img {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.8rem;
+        margin-right: 0.5rem;
+      }
+    }
+    .title {
+      width: 40%;
+    }
+    .price {
+      width: 30%;
+      justify-self: flex-end;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: left;
+    }
+  }
+  .offer-options {
+    .option-custom {
+      background-color: rgba(244, 244, 244, 1);
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 1.4rem 1rem;
+      border-radius: 0.8rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(224, 224, 224, 1);
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid rgba(75, 156, 226, 1);
+      }
+
+      .checkbox {
+        margin-right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        border: 1px solid rgba(224, 224, 224, 1);
+        border-radius: 100% !important;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .custom-offer {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        color: rgba(153, 160, 167, 1);
+        input {
+          width: 100%;
+          height: 100%;
+          border: none;
+          background-color: transparent;
+        }
+        input:focus,
+        input:active {
+          color: rgba(75, 156, 226, 1);
+          border: none;
+          outline: none;
+        }
+        input::placeholder {
+          color: rgba(153, 160, 167, 1);
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .selected {
+      border: 1px solid rgba(75, 156, 226, 1);
+      background-color: rgba(240, 248, 255, 1);
+      color: rgba(75, 156, 226, 1);
+      .checkbox::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('../../assets/icons/check-ico.png')
+          rgba(75, 156, 226, 1);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 10px;
+      }
+      input {
+        color: rgba(75, 156, 226, 1);
+      }
+    }
+
+    .validation-warning {
+      display: block;
+      color: red;
+      font-size: 1.2rem;
+      padding: 0 0.5rem;
+      margin-top: -0.5rem;
+    }
+  }
+}
+
+.selected-notValid {
+  border: 1px solid rgba(247, 116, 116, 1) !important;
+  background: rgba(255, 242, 242, 1) !important;
+  input:active,
+  input:focus {
+    color: red !important;
+  }
+}
+
+.modal-content-footer {
+  width: 100%;
+  text-align: center;
+  .btn-offer {
+    width: 75%;
+    background-color: rgba(75, 156, 226, 1);
+    color: rgba(255, 255, 255, 1);
+  }
+}
