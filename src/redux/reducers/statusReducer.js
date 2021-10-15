@@ -1,27 +1,27 @@
 import statusTypes from 'redux/constants/statusTypes';
 
 const initialState = {
-  status: null,
+  statusList: null,
   isPending: false,
   error: false,
 };
 
 const statusReducer = (state = initialState, action) => {
   switch (action.type) {
-    case statusTypes.FETCH_AUTH_PENDING:
-      return { ...state, isPending: true, status: null, error: false };
-    case statusTypes.FETCH_AUTH_SUCCESS:
+    case statusTypes.FETCH_STATUS_PENDING:
+      return { ...state, isPending: true, statusList: null, error: false };
+    case statusTypes.FETCH_STATUS_SUCCESS:
       return {
         ...state,
         isPending: false,
-        status: action.payload,
+        statusList: action.payload,
         error: false,
       };
-    case statusTypes.FETCH_AUTH_FAILURE:
+    case statusTypes.FETCH_STATUS_FAILURE:
       return {
         ...state,
         isPending: false,
-        status: null,
+        statusList: null,
         error: action.payload,
       };
     default:

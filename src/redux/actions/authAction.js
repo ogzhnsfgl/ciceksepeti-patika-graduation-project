@@ -28,7 +28,6 @@ const fetchAuth = (user, signType) => async (dispatch) => {
       localStorage.setItem('email', user.email);
     })
     .catch((err) => {
-      console.log(err.response.status);
       if (err.response.status === 409) {
         triggerToast('error', 'Bu kullanıcı zaten kayıtlı!');
       } else if (err.response.status === 401) {

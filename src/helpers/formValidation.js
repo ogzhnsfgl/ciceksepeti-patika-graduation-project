@@ -8,6 +8,8 @@ const checkValidField = (fieldType, input) => {
     case 'password':
       if (input.length >= 8) isValid = true;
       break;
+    case 'price':
+      return !Number.isNaN(input - parseFloat(input));
     default:
       isValid = false;
       break;

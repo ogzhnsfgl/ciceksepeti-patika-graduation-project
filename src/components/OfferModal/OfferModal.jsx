@@ -16,10 +16,6 @@ const OfferModal = ({ showModal, closeModal, product }) => {
   const [isValid, setIsValid] = useState(true);
   const [offerBody, setOfferBody] = useState({ offeredPrice: 0 });
 
-  console.log(customPrice);
-  console.log(isValid);
-  console.log(offerBody);
-
   useEffect(() => {
     setIsValid(checkValidField('price', customPrice));
   }, [customPrice]);

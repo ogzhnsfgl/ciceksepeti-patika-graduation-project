@@ -1,0 +1,7 @@
+const offerTypes = {
+  POST_OFFER_SUCCESS: 'POST_OFFER_SUCCESS',
+  POST_OFFER_FAILURE: 'POST_OFFER_FAILURE',
+  POST_OFFER_PENDING: 'POST_OFFER_PENDING',
+};
+
+export default offerTypes;

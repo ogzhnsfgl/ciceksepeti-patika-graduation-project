@@ -1,7 +1,7 @@
 import colorTypes from 'redux/constants/colorTypes';
 
 const initialState = {
-  color: null,
+  colorList: null,
   isPending: false,
   error: false,
 };
@@ -9,19 +9,19 @@ const initialState = {
 const colorReducer = (state = initialState, action) => {
   switch (action.type) {
     case colorTypes.FETCH_COLOR_PENDING:
-      return { ...state, isPending: true, color: null, error: false };
+      return { ...state, isPending: true, colorList: null, error: false };
     case colorTypes.FETCH_COLOR_SUCCESS:
       return {
         ...state,
         isPending: false,
-        color: action.payload,
+        colorList: action.payload,
         error: false,
       };
     case colorTypes.FETCH_COLOR_FAILURE:
       return {
         ...state,
         isPending: false,
-        color: null,
+        colorList: null,
         error: action.payload,
       };
     default:

@@ -1,39 +1,38 @@
-// import postRejectOffer from 'redux/actions/rejectOfferAction';
+import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import putAcceptOffer from 'redux/actions/acceptOfferActions';
-import putPurchase from 'redux/actions/purchaseActions';
 import postRejectOffer from 'redux/actions/rejectOfferAction';
 
 const OfferListInfo = ({ type, item }) => {
-  const [status, setStatus] = useState(item.status);
-
   const dispatch = useDispatch();
-  console.log(status);
-  console.log(type);
-  console.log('item:', item);
-  console.log('sold:', item.isSold);
+  const [modalShow, setModalShow] = useState(false);
 
   const givenOffered = () => (
-    <p className="text-offered">Satıcıdan bilgi bekleniyor.</p>
+    <p className="text-offered">Satıcıdan bilgi bekleniyor</p>
   );
+
   const givenAccepted = () => (
     <>
       <button
         type="button"
         className="btn-accept"
         onClick={() => {
-          dispatch(putPurchase(item.product.id));
-          setStatus(item.status);
+          setModalShow(true);
         }}
       >
         Satın Al
       </button>
       <p className="text-confirm">Onaylandı</p>
+      <ConfirmModal
+        showModal={modalShow}
+        closeModal={() => setModalShow(false)}
+        id={item.product.id}
+      />
     </>
   );
-  const givenRejected = () => <p className="text-rejected">Red edildi.</p>;
+  const givenRejected = () => <p className="text-rejected">Rededildi</p>;
 
   const givenPurchased = () => <p className="text-purchased">Satın alındı</p>;
 
@@ -44,7 +43,6 @@ const OfferListInfo = ({ type, item }) => {
         className="btn-accept"
         onClick={() => {
           dispatch(putAcceptOffer(item.id));
-          setStatus(item.status);
         }}
       >
         Onayla
@@ -54,7 +52,6 @@ const OfferListInfo = ({ type, item }) => {
         className="btn-reject"
         onClick={() => {
           dispatch(postRejectOffer(item.id));
-          setStatus(item.status);
         }}
       >
         Reddet
@@ -62,12 +59,12 @@ const OfferListInfo = ({ type, item }) => {
     </>
   );
 
-  const receivedRejected = () => <p className="text-rejected">Red edildi</p>;
-  const receivedAccepted = () => <p className="text-accepted">Onaylandı</p>;
+  const receivedRejected = () => <p className="text-rejected">Rededildi</p>;
+  const receivedAccepted = () => <p className="text-confirm">Onaylandı</p>;
 
   switch (type) {
     case 'givenOffers':
-      switch (status) {
+      switch (item.status) {
         case 'offered':
           return givenOffered();
 
@@ -82,13 +79,13 @@ const OfferListInfo = ({ type, item }) => {
       }
 
     case 'receivedOffers':
-      switch (status) {
-        case 'offered':
-          return receivedOffered();
+      switch (item.status) {
+        case 'accepted':
+          return receivedAccepted();
         case 'rejected':
           return receivedRejected();
         default:
-          return receivedAccepted();
+          return receivedOffered();
       }
     default:
       return null;

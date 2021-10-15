@@ -1,6 +1,8 @@
 import rejectOfferTypes from 'redux/constants/rejectOfferTypes';
 import authRequest from 'service/authRequest';
 
+import fetchReceivedOffers from './receivedOffersAction';
+
 const postRejectOfferPending = () => ({
   type: rejectOfferTypes.POST_REJECT_OFFER_PENDING,
 });
@@ -16,10 +18,13 @@ const postRejectOfferFailure = (error) => ({
 
 const postRejectOffer = (id) => async (dispatch) => {
   dispatch(postRejectOfferPending());
-  return authRequest
+  authRequest()
     .post(`/account/reject-offer/${id}`)
-    .then((res) => dispatch(postRejectOfferSuccess(res.data)))
-    .catch((err) => dispatch(postRejectOfferFailure(err)));
+    .then((res) => {
+      dispatch(postRejectOfferSuccess(res.data));
+    })
+    .catch((err) => dispatch(postRejectOfferFailure(err)))
+    .finally(() => dispatch(fetchReceivedOffers()));
 };
 
 export default postRejectOffer;

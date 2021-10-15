@@ -42,6 +42,7 @@
                 "singleQuote": true,
                 "parser": "flow",
                 "endOfLine":"auto"
+
             }
         ],
         "react/jsx-filename-extension": [

@@ -95,9 +95,6 @@ const Form = ({ formType }) => {
   };
 
   useEffect(() => {
-    if (userState.error) {
-      console.log('error');
-    }
     if (checkAuth()) {
       history.push('/');
     }

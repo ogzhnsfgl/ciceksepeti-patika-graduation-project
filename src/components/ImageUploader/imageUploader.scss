@@ -1,0 +1,86 @@
+.add__product-content-image {
+  margin-left: 2rem;
+  padding: 1rem;
+  .upload-container {
+    border: 1px dashed #b1b1b1;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    border: 1px dashed rgba(177, 177, 177, 1);
+    border-radius: 0.8rem;
+    min-height: 20rem;
+    justify-content: center;
+
+    .btn-upload {
+      position: relative;
+      background-color: rgba(244, 244, 244, 1);
+      color: rgba(177, 177, 177, 1);
+      width: 12rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      border: none;
+      border-radius: 0.8rem;
+      &:hover {
+        background-color: rgba(75, 156, 226, 1);
+        color: rgba(255, 255, 255, 1);
+      }
+
+      & > input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 12rem;
+        height: 3rem;
+        font-size: 1.67rem;
+      }
+    }
+    .upload-info-text {
+      color: rgba(177, 177, 177, 1);
+      font-size: 1.2rem;
+    }
+    .warning {
+      color: rgba(247, 116, 116, 1);
+    }
+
+    .upload-content {
+      text-align: center;
+      & > * {
+        padding: 1rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    .image-preview-wrapper {
+      position: relative;
+      .image-preview {
+        width: 11rem;
+        height: 11rem;
+        max-width: 11rem;
+        max-height: 11rem;
+        object-fit: cover;
+        border-radius: 0.8rem;
+        border: 1px solid rgba(234, 234, 234, 1);
+        margin: 1rem;
+        align-self: flex-start;
+        justify-self: flex-start;
+      }
+
+      .delete-btn {
+        position: absolute;
+        top: 0.6rem;
+        left: 10.7rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        line-height: 1.8rem;
+        background-color: rgba(82, 82, 82, 1);
+        color: rgba(255, 255, 255, 1);
+        border-radius: 100%;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+  }
+}

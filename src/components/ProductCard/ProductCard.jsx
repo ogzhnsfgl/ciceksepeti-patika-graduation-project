@@ -1,5 +1,6 @@
 import './productCard.scss';
 
+import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
 import currencyFormetter from 'helpers/currenyFormater';
 import propTypes from 'prop-types';
 import React from 'react';
@@ -19,6 +20,7 @@ const ProductCard = ({ product }) => {
         </p>
       </div>
       <div className="card__item-price">{currencyFormetter(price)}</div>
+      <ConfirmModal />
     </div>
   );
 };

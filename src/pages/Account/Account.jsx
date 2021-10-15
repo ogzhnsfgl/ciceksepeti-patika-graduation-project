@@ -3,19 +3,17 @@ import './account.scss';
 import profilePicture from 'assets/icons/profile-picture.png';
 import Navbar from 'components/Navbar/Navbar';
 import OfferListItem from 'components/OfferListItem/OfferListItem';
+import Spinner from 'components/Spinner/Spinner';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchGivenOffers from 'redux/actions/givenOffersActions';
 import fetchReceivedOffers from 'redux/actions/receivedOffersAction';
 
 const Account = () => {
-  const [selectedTab, setSelectedTab] = useState('receivedOffers');
   const receivedOffersState = useSelector((state) => state.receivedOffers);
   const givenOffersState = useSelector((state) => state.givenOffers);
   const dispatch = useDispatch();
-
-  console.log('givenOffers :>> ', givenOffersState);
-  console.log('receivedOffers :>> ', receivedOffersState);
+  const [selectedTab, setSelectedTab] = useState('receivedOffers');
 
   useEffect(() => {
     let mounted = false;
@@ -73,7 +71,7 @@ const Account = () => {
             </div>
             <div className="offer-list">
               {(givenOffersState.isPending ||
-                receivedOffersState.isPending) && <div>Loading</div>}
+                receivedOffersState.isPending) && <Spinner />}
               {(givenOffersState.error || receivedOffersState.error) && (
                 <div>Error</div>
               )}

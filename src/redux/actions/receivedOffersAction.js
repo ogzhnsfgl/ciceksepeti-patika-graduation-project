@@ -16,7 +16,7 @@ const fetchReceivedOffersFailure = (error) => ({
 
 const fetchReceivedOffers = () => async (dispatch) => {
   dispatch(fetchReceivedOffersPending());
-  return authRequest
+  authRequest()
     .get('/account/received-offers')
     .then((res) => dispatch(fetchReceivedOffersSuccess(res.data)))
     .catch((err) => dispatch(fetchReceivedOffersFailure(err)));

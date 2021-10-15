@@ -88,6 +88,14 @@
         flex-direction: column;
       }
 
+      .offer-row {
+        flex-direction: row;
+        align-items: center;
+        & > label {
+          margin-right: 1rem;
+        }
+      }
+
       .form-row-multi {
         display: flex;
         width: 100%;
@@ -121,41 +129,35 @@
     font-size: 1.8rem;
     font-weight: 700;
   }
-  &-content-image {
-    margin-left: 2rem;
-    padding: 1rem;
-    .upload-container {
-      text-align: center;
-      border: 1px dashed rgba(177, 177, 177, 1);
-      border-radius: 0.8rem;
-
-      & > * {
-        padding: 1rem;
-        font-size: 1.4rem;
-      }
-
-      .btn-upload {
-        background-color: rgba(244, 244, 244, 1);
-        color: rgba(177, 177, 177, 1);
-        width: 12rem;
-        height: 3rem;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-        border: none;
-        border-radius: 0.8rem;
-        &:hover {
-          background-color: rgba(75, 156, 226, 1);
-          color: rgba(255, 255, 255, 1);
-        }
-      }
-      .upload-info-text {
-        color: rgba(177, 177, 177, 1);
-        font-size: 1.2rem;
-      }
-    }
-  }
 }
 
 .selected {
   color: black !important;
+}
+
+.not-valid {
+  border: 1px solid rgba(247, 116, 116, 1) !important;
+  background-color: rgba(255, 242, 242, 1) !important;
+  color: rgba(247, 116, 116, 1) !important;
+}
+.not-valid-ico {
+  color: rgba(247, 116, 116, 1) !important;
+}
+
+.price-row {
+  position: relative;
+  & > p {
+    position: absolute;
+    top: 5rem;
+    left: 40%;
+    font-size: 1.6rem;
+    color: rgba(153, 160, 167, 1);
+  }
+
+  & > span {
+    color: #f77474 !important;
+    margin-top: -2.2rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+  }
 }

@@ -138,3 +138,11 @@ a {
 *::before {
   box-sizing: border-box;
 }
+
+*:focus,
+*:focus-visible,
+*:focus-within,
+*:active {
+  outline: none;
+  border: none;
+}

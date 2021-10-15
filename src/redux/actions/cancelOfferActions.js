@@ -1,5 +1,8 @@
+import triggerToast from 'helpers/toastify';
 import cancelOfferTypes from 'redux/constants/cancelOfferTypes';
 import authRequest from 'service/authRequest';
+
+import fetchProductDetail from './productDetailAction';
 
 const deleteCancelOfferPending = () => ({
   type: cancelOfferTypes.DELETE_CANCEL_OFFER_PENDING,
@@ -14,12 +17,21 @@ const deleteCancelOfferFailure = (error) => ({
   payload: error,
 });
 
-const deleteCancelOffer = (id) => async (dispatch) => {
+const deleteCancelOffer = (offerId, productId) => async (dispatch) => {
   dispatch(deleteCancelOfferPending());
-  return authRequest
-    .delete(`/account/cancel-offer/${id}`)
-    .then((res) => dispatch(deleteCancelOfferSuccess(res.data)))
-    .catch((err) => dispatch(deleteCancelOfferFailure(err)));
+  authRequest()
+    .delete(`/account/cancel-offer/${offerId}`, {
+      Authorization: `Bearer ${localStorage.getItem('isAuthenticated')}`,
+    })
+    .then((res) => {
+      dispatch(deleteCancelOfferSuccess(res.data));
+      triggerToast('success', 'Teklif geri çekildi!');
+    })
+    .catch((err) => {
+      triggerToast('error', err.response.data.message);
+      dispatch(deleteCancelOfferFailure(err));
+    })
+    .finally(() => dispatch(fetchProductDetail(productId)));
 };
 
 export default deleteCancelOffer;

@@ -2,7 +2,7 @@ import givenOffersTypes from 'redux/constants/givenOffersTypes';
 
 const initialState = {
   givenOffers: null,
-  isPending: true,
+  isPending: false,
   error: null,
 };
 

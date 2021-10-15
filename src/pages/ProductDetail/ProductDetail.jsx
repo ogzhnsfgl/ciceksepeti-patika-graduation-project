@@ -2,12 +2,16 @@
 import './productDetail.scss';
 
 import Button from 'components/Button/Button';
+import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
 import Navbar from 'components/Navbar';
+import OfferModal from 'components/OfferModal/OfferModal';
+import Spinner from 'components/Spinner/Spinner';
 import checkAuth from 'helpers/checkAuth';
 import currencyFormetter from 'helpers/currenyFormater';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import deleteCancelOffer from 'redux/actions/cancelOfferActions';
 import fetchGivenOffers from 'redux/actions/givenOffersActions';
 import fetchProductDetail from 'redux/actions/productDetailAction';
 
@@ -16,6 +20,9 @@ const ProductDetail = () => {
   const productDetail = useSelector((state) => state.productDetail);
   const givenOffersState = useSelector((state) => state.givenOffers);
   const dispatch = useDispatch();
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showOfferModal, setShowOfferModal] = useState(false);
 
   const {
     isPending: isPendingProductDetail,
@@ -29,13 +36,13 @@ const ProductDetail = () => {
     error: errorGivenOffers,
   } = givenOffersState;
 
-  console.log('givenOffers :>> ', givenOffers);
-
   useEffect(() => {
     let mounted = false;
     if (!mounted && product?.id !== id) {
       dispatch(fetchProductDetail(id));
-      dispatch(fetchGivenOffers(id));
+      if (checkAuth()) {
+        dispatch(fetchGivenOffers(id));
+      }
     }
     return () => {
       mounted = true;
@@ -46,7 +53,7 @@ const ProductDetail = () => {
     return (
       <>
         <Navbar />
-        <div>Yükleniyor..</div>;
+        <Spinner />
       </>
     );
   }
@@ -58,14 +65,23 @@ const ProductDetail = () => {
       </>
     );
   }
-  const { title, status, brand, color, description, imageUrl, price, isSold } =
-    product;
+  const {
+    title,
+    status,
+    brand,
+    color,
+    description,
+    imageUrl,
+    price,
+    isSold,
+    id: productId,
+  } = product;
 
   let givenOffer;
   givenOffers?.forEach((offer) => {
-    offer?.product?.id === product?.id
+    offer?.product.id.trim() === product?.id.trim()
       ? (givenOffer = offer)
-      : (givenOffer = null);
+      : null;
     return null;
   });
 
@@ -115,17 +131,35 @@ const ProductDetail = () => {
               )}
               {!isSold && product.isOfferable && checkAuth() && (
                 <>
-                  <Button text="Satın Al" className="btn btn-buy" />
+                  <Button
+                    text="Satın Al"
+                    className="btn btn-buy"
+                    clickEvent={() => setShowConfirmModal(true)}
+                  />
                   {givenOffer ? (
-                    <Button text="Teklifi Geri Çek" className="btn btn-offer" />
+                    <Button
+                      text="Teklifi Geri Çek"
+                      className="btn btn-offer"
+                      clickEvent={() =>
+                        dispatch(deleteCancelOffer(givenOffer.id, productId))
+                      }
+                    />
                   ) : (
-                    <Button text="Teklif Ver" className="btn btn-offer" />
+                    <Button
+                      text="Teklif Ver"
+                      className="btn btn-offer"
+                      clickEvent={() => setShowOfferModal(true)}
+                    />
                   )}
                 </>
               )}
               {!isSold && !product.isOfferable && checkAuth() && (
                 <>
-                  <Button text="Satın Al" className="btn btn-buy" />
+                  <Button
+                    text="Satın Al"
+                    className="btn btn-buy"
+                    clickEvent={() => setShowConfirmModal(true)}
+                  />
                   <Button
                     text="Bu Ürüne Teklif Verilemez"
                     className="btn btn-offer btn-disabled"
@@ -148,6 +182,16 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+      <ConfirmModal
+        showModal={showConfirmModal}
+        closeModal={() => setShowConfirmModal(false)}
+        id={productId}
+      />
+      <OfferModal
+        showModal={showOfferModal}
+        closeModal={() => setShowOfferModal(false)}
+        product={product}
+      />
     </>
   );
 };

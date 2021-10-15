@@ -2,15 +2,13 @@ import axios from '../../node_modules/axios/index';
 
 /* Create Axios request template to use all request process */
 // const token = localStorage.getItem('isAuthenticated');
-const authRequest = () =>
+const uploadRequest = () =>
   axios.create({
     baseURL: 'http://bootcampapi.techcs.io/api/fe/v1',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('isAuthenticated')}`,
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
-      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
     },
   });
 
-export default authRequest;
+export default uploadRequest;

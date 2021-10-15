@@ -3,6 +3,7 @@ import './home.scss';
 import banner from 'assets/images/home-banner.png';
 import Navbar from 'components/Navbar';
 import ProductCard from 'components/ProductCard/ProductCard';
+import Spinner from 'components/Spinner/Spinner';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
@@ -49,7 +50,6 @@ const Home = () => {
     };
   }, [dispatch]);
 
-  console.log(`products`, products);
   let filteredProducts = products;
 
   if (
@@ -69,7 +69,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      {(isPendingProducts || isPendingCategory) && <div>Loading</div>}
+      {(isPendingProducts || isPendingCategory) && <Spinner />}
       {(errorProducts || errorCategory) && (
         <div>Error:{errorProducts.message}</div>
       )}
@@ -116,8 +116,8 @@ const Home = () => {
             </div>
             <div className="products-container">
               {filteredProducts.map((product) => (
-                <Link to={`/productdetail/${product.id}`}>
-                  <ProductCard product={product} key={product.id} />
+                <Link to={`/productdetail/${product.id}`} key={product.id}>
+                  <ProductCard product={product} />
                 </Link>
               ))}
             </div>

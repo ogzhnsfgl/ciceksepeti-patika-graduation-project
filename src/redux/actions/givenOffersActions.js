@@ -16,7 +16,7 @@ const fetchGivenOffersFailure = (error) => ({
 
 const fetchGivenOffers = () => async (dispatch) => {
   dispatch(fetchGivenOffersPending());
-  return authRequest
+  authRequest()
     .get('/account/given-offers')
     .then((res) => dispatch(fetchGivenOffersSuccess(res.data)))
     .catch((err) => dispatch(fetchGivenOffersFailure(err)));

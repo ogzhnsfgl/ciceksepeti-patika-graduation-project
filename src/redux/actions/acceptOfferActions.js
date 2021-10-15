@@ -1,6 +1,8 @@
 import acceptOfferTypes from 'redux/constants/acceptOfferTypes';
 import authRequest from 'service/authRequest';
 
+import fetchReceivedOffers from './receivedOffersAction';
+
 const putAcceptOfferPending = () => ({
   type: acceptOfferTypes.PUT_ACCEPT_OFFER_PENDING,
 });
@@ -16,10 +18,13 @@ const putAcceptOfferFailure = (error) => ({
 
 const putAcceptOffer = (id) => async (dispatch) => {
   dispatch(putAcceptOfferPending());
-  return authRequest
+  authRequest()
     .put(`/account/accept-offer/${id}`)
-    .then((res) => dispatch(putAcceptOfferSuccess(res.data)))
-    .catch((err) => dispatch(putAcceptOfferFailure(err)));
+    .then((res) => {
+      dispatch(putAcceptOfferSuccess(res.data));
+    })
+    .catch((err) => dispatch(putAcceptOfferFailure(err)))
+    .finally(() => dispatch(fetchReceivedOffers()));
 };
 
 export default putAcceptOffer;
