@@ -3,6 +3,7 @@ import './account.scss';
 import profilePicture from 'assets/icons/profile-picture.png';
 import Navbar from 'components/Navbar/Navbar';
 import OfferListItem from 'components/OfferListItem/OfferListItem';
+import OfferTabs from 'components/OfferTabs/OfferTabs';
 import Spinner from 'components/Spinner/Spinner';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -49,26 +50,10 @@ const Account = () => {
         </div>
         <div className="account__content">
           <div className="account__content-wrapper">
-            <div className="content-header">
-              <button
-                type="button"
-                className={
-                  selectedTab === 'receivedOffers' ? 'tab selected' : 'tab'
-                }
-                onClick={() => setSelectedTab('receivedOffers')}
-              >
-                Teklif Aldıklarım
-              </button>
-              <button
-                type="button"
-                className={
-                  selectedTab === 'givenOffers' ? 'tab selected' : 'tab'
-                }
-                onClick={() => setSelectedTab('givenOffers')}
-              >
-                Teklif Verdiklerim
-              </button>
-            </div>
+            <OfferTabs
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+            />
             <div className="offer-list">
               {(givenOffersState.isPending ||
                 receivedOffersState.isPending) && <Spinner />}

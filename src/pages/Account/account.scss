@@ -24,31 +24,6 @@
   background-color: rgba(255, 255, 255, 1);
   border-radius: 0.8rem;
   margin-top: 1rem;
-  &-wrapper {
-    // padding: 0.8rem 1.3rem;
-  }
-
-  .content-header {
-    display: flex;
-    border-bottom: 1px solid rgba(242, 242, 242, 1);
-
-    & > * {
-      padding: 1.5rem 0 0.8rem 0;
-      margin: 0 1.3rem;
-      color: rgba(177, 177, 177, 1);
-      font-size: 1.5rem;
-    }
-
-    .tab {
-      background-color: transparent;
-      border: none;
-      outline: none;
-    }
-    .selected {
-      color: rgba(75, 156, 226, 1);
-      border-bottom: 1px solid rgba(75, 156, 226, 1);
-    }
-  }
 
   .offer-list {
     margin-top: 2rem;
