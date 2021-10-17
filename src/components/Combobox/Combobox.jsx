@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './combobox.scss';
 import '@reach/listbox/styles.css';
 
@@ -9,49 +10,49 @@ import {
   ListboxPopover,
 } from '@reach/listbox';
 import propTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
-const Combobox = ({
-  list,
-  setSelect,
-  defaultVal,
-  emptyRequiredField,
-  setRequired,
-  name,
-}) => {
-  const [value, setValue] = useState(defaultVal);
+const ComboboxCopy = (props) => {
+  const { setSelect, error, name, list, value } = props;
+  let defaultVal;
+
+  switch (name) {
+    case 'brand':
+      defaultVal = 'Marka seçiniz';
+      break;
+    case 'color':
+      defaultVal = 'Renk seçiniz';
+      break;
+    case 'status':
+      defaultVal = 'Kullanım durumu seçiniz';
+      break;
+    case 'category':
+      defaultVal = 'Kategori seçiniz';
+      break;
+    default:
+      break;
+  }
+  if (value) {
+    defaultVal = value.title;
+  }
+  const [selectedVal, setSelectedVal] = useState(defaultVal);
+
+  const handleChange = (val) => {
+    setSelectedVal(val);
+    setSelect({ target: { name, value: val } });
+  };
 
   return (
     <ListboxInput
-      defaultValue="popeyes"
-      onChange={(val) => {
-        setValue(val);
-        setSelect(val);
-
-        switch (name) {
-          case 'category':
-            setRequired((prev) => ({ ...prev, category: false }));
-            break;
-          case 'status':
-            setRequired((prev) => ({ ...prev, status: false }));
-            break;
-          case 'color':
-            setRequired((prev) => ({ ...prev, color: false }));
-            break;
-          case 'brand':
-            setRequired((prev) => ({ ...prev, brand: false }));
-            break;
-          default:
-            break;
-        }
-      }}
-      value={value}
+      onChange={handleChange}
+      value={selectedVal}
       className="combobox-wrapper"
+      name={name}
     >
       <ListboxButton
         arrow
-        className={`combobox-btn ${value !== defaultVal ? 'valid' : ''} ${
-          emptyRequiredField ? 'not-valid' : ''
+        className={`combobox-btn ${value ? 'valid' : ''} ${
+          error ? 'not-valid' : ''
         }`}
       />
       <ListboxPopover portal={false}>
@@ -60,11 +61,7 @@ const Combobox = ({
             {defaultVal}
           </ListboxOption>
           {list.map((item) => (
-            <ListboxOption
-              value={item}
-              className="combobox-item"
-              key={item.title}
-            >
+            <ListboxOption value={item} className="combobox-item" key={item.id}>
               {item.title.trim()}
             </ListboxOption>
           ))}
@@ -74,13 +71,10 @@ const Combobox = ({
   );
 };
 
-Combobox.propTypes = {
+ComboboxCopy.propTypes = {
   list: propTypes.array.isRequired,
   setSelect: propTypes.func.isRequired,
-  defaultVal: propTypes.string.isRequired,
-  emptyRequiredField: propTypes.bool.isRequired,
-  setRequired: propTypes.func.isRequired,
   name: propTypes.string.isRequired,
 };
 
-export default Combobox;
+export default memo(ComboboxCopy);

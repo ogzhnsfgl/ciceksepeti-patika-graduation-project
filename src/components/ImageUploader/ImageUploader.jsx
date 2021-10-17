@@ -2,6 +2,7 @@
 import './imageUploader.scss';
 
 import uploadIco from 'assets/icons/upload-ico.png';
+import DragDropContainer from 'components/DragDropContainer';
 import ProgressBar from 'components/ProgressBar';
 import triggerToast from 'helpers/toastify';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -14,9 +15,9 @@ import {
 } from 'redux/actions/uploadActions';
 import uploadRequest from 'service/uploadRequest';
 
-const ImageUploader = ({ emptyRequiredField, setRequired }) => {
+const ImageUploader = ({ error: reqError, onChange }) => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [isValid, setIsValid] = useState(true);
+  const [isValid, setIsValid] = useState(!reqError);
   const [progress, setProgress] = useState(null);
   const dispatch = useDispatch();
   const uploadState = useSelector((state) => state.upload);
@@ -46,8 +47,9 @@ const ImageUploader = ({ emptyRequiredField, setRequired }) => {
 
     if (selectedFile !== null) {
       try {
+        const FILE_SIZE_100KB = 102400;
         if (
-          selectedFile.size > 4 * 102400 ||
+          selectedFile.size > 4 * FILE_SIZE_100KB ||
           !allowedTypes.includes(selectedFile.type)
         ) {
           triggerToast('error', 'PNG veya JPEG Dosya boyutu: max. 400kb!');
@@ -55,32 +57,29 @@ const ImageUploader = ({ emptyRequiredField, setRequired }) => {
           setIsValid(false);
         } else {
           setIsValid(true);
-          setRequired((prev) => ({
-            ...prev,
-            img: false,
-          }));
           setProgress(0);
           handleUpload(selectedFile);
         }
       } catch (e) {
-        // eslint-disable-next-line no-debugger
-        debugger;
         triggerToast('error', 'Bir hata oluştu!');
       }
     }
-  }, [dispatch, handleUpload, selectedFile, setRequired]);
+  }, [dispatch, handleUpload, selectedFile]);
 
   const handleClearUpload = () => {
     dispatch(postUploadReset());
     setSelectedFile(null);
     setProgress(null);
+    onChange({ target: { name: 'imageUrl', value: false } });
   };
 
   return (
     <div className="add__product-content-image">
       <h1>Ürün Görseli</h1>
       <div
-        className={`upload-container ${emptyRequiredField ? 'not-valid' : ''}`}
+        className={`upload-container ${
+          !selectedFile && reqError ? 'not-valid' : ''
+        }`}
       >
         {isPending && <ProgressBar progressVal={progress} />}
         {error && <div>Bir hata oluştu</div>}
@@ -102,6 +101,7 @@ const ImageUploader = ({ emptyRequiredField, setRequired }) => {
         )}
         {!isPending && !error && !imageURL && (
           <div className="upload-content">
+            <DragDropContainer fileDrop={setSelectedFile} />
             <img src={uploadIco} alt="upload-ico" />
             <p>
               Sürükleyip bırakarak yükle <br /> veya
