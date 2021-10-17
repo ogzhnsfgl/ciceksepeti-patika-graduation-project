@@ -1,0 +1,37 @@
+.category-container {
+  height: 4rem;
+  margin: 1.5rem 0;
+  .category-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    max-width: 100%;
+    overflow-x: scroll;
+    /* To hide horizontal scrollbar on firefox and IE */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    & > a {
+      margin: 0 0.8rem;
+    }
+
+    &-item {
+      padding: 0 0.3rem;
+      line-height: 4rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    .item-active {
+      border-bottom: 1.7px solid rgba(75, 156, 226, 1);
+      color: rgba(75, 156, 226, 1);
+      line-height: 4.02rem;
+    }
+  }
+  /* To hide horizontal scrollbar on chrome and safari */
+  .category-list::-webkit-scrollbar {
+    display: none;
+  }
+}

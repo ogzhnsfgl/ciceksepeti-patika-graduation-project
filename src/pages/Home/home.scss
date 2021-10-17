@@ -1,31 +1,7 @@
 .section-banner {
   img {
     width: 100%;
-  }
-}
-
-.category-container {
-  height: 4rem;
-  margin: 1.5rem 0;
-  .category-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 4rem;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
-
-    &-item {
-      padding: 0 0.3rem;
-      line-height: 4rem;
-      font-size: 1.8rem;
-      font-weight: 600;
-      text-transform: capitalize;
-    }
-    .item-active {
-      border-bottom: 1.7px solid rgba(75, 156, 226, 1);
-      color: rgba(75, 156, 226, 1);
-      line-height: 4.02rem;
-    }
+    border-radius: 0.8rem;
   }
 }
 
@@ -34,4 +10,5 @@
   grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
   column-gap: 2rem;
   row-gap: 2rem;
+  justify-items: center;
 }

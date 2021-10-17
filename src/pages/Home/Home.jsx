@@ -1,10 +1,11 @@
 import './home.scss';
 
-import banner from 'assets/images/home-banner.png';
+import banner from 'assets/images/home-banner.webp';
+import CategoryTabs from 'components/CategoryTabs/CategoryTabs';
+import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import ProductCard from 'components/ProductCard/ProductCard';
-import Spinner from 'components/Spinner/Spinner';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import fetchCategory from 'redux/actions/categoryAction';
@@ -13,34 +14,22 @@ import fetchProducts from 'redux/actions/productsAction';
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-
 const Home = () => {
   const query = useQuery();
-
-  const [selectedCategory, setselectedCategory] = useState(
-    query.get('category')
-  );
-
-  const productsStore = useSelector((state) => state.products);
-  const categoryStore = useSelector((state) => state.category);
+  const productsState = useSelector((state) => state.products);
+  const categoryState = useSelector((state) => state.category);
+  const dispatch = useDispatch();
 
   const {
     products,
     isPending: isPendingProducts,
     error: errorProducts,
-  } = productsStore;
+  } = productsState;
 
-  const {
-    categoryList,
-    isPending: isPendingCategory,
-    error: errorCategory,
-  } = categoryStore;
-
-  const dispatch = useDispatch();
+  const { isPending: isPendingCategory, error: errorCategory } = categoryState;
 
   useEffect(() => {
     let mounted = false;
-
     if (!mounted) {
       dispatch(fetchProducts());
       dispatch(fetchCategory());
@@ -50,80 +39,51 @@ const Home = () => {
     };
   }, [dispatch]);
 
-  let filteredProducts = products;
+  if (isPendingProducts || isPendingCategory) {
+    return <LoadingContainer />;
+  }
+
+  let filteredProducts = [...products];
 
   if (
     query.get('category') !== null &&
-    query.get('category') !== 'hepsi' &&
+    query.get('category').trim() !== 'hepsi' &&
     !isPendingProducts &&
     products
   ) {
     filteredProducts = products.filter(
-      (product) => product.category.title.trim() === selectedCategory.trim()
+      (product) =>
+        product.category.title.trim() === query.get('category').trim()
     );
   }
-  if (query.get('category') === 'hepsi' && !isPendingProducts && products) {
+  if (
+    (query.get('category') === 'hepsi' || query.get('category') === null) &&
+    !isPendingProducts &&
+    products
+  ) {
     filteredProducts = products;
   }
-
   return (
     <>
       <Navbar />
-      {(isPendingProducts || isPendingCategory) && <Spinner />}
       {(errorProducts || errorCategory) && (
-        <div>Error:{errorProducts.message}</div>
+        <div>Error:{errorProducts.message || errorCategory.message}</div>
       )}
-      {categoryList && products && (
-        <main className="section">
-          <div className="container">
-            <div className="section-banner">
-              <img src={banner} alt="home-banner" />
-            </div>
-            <div className="category-container">
-              <ul className="category-list">
-                <Link
-                  to="?category=hepsi"
-                  onClick={() => setselectedCategory('hepsi')}
-                >
-                  <li
-                    className={
-                      selectedCategory === 'hepsi' || selectedCategory === null
-                        ? 'category-list-item item-active'
-                        : 'category-list-item'
-                    }
-                  >
-                    Hepsi
-                  </li>
-                </Link>
-                {categoryList.map((category) => (
-                  <Link
-                    to={`?category=${category.title} `}
-                    key={category.id}
-                    onClick={() => setselectedCategory(category.title)}
-                  >
-                    <li
-                      className={
-                        selectedCategory?.trim() === category.title.trim()
-                          ? 'category-list-item item-active'
-                          : 'category-list-item'
-                      }
-                    >
-                      {category.title}
-                    </li>
-                  </Link>
-                ))}
-              </ul>
-            </div>
-            <div className="products-container">
-              {filteredProducts.map((product) => (
-                <Link to={`/productdetail/${product.id}`} key={product.id}>
-                  <ProductCard product={product} />
-                </Link>
-              ))}
-            </div>
+      <main className="section">
+        <div className="container">
+          <div className="section-banner">
+            <img src={banner} alt="home-banner" />
           </div>
-        </main>
-      )}
+          <CategoryTabs />
+          <div className="products-container">
+            {filteredProducts.map((product) => (
+              <Link to={`/productdetail/${product.id}`} key={product.id}>
+                <ProductCard product={product} />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </main>
     </>
   );
 };
