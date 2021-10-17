@@ -2,7 +2,7 @@ import categoryTypes from 'redux/constants/categoryTypes';
 
 const initialState = {
   categoryList: null,
-  isPending: false,
+  isPending: true,
   error: false,
 };
 

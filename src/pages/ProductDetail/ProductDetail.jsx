@@ -1,19 +1,19 @@
 /* eslint-disable no-unused-expressions */
 import './productDetail.scss';
 
-import Button from 'components/Button/Button';
 import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
+import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import OfferModal from 'components/OfferModal/OfferModal';
-import Spinner from 'components/Spinner/Spinner';
 import checkAuth from 'helpers/checkAuth';
 import currencyFormetter from 'helpers/currenyFormater';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
-import deleteCancelOffer from 'redux/actions/cancelOfferActions';
+import { useParams } from 'react-router-dom';
 import fetchGivenOffers from 'redux/actions/givenOffersActions';
 import fetchProductDetail from 'redux/actions/productDetailAction';
+
+import ProductDetailInfo from './ProductDetailInfo/ProductDetailInfo';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -30,11 +30,8 @@ const ProductDetail = () => {
     error: errorProductDetail,
   } = productDetail;
 
-  const {
-    givenOffers,
-    isPending: isPendingGivenOffers,
-    error: errorGivenOffers,
-  } = givenOffersState;
+  const { isPending: isPendingGivenOffers, error: errorGivenOffers } =
+    givenOffersState;
 
   useEffect(() => {
     let mounted = false;
@@ -49,14 +46,10 @@ const ProductDetail = () => {
     };
   }, [dispatch, id, product]);
 
-  if (isPendingProductDetail || isPendingGivenOffers || product === null) {
-    return (
-      <>
-        <Navbar />
-        <Spinner />
-      </>
-    );
+  if (isPendingProductDetail || isPendingGivenOffers) {
+    return <LoadingContainer />;
   }
+
   if (errorProductDetail || errorGivenOffers) {
     return (
       <>
@@ -73,17 +66,8 @@ const ProductDetail = () => {
     description,
     imageUrl,
     price,
-    isSold,
     id: productId,
   } = product;
-
-  let givenOffer;
-  givenOffers?.forEach((offer) => {
-    offer?.product.id.trim() === product?.id.trim()
-      ? (givenOffer = offer)
-      : null;
-    return null;
-  });
 
   return (
     <>
@@ -108,73 +92,10 @@ const ProductDetail = () => {
               {status.title}
             </div>
             <div className="content-price">{currencyFormetter(price)}</div>
-
-            {givenOffer && (
-              <div className="content-given-offer">
-                Verilen teklif:{'  '}
-                <span className="given-price">
-                  {currencyFormetter(givenOffer.offeredPrice)}
-                </span>{' '}
-              </div>
-            )}
-
-            <div className="content-buttons">
-              {!checkAuth() && (
-                <>
-                  <div className="text-signin">
-                    Satın almak veya teklif vermek için lütfen önce{' '}
-                    <Link to="/login" className="strong">
-                      giriş yapın.
-                    </Link>
-                  </div>
-                </>
-              )}
-              {!isSold && product.isOfferable && checkAuth() && (
-                <>
-                  <Button
-                    text="Satın Al"
-                    className="btn btn-buy"
-                    clickEvent={() => setShowConfirmModal(true)}
-                  />
-                  {givenOffer ? (
-                    <Button
-                      text="Teklifi Geri Çek"
-                      className="btn btn-offer"
-                      clickEvent={() =>
-                        dispatch(deleteCancelOffer(givenOffer.id, productId))
-                      }
-                    />
-                  ) : (
-                    <Button
-                      text="Teklif Ver"
-                      className="btn btn-offer"
-                      clickEvent={() => setShowOfferModal(true)}
-                    />
-                  )}
-                </>
-              )}
-              {!isSold && !product.isOfferable && checkAuth() && (
-                <>
-                  <Button
-                    text="Satın Al"
-                    className="btn btn-buy"
-                    clickEvent={() => setShowConfirmModal(true)}
-                  />
-                  <Button
-                    text="Bu Ürüne Teklif Verilemez"
-                    className="btn btn-offer btn-disabled"
-                  />
-                </>
-              )}
-              {isSold && checkAuth() && (
-                <>
-                  <Button
-                    text="Bu Ürün Satışta Değil"
-                    className="btn btn-soldout"
-                  />
-                </>
-              )}
-            </div>
+            <ProductDetailInfo
+              setShowConfirmModal={setShowConfirmModal}
+              setShowOfferModal={setShowOfferModal}
+            />
             <div className="content-description">
               <p className="strong">Açıklama</p>
               <p className="content-description-text">{description}</p>

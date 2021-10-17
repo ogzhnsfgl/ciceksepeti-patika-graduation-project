@@ -8,12 +8,13 @@ const ToggleSwitch = ({ value, onChange }) => {
 
   return (
     <div
-      className={`holder ${toggleOn}`}
+      className={`holder ${toggleOn ? 'on' : 'off'}`}
       onClick={() => {
-        setToggleOn((prev) => (prev === 'on' ? 'off' : 'on'));
-        onChange(!value);
+        setToggleOn((prev) => !prev);
+        onChange({ target: { name: 'isOfferable', value: !toggleOn } });
       }}
       role="none"
+      name="isOfferable"
     >
       <div className="toggle" />
     </div>

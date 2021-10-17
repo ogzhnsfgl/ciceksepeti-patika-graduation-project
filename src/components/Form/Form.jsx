@@ -1,97 +1,65 @@
 import './form.scss';
 
 import Button from 'components/Button/Button';
+import FormInputFields from 'components/FormInputFields/FormInputFields';
 import checkAuth from 'helpers/checkAuth';
 import checkValidField from 'helpers/formValidation';
-import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import fetchAuth from 'redux/actions/authAction';
 
-const Form = ({ formType }) => {
-  const history = useHistory();
+const initialState = {
+  email: { input: '', touched: false, valid: false },
+  password: { input: '', touched: false, valid: false },
+  showError: false,
+};
 
-  const initialState = {
-    email: '',
-    password: '',
-    emailTouched: false,
-    emailValid: false,
-    passwordValid: false,
-    passwordTouched: false,
-    showEmailWarning: false,
-    showPasswordWarning: false,
-  };
+const Form = () => {
+  const history = useHistory();
+  const formType = history.location.pathname;
+
   const [formControl, setformControl] = useState(initialState);
+  const { email, password, showError } = formControl;
+  const { input: emailInput, touched: emailTouched, valid: emailValid } = email;
   const {
-    email,
-    password,
-    emailValid,
-    passwordValid,
-    emailTouched,
-    passwordTouched,
-    showEmailWarning,
-    showPasswordWarning,
-  } = formControl;
+    input: passwordInput,
+    touched: passwordTouched,
+    valid: passwordValid,
+  } = password;
 
   const dispatch = useDispatch();
-  const btnText = formType === 'signin' ? 'Giriş Yap' : 'Üye Ol';
+  const btnText = formType === '/signin' ? 'Giriş Yap' : 'Üye Ol';
   const userState = useSelector((state) => state.auth);
 
   const handleOnChange = (e) => {
-    switch (e.target.name) {
-      case 'email':
-        setformControl({
-          ...formControl,
-          email: e.target.value,
-          emailValid: checkValidField('email', e.target.value),
-          emailTouched: true,
-        });
-
-        break;
-      case 'password':
-        setformControl({
-          ...formControl,
-          password: e.target.value,
-          passwordValid: checkValidField('password', e.target.value),
-          passwordTouched: true,
-        });
-        break;
-      default:
-        break;
-    }
+    setformControl({
+      ...formControl,
+      [e.target.name]: {
+        ...[e.target.name],
+        input: e.target.value,
+        valid: checkValidField(e.target.name, e.target.value),
+        touched: true,
+      },
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let newFormControl = { ...formControl };
     if (emailValid && passwordValid) {
-      setformControl({
-        ...formControl,
-        showEmailWarning: false,
-        showPasswordWarning: false,
-      });
-      dispatch(fetchAuth({ email, password }, formType));
+      newFormControl = {
+        ...newFormControl,
+        email: { ...email, warning: false },
+        password: { ...password, warning: false },
+      };
+      dispatch(
+        fetchAuth({ email: emailInput, password: passwordInput }, formType)
+      );
     } else {
-      if (!emailValid && passwordValid)
-        setformControl({
-          ...formControl,
-          showEmailWarning: true,
-          showPasswordWarning: false,
-        });
-      if (emailValid && !passwordValid)
-        setformControl({
-          ...formControl,
-          showPasswordWarning: true,
-          showEmailWarning: false,
-        });
-
-      if (!emailValid && !passwordValid)
-        setformControl({
-          ...formControl,
-          showEmailWarning: true,
-          showPasswordWarning: true,
-        });
+      newFormControl = { ...newFormControl, showError: true };
     }
+    setformControl(newFormControl);
   };
 
   useEffect(() => {
@@ -104,66 +72,58 @@ const Form = ({ formType }) => {
     <div className="form__wrapper">
       <div className="form__header">
         <div className="form__header-title">
-          {formType === 'signin' ? 'Giriş Yap' : 'Üye Ol'}
+          {formType === '/signin' ? 'Giriş Yap' : 'Üye Ol'}
         </div>
 
         <div className="form__header-description">
           Fırsatlardan yararlanmak için{' '}
-          {formType === 'signin' ? 'giriş yap' : 'üye ol'}!
+          {formType === '/signin' ? 'giriş yap' : 'üye ol'}!
         </div>
       </div>
       <form onSubmit={handleSubmit} className="form__group" noValidate>
-        <div className="input__group">
-          <label htmlFor="email">Email</label>
-          <input
-            className={emailTouched && !emailValid ? 'notValid' : ''}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email@example.com"
-            value={email}
-            onChange={(e) => handleOnChange(e)}
-          />
-          <p className={showEmailWarning ? 'warning' : 'hidden'}>
-            Lütfen geçerli bir mail giriniz!
-          </p>
-        </div>
-
-        <div className="input__group">
-          <label htmlFor="password">Şifre </label>
-          <input
-            className={passwordTouched && !passwordValid ? 'notValid' : ''}
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => handleOnChange(e)}
-          />
-          <p className={showPasswordWarning ? 'warning' : 'hidden'}>
-            Şifre 8 karakterden kısa olamaz!
-          </p>
-        </div>
-
+        <FormInputFields
+          name="email"
+          type="email"
+          label="Email"
+          placeholder="Email@example.com"
+          value={email.input}
+          onChangeEvent={handleOnChange}
+          touchState={emailTouched}
+          validState={emailValid}
+          showError={showError}
+          errorMsg="Lütfen geçerli bir mail giriniz!"
+        />
+        <FormInputFields
+          name="password"
+          type="password"
+          label="Şifre"
+          value={password.input}
+          onChangeEvent={handleOnChange}
+          touchState={passwordTouched}
+          validState={passwordValid}
+          showError={showError}
+          errorMsg="Şifre 8 karakterden kısa olamaz!"
+        />
         <Button className="form__group-btn" text={btnText} clickEvent={null} />
       </form>
 
       <div className="form-footer">
-        {formType === 'signin' ? (
-          <div>
-            Hesabın yok mu? <Link to="/register">Üye Ol</Link>{' '}
-          </div>
-        ) : (
-          <div>
-            Hesabın var mı? <Link to="/login">Giriş Yap</Link>{' '}
-          </div>
-        )}
+        <div>
+          {formType === '/signin' ? (
+            <>
+              {' '}
+              Hesabın yok mu? <Link to="/signup">Üye Ol</Link>
+            </>
+          ) : (
+            <>
+              {' '}
+              Hesabın var mı? <Link to="/signin">Giriş Yap</Link>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
-};
-
-Form.propTypes = {
-  formType: PropTypes.string.isRequired,
 };
 
 export default Form;

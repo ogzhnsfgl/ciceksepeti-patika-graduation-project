@@ -18,20 +18,20 @@ import statusReducer from './statusReducer';
 import uploadReducer from './uploadReducer';
 
 export default combineReducers({
-  auth: authReducer,
-  category: categoryReducer,
-  products: productsReducer,
-  productDetail: productDetailReducer,
   acceptOffer: acceptOfferReducer,
+  auth: authReducer,
   brand: brandReducer,
   cancelOffer: cancelOfferReducer,
+  category: categoryReducer,
+  createProduct: createProductReducer,
   color: colorReducer,
   givenOffers: givenOffersReducer,
+  offer: offerReducer,
+  products: productsReducer,
+  purchase: purchaseReducer,
+  productDetail: productDetailReducer,
   receivedOffers: receivedOffersReducer,
   rejectOffer: rejectOfferReducer,
   status: statusReducer,
-  purchase: purchaseReducer,
-  offer: offerReducer,
   upload: uploadReducer,
-  createProduct: createProductReducer,
 });

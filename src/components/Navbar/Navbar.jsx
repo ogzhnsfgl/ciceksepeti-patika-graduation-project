@@ -27,7 +27,7 @@ const Navbar = () => {
             </button>
           </Link>
           {!isAuth && (
-            <Link to="/login">
+            <Link to="/signin">
               <button type="button" className="navbar-btn btn-login">
                 Giriş Yap
               </button>

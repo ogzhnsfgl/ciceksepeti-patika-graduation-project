@@ -2,7 +2,7 @@ import productsTypes from 'redux/constants/productsTypes';
 
 const initialState = {
   products: null,
-  isPending: false,
+  isPending: true,
   error: false,
 };
 

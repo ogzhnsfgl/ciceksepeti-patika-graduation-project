@@ -61,6 +61,7 @@ const OfferListInfo = ({ type, item }) => {
 
   const receivedRejected = () => <p className="text-rejected">Rededildi</p>;
   const receivedAccepted = () => <p className="text-confirm">Onaylandı</p>;
+  const receivedPurchased = () => <p className="text-purchased">Satıldı</p>;
 
   switch (type) {
     case 'givenOffers':
@@ -79,6 +80,9 @@ const OfferListInfo = ({ type, item }) => {
       }
 
     case 'receivedOffers':
+      if (item.isSold) {
+        return receivedPurchased();
+      }
       switch (item.status) {
         case 'accepted':
           return receivedAccepted();

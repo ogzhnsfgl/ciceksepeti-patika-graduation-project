@@ -17,7 +17,7 @@ const fetchAuthPending = () => ({
 const fetchAuth = (user, signType) => async (dispatch) => {
   dispatch(fetchAuthPending());
   return request
-    .post(`/authorization/${signType}`, user)
+    .post(`/authorization${signType}`, user)
     .then((res) => {
       triggerToast(
         'success',
