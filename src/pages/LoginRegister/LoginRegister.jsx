@@ -1,12 +1,11 @@
-import './register.scss';
+import './loginRegister.scss';
 
-import banner from 'assets/images/login-image.png';
+import banner from 'assets/images/login-image.webp';
 import logo from 'assets/images/logo.svg';
 import Form from 'components/Form/Form';
 import React from 'react';
-// import { ToastContainer } from 'react-toastify';
 
-const Register = () => (
+const LoginRegister = () => (
   <>
     <div className="login-wrapper">
       <div className="login-banner">
@@ -16,10 +15,10 @@ const Register = () => (
         <div className="login__content-logo">
           <img src={logo} alt="" />
         </div>
-        <Form formType="signup" />
+        <Form />
       </div>
     </div>
   </>
 );
 
-export default Register;
+export default LoginRegister;

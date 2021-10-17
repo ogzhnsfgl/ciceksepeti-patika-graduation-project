@@ -4,7 +4,7 @@ import { Redirect, Route, withRouter } from 'react-router-dom';
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated');
 
-  if (rest.path === '/login' || rest.path === '/register') {
+  if (rest.path === '/signin' || rest.path === '/signup') {
     return (
       <Route
         {...rest}

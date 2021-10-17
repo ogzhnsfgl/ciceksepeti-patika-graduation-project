@@ -6,25 +6,24 @@ import ProtectedRoute from './ProtectedRoute';
 
 /* Required pages are imported with lazy */
 const Home = lazy(() => import('pages/Home'));
-const Login = lazy(() => import('pages/Login'));
-const Register = lazy(() => import('pages/Register'));
+const LoginRegister = lazy(() => import('pages/LoginRegister'));
 const Account = lazy(() => import('pages/Account'));
 const ProductDetail = lazy(() => import('pages/ProductDetail'));
-const AddProduct = lazy(() => import('pages/AddProduct'));
+const AddProduct = lazy(() => import('pages/AddProduct/'));
 
 /* Created paths array */
 const routerPaths = [
   {
-    path: '/login',
-    name: 'login',
-    component: Login,
+    path: '/signup',
+    name: 'register',
+    component: LoginRegister,
     exact: false,
     props: {},
   },
   {
-    path: '/register',
+    path: '/signin',
     name: 'register',
-    component: Register,
+    component: LoginRegister,
     exact: false,
     props: {},
   },
@@ -36,7 +35,7 @@ const routerPaths = [
     props: {},
   },
   {
-    path: '/addProduct',
+    path: '/addproduct',
     name: 'addProduct',
     component: AddProduct,
     exact: false,
