@@ -4,7 +4,7 @@ import axios from '../../node_modules/axios/index';
 // const token = localStorage.getItem('isAuthenticated');
 const uploadRequest = () =>
   axios.create({
-    baseURL: 'http://bootcampapi.techcs.io/api/fe/v1',
+    baseURL: 'https://bootcampapi.techcs.io/api/fe/v1',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('isAuthenticated')}`,
       'Content-Type': 'multipart/form-data',
