@@ -18,7 +18,7 @@ const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
         <>
           <div className="text-signin">
             Satın almak veya teklif vermek için lütfen önce{' '}
-            <Link to="/login" className="strong">
+            <Link to="/signin" className="strong">
               giriş yapın.
             </Link>
           </div>
