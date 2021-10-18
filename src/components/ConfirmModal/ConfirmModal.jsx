@@ -24,7 +24,7 @@ const ConfirmModal = ({ showModal, closeModal, id }) => {
   return ReactDOM.createPortal(
     <div className={showModal ? 'modal modal-show' : 'modal'}>
       <div className="modal-content">
-        <div className="modal-content-title">
+        <div className="modal-content-title" id="confirm-modal-title">
           <h2>Satın Al</h2>
         </div>
         <div className="modal-content-body">

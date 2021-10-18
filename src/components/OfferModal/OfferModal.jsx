@@ -63,7 +63,7 @@ const OfferModal = ({ showModal, closeModal, product }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className={showModal ? 'modal modal-show' : 'modal'}>
+    <div className={showModal ? 'modal modal-show' : 'modal'} id="offer-modal">
       <div className="modal-content">
         <div className="modal-content-title">
           <h2>Teklif Ver</h2>

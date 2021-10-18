@@ -1,3 +1,5 @@
+@import 'style/mixin.scss';
+@import 'style/variables.scss';
 .combobox-wrapper {
   color: grey;
   position: relative;
@@ -14,6 +16,9 @@
   border: none;
   border-radius: 0.8rem;
   font-size: 1.6rem;
+  @include screenSize('large') {
+    font-size: 1.4rem;
+  }
 }
 .combobox-list:focus,
 .combobox-list:focus-visible,
@@ -24,12 +29,18 @@
 .combobox-btn {
   position: relative;
   width: 90%;
+  @include screenSize('medium') {
+    width: 100%;
+  }
   height: 4.5rem;
   background-color: #f4f4f4;
   color: rgba(153, 160, 167, 1);
   border-radius: 0.8rem;
   font-size: 1.6rem;
   text-transform: capitalize;
+  @include screenSize('xlarge') {
+    font-size: 1.4rem;
+  }
 }
 .valid {
   color: rgba(62, 62, 62, 1);
@@ -49,6 +60,9 @@
   top: 0px !important;
   width: 90%;
   z-index: 3;
+  @include screenSize('medium') {
+    width: 100%;
+  }
 }
 
 [data-reach-listbox-popover]:focus-within {

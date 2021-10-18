@@ -1,4 +1,4 @@
-import Spinner from 'components/Spinner/Spinner';
+import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ const routerPaths = [
 const Routes = (
   <Router>
     <Switch>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LoadingContainer />}>
         <Route path="/" component={Home} exact />
         <Route path="/productdetail/:id" component={ProductDetail} />
         {routerPaths.map(({ path, name, component, props }) => (

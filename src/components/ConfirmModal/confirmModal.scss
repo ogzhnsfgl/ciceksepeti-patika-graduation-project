@@ -1,3 +1,5 @@
+@import 'style/mixin.scss';
+@import 'style/variables.scss';
 .modal {
   position: fixed;
   left: 0;
@@ -7,14 +9,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(75, 156, 226, 0.7);
+
+  background-color: $blue-100-70;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.3s ease-in-out;
+  transition: $general-transition;
 
   &-content {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: $white-100;
     box-shadow: 0px 3px 12px rgba(30, 54, 72, 0.18);
     border-radius: 0.8rem;
     padding: 1rem 2rem;
@@ -22,20 +25,31 @@
     flex-direction: column;
     align-items: center;
     transform: translateY(20rem);
-    transition: all 0.3s ease-in-out;
+    transition: $general-transition;
+    max-width: 95vw;
+    @include screenSize('medium') {
+      margin-top: 1rem;
+    }
+
+    #confirm-modal-title {
+      display: block;
+      text-align: center;
+    }
 
     & > * {
-      padding: 1rem;
+      padding: 1rem 0.6rem;
     }
 
     &-title {
       font-size: 2.5rem;
       font-weight: 700;
-      color: rgba(82, 82, 82, 1);
+      color: $black-90;
+      text-align: center;
     }
     &-body {
       font-size: 1.5rem;
-      color: rgba(85, 85, 85, 1);
+      color: $black-80;
+      text-align: center;
     }
 
     .btn {
@@ -48,13 +62,13 @@
     }
 
     .btn-cancel {
-      background-color: rgba(240, 248, 255, 1);
-      color: rgba(75, 156, 226, 1);
+      background-color: $blue-10;
+      color: $blue-100;
       margin-right: 0.2rem;
     }
     .btn-confirm {
-      background-color: rgba(75, 156, 226, 1);
-      color: rgba(255, 255, 255, 1);
+      background-color: $blue-100;
+      color: $white-100;
     }
   }
 

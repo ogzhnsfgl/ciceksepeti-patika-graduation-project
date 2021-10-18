@@ -13,9 +13,13 @@ const OfferListItem = ({ item, type }) => {
     <>
       <div className="offer__item">
         <div className="offer__item-wrapper">
-          <Link to={`productdetail/${product.id}`}>
-            <div className="offer__item-content">
-              <img src={product.imageUrl} alt="item-img" />
+          <div className="offer__item-content">
+            <Link to={`productdetail/${product.id}`}>
+              <div className="offer__item-content-img">
+                <img src={product.imageUrl} alt="item-img" />
+              </div>
+            </Link>
+            <div className="offer__item-content-body">
               <div className="offer__item-content-detail">
                 <p className="product-title">{product.title}</p>
                 <p className="product-offer">
@@ -27,10 +31,10 @@ const OfferListItem = ({ item, type }) => {
                   </span>
                 </p>
               </div>
+              <div className="offer__item-wrapper-btn-group">
+                <OfferListInfo type={type} item={item} />
+              </div>
             </div>
-          </Link>
-          <div className="offer__item-wrapper-btn-group">
-            <OfferListInfo type={type} item={item} />
           </div>
         </div>
       </div>

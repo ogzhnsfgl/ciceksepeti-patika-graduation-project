@@ -18,7 +18,7 @@ const initialState = {
 const Form = () => {
   const history = useHistory();
   const formType = history.location.pathname;
-
+  const auth = useSelector((state) => state.auth);
   const [formControl, setformControl] = useState(initialState);
   const { email, password, showError } = formControl;
   const { input: emailInput, touched: emailTouched, valid: emailValid } = email;
@@ -27,7 +27,7 @@ const Form = () => {
     touched: passwordTouched,
     valid: passwordValid,
   } = password;
-
+  console.log(`auth`, auth);
   const dispatch = useDispatch();
   const btnText = formType === '/signin' ? 'Giriş Yap' : 'Üye Ol';
   const userState = useSelector((state) => state.auth);
@@ -104,7 +104,12 @@ const Form = () => {
           showError={showError}
           errorMsg="Şifre 8 karakterden kısa olamaz!"
         />
-        <Button className="form__group-btn" text={btnText} clickEvent={null} />
+        <Button
+          className={`form__group-btn ${auth.isPending ? 'disabled' : null}`}
+          text={btnText}
+          clickEvent={null}
+          disabled={auth.isPending}
+        />
       </form>
 
       <div className="form-footer">

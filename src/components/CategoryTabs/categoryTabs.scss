@@ -1,33 +1,33 @@
+@import '/src/style/variables';
+@import '/src/style/mixin';
 .category-container {
   height: 4rem;
   margin: 1.5rem 0;
+  border-bottom: 1px solid $gray-90;
   .category-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 4rem;
-    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    @include display-flex(row, center, space-between);
     max-width: 100%;
     overflow-x: scroll;
     /* To hide horizontal scrollbar on firefox and IE */
     -ms-overflow-style: none;
     scrollbar-width: none;
 
-    & > a {
-      margin: 0 0.8rem;
-    }
-
     &-item {
+      margin: 0 0.8rem;
       padding: 0 0.3rem;
-      line-height: 4rem;
+      line-height: 3.8rem;
       font-size: 1.8rem;
       font-weight: 600;
       text-transform: capitalize;
+      border-bottom: 2px solid transparent;
+      transition: $general-transition;
+      &:hover {
+        border-bottom: 2px solid $blue-100;
+      }
     }
     .item-active {
-      border-bottom: 1.7px solid rgba(75, 156, 226, 1);
-      color: rgba(75, 156, 226, 1);
-      line-height: 4.02rem;
+      border-bottom: 2px solid $blue-100;
+      color: $blue-100;
     }
   }
   /* To hide horizontal scrollbar on chrome and safari */

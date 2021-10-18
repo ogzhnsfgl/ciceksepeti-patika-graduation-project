@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       {Routes}
       <ToastContainer
-        autoClose={4000}
+        autoClose={3000}
         theme="colored"
         className="toastify"
         hideProgressBar

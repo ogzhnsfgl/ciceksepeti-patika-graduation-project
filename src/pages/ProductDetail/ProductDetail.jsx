@@ -2,6 +2,7 @@
 import './productDetail.scss';
 
 import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
+import GivenOfferBadge from 'components/GivenOfferBadge/GivenOfferBadge';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import OfferModal from 'components/OfferModal/OfferModal';
@@ -79,19 +80,24 @@ const ProductDetail = () => {
           </div>
           <div className="product__detail-content">
             <div className="content-title text-capitalize">{title}</div>
-            <div className="content-brand text-capitalize">
-              <span className="strong">Marka:</span>
-              {brand.title}
+            <div className="info-wrapper">
+              <div className="content-brand text-capitalize">
+                <span className="strong">Marka:</span>
+                {brand.title}
+              </div>
+              <div className="content-color text-capitalize">
+                <span className="strong">Renk:</span>
+                {color.title}
+              </div>
+              <div className="content-status text-capitalize">
+                <span className="strong">Kullanım Durumu:</span>
+                {status.title}
+              </div>
             </div>
-            <div className="content-color text-capitalize">
-              <span className="strong">Renk:</span>
-              {color.title}
+            <div className="content-price">
+              {currencyFormetter(price)} TL
+              <GivenOfferBadge id={id} />
             </div>
-            <div className="content-status text-capitalize">
-              <span className="strong">Kullanım Durumu:</span>
-              {status.title}
-            </div>
-            <div className="content-price">{currencyFormetter(price)}</div>
             <ProductDetailInfo
               setShowConfirmModal={setShowConfirmModal}
               setShowOfferModal={setShowOfferModal}

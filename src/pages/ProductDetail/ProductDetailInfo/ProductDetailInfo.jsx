@@ -1,6 +1,5 @@
 import Button from 'components/Button/Button';
 import checkAuth from 'helpers/checkAuth';
-import currencyFormetter from 'helpers/currenyFormater';
 import propTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,18 +7,10 @@ import { Link } from 'react-router-dom';
 import deleteCancelOffer from 'redux/actions/cancelOfferActions';
 
 const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
-  const givenOffers = useSelector((state) => state.givenOffers.givenOffer);
   const product = useSelector((state) => state.productDetail.product);
+  const givenOffers = useSelector((state) => state.givenOffers.givenOffers);
 
   const dispatch = useDispatch();
-
-  let givenOffer;
-  givenOffers?.forEach((offer) => {
-    if (offer?.product.id.trim() === product?.id.trim()) {
-      givenOffer = offer;
-    }
-    return null;
-  });
 
   if (!checkAuth()) {
     return (
@@ -38,32 +29,19 @@ const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
   if (product?.isSold) {
     return (
       <div className="content-buttons">
-        <>
-          {givenOffer && (
-            <div className="content-given-offer">
-              Verilen teklif:{'  '}
-              <span className="given-price">
-                {currencyFormetter(givenOffer.offeredPrice)}
-              </span>{' '}
-            </div>
-          )}
-          <Button text="Bu Ürün Satışta Değil" className="btn btn-soldout" />
-        </>
+        <Button text="Bu Ürün Satışta Değil" className="btn btn-soldout" />
       </div>
     );
   }
-
+  let givenOffer;
+  givenOffers?.forEach((offer) => {
+    if (offer?.product.id.trim() === product.id.trim()) {
+      givenOffer = offer;
+    }
+    return null;
+  });
   return (
     <>
-      {givenOffer && (
-        <div className="content-given-offer">
-          Verilen teklif:{'  '}
-          <span className="given-price">
-            {currencyFormetter(givenOffer.offeredPrice)}
-          </span>{' '}
-        </div>
-      )}
-
       <div className="content-buttons">
         {!product?.isSold && (
           <>

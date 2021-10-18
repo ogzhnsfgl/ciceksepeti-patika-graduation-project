@@ -1,31 +1,58 @@
+@import 'style/mixin.scss';
+@import 'style/variables.scss';
 .product__detail {
   display: flex;
   width: 100%;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: $white-100;
   padding: 1.5rem 1.6rem;
   border-radius: 0.8rem;
   margin-bottom: 5rem;
+  @include screenSize('medium') {
+    flex-direction: column;
+    padding: 0.6rem;
+  }
   &-img {
-    min-width: 50%;
+    min-width: 47%;
+    max-width: 47%;
+    @include screenSize('medium') {
+      min-width: 100%;
+      max-width: 100%;
+    }
     img {
       width: 100%;
       object-fit: cover;
       border-radius: 0.8rem;
+      @include screenSize('medium') {
+        width: 100%;
+      }
     }
   }
   &-content {
     padding: 1rem 3rem;
     font-size: 1.5rem;
-    color: rgba(82, 82, 82, 1);
+    color: $black-90;
+    @include screenSize('medium') {
+      padding: 0.6rem;
+      @include display-flex(column, unset, unset);
+    }
 
     & > * {
       padding: 1rem 0;
+      @include screenSize('medium') {
+        padding: 0.5rem 0;
+      }
     }
 
     .content-title {
       margin-bottom: 2rem;
       font-size: 3.4rem;
       font-weight: 500;
+      order: 1;
+      color: $black-80;
+      @include screenSize('medium') {
+        font-size: 1.8rem;
+        margin-bottom: 0;
+      }
     }
 
     .strong {
@@ -38,31 +65,58 @@
       margin: 2rem 0;
       font-size: 3.4rem;
       font-weight: 700;
-      &::after {
-        content: 'TL';
-        width: 3rem;
-        margin-left: 1rem;
+      order: 2;
+
+      @include screenSize('medium') {
+        @include display-flex(row, baseline, space-between);
+        font-size: 2rem;
+        margin: 0;
       }
     }
 
     .content-given-offer {
-      background-color: rgba(242, 242, 242, 1);
-      color: rgba(177, 177, 177, 1);
-      width: 20rem;
+      background-color: $white-80;
+      color: $gray-100;
+      width: 25rem;
       border-radius: 0.8rem;
       padding: 1rem;
       font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+
       .given-price {
-        color: rgba(82, 82, 82, 1);
+        color: $black-90;
         font-weight: 700;
         &::after {
           content: ' TL';
         }
       }
+      @include screenSize('medium') {
+        width: unset;
+      }
+    }
+
+    .info-wrapper {
+      order: 3;
+      & > * {
+        padding: 0.5rem 0;
+      }
     }
 
     .content-buttons {
       margin: 2rem 0;
+      order: 4;
+      @include screenSize('medium') {
+        @include display-flex(row, center, center);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0 auto;
+        background-color: $white-100;
+        padding: 1rem;
+        box-shadow: 0px -3px 8px rgba(30, 54, 72, 0.08);
+      }
       .btn {
         height: 4.5rem;
         width: 23.5rem;
@@ -71,17 +125,17 @@
         border-radius: 0.8rem;
       }
       .btn-buy {
-        background-color: rgba(75, 156, 226, 1);
-        color: rgba(255, 255, 255, 1);
+        background-color: $blue-100;
+        color: $white-100;
         margin-right: 1rem;
       }
       .btn-offer {
-        background-color: rgba(240, 248, 255, 1);
-        color: rgba(75, 156, 226, 1);
+        background-color: $blue-10;
+        color: $blue-100;
       }
       .btn-soldout {
-        background-color: rgba(255, 240, 226, 1);
-        color: rgba(250, 173, 96, 1);
+        background-color: $orange-10;
+        color: $orange-100;
       }
       .btn-disabled {
         opacity: 0.8;
@@ -94,6 +148,7 @@
     }
 
     .content-description {
+      order: 5;
       max-width: 75%;
       &-text {
         padding: 1rem 0;

@@ -4,6 +4,7 @@ import banner from 'assets/images/login-image.webp';
 import logo from 'assets/images/logo.svg';
 import Form from 'components/Form/Form';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginRegister = () => (
   <>
@@ -13,7 +14,9 @@ const LoginRegister = () => (
       </div>
       <div className="login__content">
         <div className="login__content-logo">
-          <img src={logo} alt="" />
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
         </div>
         <Form />
       </div>

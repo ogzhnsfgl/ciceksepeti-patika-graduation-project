@@ -1,5 +1,10 @@
 @import '../ConfirmModal/confirmModal.scss';
 
+#offer-modal {
+  @include screenSize('medium') {
+    align-items: flex-start;
+  }
+}
 .modal-content {
   width: 48rem;
 }
@@ -110,6 +115,7 @@
       .checkbox::after {
         content: '';
         position: absolute;
+        left: 0;
         width: 100%;
         height: 100%;
         background: url('../../assets/icons/check-ico.png')
