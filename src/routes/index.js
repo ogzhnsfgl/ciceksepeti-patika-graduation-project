@@ -10,19 +10,20 @@ const LoginRegister = lazy(() => import('pages/LoginRegister'));
 const Account = lazy(() => import('pages/Account'));
 const ProductDetail = lazy(() => import('pages/ProductDetail'));
 const AddProduct = lazy(() => import('pages/AddProduct/'));
+const NotFound404 = lazy(() => import('components/NotFound404/'));
 
 /* Created paths array */
 const routerPaths = [
   {
     path: '/signup',
-    name: 'register',
+    name: 'registerSignup',
     component: LoginRegister,
     exact: false,
     props: {},
   },
   {
     path: '/signin',
-    name: 'register',
+    name: 'registerSignin',
     component: LoginRegister,
     exact: false,
     props: {},
@@ -59,6 +60,7 @@ const Routes = (
             props={props}
           />
         ))}
+        <Route component={NotFound404} />
       </Suspense>
     </Switch>
   </Router>
