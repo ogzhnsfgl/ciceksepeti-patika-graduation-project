@@ -3,6 +3,7 @@ import createProductTypes from 'redux/constants/createProductTypes';
 import authRequest from 'service/authRequest';
 
 import fetchProducts from './productsAction';
+import { postUploadReset } from './uploadActions';
 
 const postCreateProductSuccess = (product) => ({
   type: createProductTypes.POST_CREATE_PRODUCT_SUCCESS,
@@ -32,7 +33,8 @@ const postCreateProduct = (data) => async (dispatch) => {
       dispatch(postCreateProductFailure(err));
     })
     .finally(() => {
-      fetchProducts();
+      dispatch(fetchProducts());
+      dispatch(postUploadReset());
     });
 };
 
