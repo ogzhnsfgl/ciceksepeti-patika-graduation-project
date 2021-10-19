@@ -1,6 +1,6 @@
+import propTypes from 'prop-types';
 import React from 'react';
 
-// eslint-disable-next-line react/prop-types
 const ProgressBar = ({ progressVal }) => {
   const proggressContainerStyles = {
     height: '4px',
@@ -45,6 +45,10 @@ const ProgressBar = ({ progressVal }) => {
       </div>
     </>
   );
+};
+
+ProgressBar.propTypes = {
+  progressVal: propTypes.string.isRequired,
 };
 
 export default ProgressBar;

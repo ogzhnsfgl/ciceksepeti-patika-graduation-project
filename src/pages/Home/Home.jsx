@@ -2,6 +2,7 @@ import './home.scss';
 
 import banner from 'assets/images/home-banner.webp';
 import CategoryTabs from 'components/CategoryTabs/CategoryTabs';
+import Error from 'components/Error/Error';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import ProductsContainer from 'components/ProductsContainer';
@@ -37,6 +38,9 @@ const Home = () => {
     };
   }, [dispatch]);
 
+  if (errorProducts || errorCategory) {
+    return <Error errorMsg={errorProducts.message || errorCategory.message} />;
+  }
   if (isPendingProducts || isPendingCategory) {
     return <LoadingContainer />;
   }
@@ -49,9 +53,6 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      {(errorProducts || errorCategory) && (
-        <div>Error:{errorProducts.message || errorCategory.message}</div>
-      )}
       <main className="section">
         <div className="container">
           <div className="section-banner">

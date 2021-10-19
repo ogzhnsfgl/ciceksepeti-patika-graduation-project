@@ -1,6 +1,7 @@
 import './account.scss';
 
 import profilePicture from 'assets/icons/profile-picture.png';
+import Error from 'components/Error/Error';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar/Navbar';
 import OfferListItem from 'components/OfferListItem/OfferListItem';
@@ -38,6 +39,13 @@ const Account = () => {
     renderList = givenOffersState.givenOffers;
   }
 
+  if (givenOffersState.isPending || receivedOffersState.isPending) {
+    <LoadingContainer />;
+  }
+
+  if (givenOffersState.error || receivedOffersState.error) {
+    <Error errorMsg={givenOffersState.error || receivedOffersState.error} />;
+  }
   return (
     <>
       <Navbar />
@@ -55,14 +63,13 @@ const Account = () => {
               setSelectedTab={setSelectedTab}
             />
             <div className="offer-list">
-              {(givenOffersState.isPending ||
-                receivedOffersState.isPending) && <LoadingContainer />}
-              {(givenOffersState.error || receivedOffersState.error) && (
-                <div>Error</div>
-              )}
               {renderList &&
                 renderList.map((offer) => (
-                  <OfferListItem item={offer} type={selectedTab} />
+                  <OfferListItem
+                    item={offer}
+                    type={selectedTab}
+                    key={offer.id}
+                  />
                 ))}
             </div>
           </div>

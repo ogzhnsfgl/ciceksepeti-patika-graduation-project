@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import './navbar.scss';
 
 import logo from 'assets/images/logo.svg';
@@ -11,7 +10,6 @@ const Navbar = () => {
   const [isAuth, setisAuth] = useState(checkAuth());
   const isMobile = UseWindowSize();
   const history = useHistory();
-  console.log(`history`, history);
   const isAccountPage = history.location.pathname === '/account';
 
   useEffect(() => {
@@ -46,6 +44,7 @@ const Navbar = () => {
                   <button
                     type="button"
                     className="navbar-btn btn-add-product mobile"
+                    aria-label="addProduct"
                   />
                 </Link>
               ) : (

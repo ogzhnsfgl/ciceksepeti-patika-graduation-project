@@ -54,11 +54,12 @@ const ConfirmModal = ({ showModal, closeModal, callback }) => {
 ConfirmModal.propTypes = {
   showModal: propTypes.bool,
   closeModal: propTypes.func,
-  callback: propTypes.func.isRequired,
+  callback: propTypes.func,
 };
 ConfirmModal.defaultProps = {
   showModal: false,
   closeModal: null,
+  callback: undefined,
 };
 
 export default ConfirmModal;

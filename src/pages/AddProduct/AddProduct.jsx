@@ -1,6 +1,7 @@
 import './addProduct.scss';
 
 import ComboboxCopy from 'components/Combobox/';
+import Error from 'components/Error/Error';
 import ImageUploader from 'components/ImageUploader/ImageUploader';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar/Navbar';
@@ -56,10 +57,27 @@ function AddProduct() {
     statusState.statusList,
   ].some((item) => item === null);
 
+  const isError = [
+    categoryState.error.message,
+    brandState.error.message,
+    colorState.error.message,
+    statusState.error.message,
+  ].any((error) => error);
+
   if (isNull) {
     return <LoadingContainer />;
   }
 
+  if (isError) {
+    <Error
+      errorMsg={
+        categoryState.error.message ||
+        brandState.error.message ||
+        colorState.error.message ||
+        statusState.error.message
+      }
+    />;
+  }
   return (
     <>
       <Navbar />

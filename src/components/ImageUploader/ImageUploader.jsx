@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import './imageUploader.scss';
 
 import uploadIco from 'assets/icons/upload-ico.png';
 import DragDropContainer from 'components/DragDropContainer';
 import ProgressBar from 'components/ProgressBar';
 import triggerToast from 'helpers/toastify';
+import propTypes from 'prop-types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -125,6 +125,14 @@ const ImageUploader = ({ error: reqError, onChange }) => {
       </div>
     </div>
   );
+};
+
+ImageUploader.propTypes = {
+  error: propTypes.bool,
+  onChange: propTypes.func.isRequired,
+};
+ImageUploader.defaultProps = {
+  error: undefined,
 };
 
 export default ImageUploader;

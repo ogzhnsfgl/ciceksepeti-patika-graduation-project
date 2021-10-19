@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import './Pagination.scss';
 
 import { DOTS, usePagination } from 'Hooks/UsePagination';
+import propTypes from 'prop-types';
 import React from 'react';
 
 const Pagination = (props) => {
@@ -43,7 +43,11 @@ const Pagination = (props) => {
         </li>
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
-            return <li className="pagination-item dots ">&#8230;</li>;
+            return (
+              <li className="pagination-item dots " key={pageNumber}>
+                &#8230;
+              </li>
+            );
           }
 
           return (
@@ -53,6 +57,7 @@ const Pagination = (props) => {
               }`}
               onClick={() => onPageChange(pageNumber)}
               role="none"
+              key={pageNumber}
             >
               {pageNumber}
             </li>
@@ -69,6 +74,13 @@ const Pagination = (props) => {
       </ul>
     </div>
   );
+};
+
+Pagination.propTypes = {
+  totalCount: propTypes.number.isRequired,
+  currentPage: propTypes.number.isRequired,
+  pageSize: propTypes.number.isRequired,
+  onPageChange: propTypes.func.isRequired,
 };
 
 export default Pagination;

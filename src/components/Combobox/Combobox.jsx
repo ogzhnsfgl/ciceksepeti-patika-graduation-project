@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import './combobox.scss';
 import '@reach/listbox/styles.css';
 
@@ -12,7 +11,7 @@ import {
 import propTypes from 'prop-types';
 import React, { memo, useState } from 'react';
 
-const ComboboxCopy = (props) => {
+const Combobox = (props) => {
   const { setSelect, error, name, list, value } = props;
   let defaultVal;
 
@@ -71,10 +70,17 @@ const ComboboxCopy = (props) => {
   );
 };
 
-ComboboxCopy.propTypes = {
-  list: propTypes.array.isRequired,
+Combobox.propTypes = {
   setSelect: propTypes.func.isRequired,
+  list: propTypes.array.isRequired,
   name: propTypes.string.isRequired,
+  error: propTypes.bool,
+  value: propTypes.object,
 };
 
-export default memo(ComboboxCopy);
+Combobox.defaultProps = {
+  error: null,
+  value: null,
+};
+
+export default memo(Combobox);

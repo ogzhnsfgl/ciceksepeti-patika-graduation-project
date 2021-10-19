@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import currencyFormetter from 'helpers/currenyFormater';
+import propTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -26,6 +26,10 @@ const GivenOfferBadge = ({ id }) => {
       </span>{' '}
     </div>
   );
+};
+
+GivenOfferBadge.propTypes = {
+  id: propTypes.oneOfType([propTypes.string, propTypes.number]).isRequired,
 };
 
 export default GivenOfferBadge;

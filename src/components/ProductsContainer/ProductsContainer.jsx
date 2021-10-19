@@ -1,9 +1,8 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/prop-types */
 import './productsContainer.scss';
 
 import Pagination from 'components/Pagination/Pagination';
 import ProductCard from 'components/ProductCard/ProductCard';
+import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -17,11 +16,8 @@ const ProductsContainer = ({ data }) => {
   }, [data]);
 
   const firstPageIndex = (currentPage - 1) * PageSize;
-  console.log(`firstPageIndex`, firstPageIndex);
   const lastPageIndex = firstPageIndex + PageSize;
   const currentData = data.slice(firstPageIndex, lastPageIndex);
-  console.log(`data`, data);
-  console.log(`currentData`, currentData);
 
   return (
     <>
@@ -40,6 +36,10 @@ const ProductsContainer = ({ data }) => {
       />
     </>
   );
+};
+
+ProductsContainer.propTypes = {
+  data: propTypes.array.isRequired,
 };
 
 export default ProductsContainer;

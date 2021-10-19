@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-expressions */
 import './productDetail.scss';
 
 import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
+import Error from 'components/Error/Error';
 import GivenOfferBadge from 'components/GivenOfferBadge';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
@@ -53,12 +53,7 @@ const ProductDetail = () => {
   }
 
   if (errorProductDetail || errorGivenOffers) {
-    return (
-      <>
-        <Navbar />
-        <div>errorProductDetail:{errorProductDetail.message}</div>;
-      </>
-    );
+    return <Error errorMsg={errorProductDetail || errorGivenOffers} />;
   }
   const {
     title,

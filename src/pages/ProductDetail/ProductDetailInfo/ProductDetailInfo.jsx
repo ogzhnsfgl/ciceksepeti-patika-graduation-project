@@ -11,7 +11,6 @@ const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
   const givenOffers = useSelector((state) => state.givenOffers.givenOffers);
 
   const dispatch = useDispatch();
-  console.log(`product`, product);
 
   if (!checkAuth()) {
     return (

@@ -1,5 +1,4 @@
-/* eslint-disable no-constant-condition */
-/* eslint-disable react/prop-types */
+import propTypes from 'prop-types';
 import React from 'react';
 
 const FormInputFields = ({
@@ -30,5 +29,18 @@ const FormInputFields = ({
     </p>
   </div>
 );
+
+FormInputFields.propTypes = {
+  name: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
+  label: propTypes.string.isRequired,
+  placeholder: propTypes.string.isRequired,
+  value: propTypes.string.isRequired,
+  errorMsg: propTypes.string.isRequired,
+  onChangeEvent: propTypes.func.isRequired,
+  touchState: propTypes.bool.isRequired,
+  validState: propTypes.bool.isRequired,
+  showError: propTypes.bool.isRequired,
+};
 
 export default FormInputFields;

@@ -1,4 +1,3 @@
-// import propTypes from 'prop-types';
 import './categoryTabs.scss';
 
 import useQuery from 'Hooks/UseQuery';

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import postCreateProduct from 'redux/actions/createProductActions';

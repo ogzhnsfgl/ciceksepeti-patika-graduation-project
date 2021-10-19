@@ -27,7 +27,6 @@ const Form = () => {
     touched: passwordTouched,
     valid: passwordValid,
   } = password;
-  console.log(`auth`, auth);
   const dispatch = useDispatch();
   const btnText = formType === '/signin' ? 'Giriş Yap' : 'Üye Ol';
   const userState = useSelector((state) => state.auth);

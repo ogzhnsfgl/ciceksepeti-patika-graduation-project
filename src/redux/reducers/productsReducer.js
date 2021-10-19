@@ -17,7 +17,7 @@ const productsReducer = (state = initialState, action) => {
         products: action.payload,
         error: false,
       };
-    case productsTypes.FETCH_PRODUCTS_faılure:
+    case productsTypes.FETCH_PRODUCTS_FAILURE:
       return {
         ...state,
         isPending: false,

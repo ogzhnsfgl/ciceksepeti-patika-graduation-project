@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import checkValidField from './formValidation';
 
 export default function validateInfo(values) {
