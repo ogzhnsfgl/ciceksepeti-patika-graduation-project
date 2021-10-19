@@ -33,8 +33,8 @@ const postCreateProduct = (data) => async (dispatch) => {
       dispatch(postCreateProductFailure(err));
     })
     .finally(() => {
-      dispatch(fetchProducts());
       dispatch(postUploadReset());
+      dispatch(fetchProducts());
     });
 };
 
