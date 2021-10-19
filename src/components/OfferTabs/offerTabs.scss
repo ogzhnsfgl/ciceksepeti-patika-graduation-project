@@ -1,11 +1,13 @@
+@import '/src/style/mixin';
+@import '/src/style/variables';
 .content-header {
-  display: flex;
-  border-bottom: 1px solid rgba(242, 242, 242, 1);
+  @include display-flex(row, unset, unset);
+  border-bottom: 1px solid $white-80;
 
   & > * {
     padding: 1.5rem 0 0.8rem 0;
     margin: 0 1.3rem;
-    color: rgba(177, 177, 177, 1);
+    color: $gray-100;
     font-size: 1.5rem;
   }
 
@@ -13,6 +15,8 @@
     background-color: transparent;
     border: none;
     outline: none;
+    border-bottom: 1px solid transparent;
+    transition: $general-transition;
   }
   .selected {
     color: rgba(75, 156, 226, 1);

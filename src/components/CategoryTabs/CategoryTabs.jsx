@@ -1,13 +1,10 @@
 // import propTypes from 'prop-types';
 import './categoryTabs.scss';
 
+import useQuery from 'Hooks/UseQuery';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
-
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+import { Link } from 'react-router-dom';
 
 const CategoryTabs = () => {
   const categoryState = useSelector((state) => state.category);

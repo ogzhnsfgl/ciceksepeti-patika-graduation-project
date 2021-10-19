@@ -2,7 +2,7 @@
 import './productDetail.scss';
 
 import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
-import GivenOfferBadge from 'components/GivenOfferBadge/GivenOfferBadge';
+import GivenOfferBadge from 'components/GivenOfferBadge';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import OfferModal from 'components/OfferModal/OfferModal';
@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import fetchGivenOffers from 'redux/actions/givenOffersActions';
 import fetchProductDetail from 'redux/actions/productDetailAction';
+import putPurchase from 'redux/actions/purchaseActions';
 
 import ProductDetailInfo from './ProductDetailInfo/ProductDetailInfo';
 
@@ -70,6 +71,10 @@ const ProductDetail = () => {
     id: productId,
   } = product;
 
+  const handlePurchase = () => {
+    dispatch(putPurchase(productId));
+  };
+
   return (
     <>
       <Navbar />
@@ -112,7 +117,7 @@ const ProductDetail = () => {
       <ConfirmModal
         showModal={showConfirmModal}
         closeModal={() => setShowConfirmModal(false)}
-        id={productId}
+        callback={handlePurchase}
       />
       <OfferModal
         showModal={showOfferModal}

@@ -1,10 +1,10 @@
 import './account.scss';
 
 import profilePicture from 'assets/icons/profile-picture.png';
+import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar/Navbar';
 import OfferListItem from 'components/OfferListItem/OfferListItem';
 import OfferTabs from 'components/OfferTabs/OfferTabs';
-import Spinner from 'components/Spinner/Spinner';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchGivenOffers from 'redux/actions/givenOffersActions';
@@ -56,7 +56,7 @@ const Account = () => {
             />
             <div className="offer-list">
               {(givenOffersState.isPending ||
-                receivedOffersState.isPending) && <Spinner />}
+                receivedOffersState.isPending) && <LoadingContainer />}
               {(givenOffersState.error || receivedOffersState.error) && (
                 <div>Error</div>
               )}

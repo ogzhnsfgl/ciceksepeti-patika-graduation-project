@@ -1,6 +1,6 @@
 import './offerListItem.scss';
 
-import OfferListInfo from 'components/OfferListInfo/OfferListInfo';
+import OfferListInfo from 'components/OfferListInfo';
 import currencyFormetter from 'helpers/currenyFormater';
 import propTypes from 'prop-types';
 import React from 'react';

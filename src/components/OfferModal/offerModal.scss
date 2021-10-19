@@ -1,4 +1,6 @@
 @import '../ConfirmModal/confirmModal.scss';
+@import '/src/style/mixin';
+@import '/src/style/variables';
 
 #offer-modal {
   @include screenSize('medium') {
@@ -9,9 +11,7 @@
   width: 48rem;
 }
 .modal-content-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include display-flex(row, center, space-between);
   width: 100%;
 
   & > span {
@@ -23,21 +23,17 @@
   margin-top: 1rem;
   width: 100%;
   .product-info {
+    @include display-flex(row, center, space-between);
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     height: 6rem;
     padding: 0.6rem;
-    background-color: rgba(240, 248, 255, 1);
+    background-color: $white-60;
     margin-bottom: 1rem;
     &-left {
+      @include display-flex(row, center, unset);
       height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
       font-size: 1.3rem;
-      color: rgba(82, 82, 82, 1);
+      color: $black-90;
       img {
         height: 100%;
         object-fit: cover;
@@ -49,7 +45,6 @@
       width: 40%;
     }
     .price {
-      width: 30%;
       justify-self: flex-end;
       font-size: 1.8rem;
       font-weight: 700;
@@ -58,27 +53,27 @@
   }
   .offer-options {
     .option-custom {
-      background-color: rgba(244, 244, 244, 1);
+      background-color: $white-90;
     }
     .option {
-      display: flex;
-      align-items: center;
+      @include display-flex(row, center, unset);
       padding: 1.4rem 1rem;
       border-radius: 0.8rem;
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      border: 1px solid rgba(224, 224, 224, 1);
+      border: 1px solid $gray-90;
       cursor: pointer;
+      transition: all 0.5s;
 
       &:hover {
-        border: 1px solid rgba(75, 156, 226, 1);
+        border: 1px solid $blue-100;
       }
 
       .checkbox {
         margin-right: 1rem;
         width: 2rem;
         height: 2rem;
-        border: 1px solid rgba(224, 224, 224, 1);
+        border: 1px solid $gray-90;
         border-radius: 100% !important;
         position: relative;
         overflow: hidden;
@@ -88,7 +83,7 @@
         display: flex;
         align-items: center;
         width: 100%;
-        color: rgba(153, 160, 167, 1);
+        color: $gray-110;
         input {
           width: 100%;
           height: 100%;
@@ -97,41 +92,40 @@
         }
         input:focus,
         input:active {
-          color: rgba(75, 156, 226, 1);
+          color: $blue-100;
           border: none;
           outline: none;
         }
         input::placeholder {
-          color: rgba(153, 160, 167, 1);
+          color: $gray-110;
           font-size: 1.5rem;
         }
       }
     }
 
     .selected {
-      border: 1px solid rgba(75, 156, 226, 1);
-      background-color: rgba(240, 248, 255, 1);
-      color: rgba(75, 156, 226, 1);
+      border: 1px solid $blue-100;
+      background-color: $white-60;
+      color: $blue-100;
       .checkbox::after {
         content: '';
         position: absolute;
         left: 0;
         width: 100%;
         height: 100%;
-        background: url('../../assets/icons/check-ico.png')
-          rgba(75, 156, 226, 1);
+        background: url('../../assets/icons/check-ico.png') $blue-100;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: 10px;
       }
       input {
-        color: rgba(75, 156, 226, 1);
+        color: $blue-100;
       }
     }
 
     .validation-warning {
       display: block;
-      color: red;
+      color: $red-100;
       font-size: 1.2rem;
       padding: 0 0.5rem;
       margin-top: -0.5rem;
@@ -144,7 +138,7 @@
   background: rgba(255, 242, 242, 1) !important;
   input:active,
   input:focus {
-    color: red !important;
+    color: $red-100 !important;
   }
 }
 
@@ -153,7 +147,12 @@
   text-align: center;
   .btn-offer {
     width: 75%;
-    background-color: rgba(75, 156, 226, 1);
-    color: rgba(255, 255, 255, 1);
+    background-color: $blue-100;
+    color: $white-100;
+    &:hover {
+      background-color: $blue-10;
+      outline: 1px solid $blue-100;
+      color: $blue-100;
+    }
   }
 }

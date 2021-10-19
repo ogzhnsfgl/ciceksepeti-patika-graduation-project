@@ -1,8 +1,8 @@
+@import '/src/style/mixin';
+
 .spinner-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(100vw - 50px);
+  @include display-flex(row, center, center);
+  width: calc(100vw - 75px);
   height: 100vh;
   text-align: center;
 }

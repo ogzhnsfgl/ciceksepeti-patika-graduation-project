@@ -3,7 +3,7 @@ import './spinner.scss';
 import React from 'react';
 
 const Spinner = () => (
-  <div className="lds-roller">
+  <div className="spinner-roller">
     <div />
     <div />
     <div />

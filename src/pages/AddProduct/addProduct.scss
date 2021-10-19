@@ -53,7 +53,7 @@
       input:focus,
       textarea:focus {
         outline: 1px solid $blue-100;
-        background-color: rgba(240, 248, 255, 1);
+        background-color: $blue-10;
       }
       input::placeholder,
       textarea::placeholder {
@@ -77,14 +77,13 @@
       }
 
       .offer-row {
-        flex-direction: row;
-        align-items: center;
+        @include display-flex(row, center, space-between);
+        width: 45%;
         & > label {
           margin-right: 1rem;
         }
         @include screenSize('medium') {
           width: 95%;
-          justify-content: space-between;
         }
       }
 
@@ -124,11 +123,18 @@
     width: 31rem;
     height: 4.5rem;
     border: none;
-    background-color: rgba(75, 156, 226, 1);
+    background-color: $blue-100;
     border-radius: 0.8rem;
-    color: rgba(255, 255, 255, 1);
+    color: $white-100;
     font-size: 1.8rem;
     font-weight: 700;
+    transition: $general-transition;
+
+    &:hover {
+      background-color: $blue-10;
+      outline: 1px solid $blue-100;
+      color: $blue-100;
+    }
     @include screenSize('medium') {
       align-self: center;
       width: 95%;
@@ -142,12 +148,12 @@
 }
 
 .not-valid {
-  border: 1px solid rgba(247, 116, 116, 1) !important;
-  background-color: rgba(255, 242, 242, 1) !important;
-  color: rgba(247, 116, 116, 1) !important;
+  border: 1px solid $red-90 !important;
+  background-color: $white-100 !important;
+  color: $red-90 !important;
 }
 .not-valid-ico {
-  color: rgba(247, 116, 116, 1) !important;
+  color: $red-90 !important;
 }
 
 .price-row {
@@ -161,6 +167,7 @@
   & > p {
     position: absolute;
     top: 5rem;
+    left: 40%;
     font-size: 1.6rem;
     color: rgba(153, 160, 167, 1);
     @include screenSize('medium') {
@@ -169,9 +176,9 @@
   }
 
   & > span {
-    color: #f77474 !important;
-    margin-top: -2.2rem;
+    color: $red-90 !important;
     margin-bottom: 1rem;
+    margin-top: 0.5rem;
     padding: 0 1rem;
   }
 }

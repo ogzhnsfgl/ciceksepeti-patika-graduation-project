@@ -1,29 +1,30 @@
+@import '/src/style/mixin';
+@import '/src/style/variables';
+
 .add__product-content-image {
   .upload-container {
-    border: 1px dashed #b1b1b1;
+    @include display-flex(column, center, center);
+    border: 1px dashed $gray-100;
     border-radius: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    border: 1px dashed rgba(177, 177, 177, 1);
+    border: 1px dashed $gray-100;
     border-radius: 0.8rem;
     min-height: 20rem;
-    justify-content: center;
     position: relative;
 
     .btn-upload {
       position: relative;
-      background-color: rgba(244, 244, 244, 1);
-      color: rgba(177, 177, 177, 1);
+      background-color: $white-90;
+      color: $gray-100;
       width: 12rem;
       height: 3rem;
       font-size: 1.5rem;
-      line-height: 1.5rem;
+      line-height: 1rem;
       border: none;
       border-radius: 0.8rem;
+      transition: $general-transition;
       &:hover {
-        background-color: rgba(75, 156, 226, 1);
-        color: rgba(255, 255, 255, 1);
+        background-color: $blue-100;
+        color: $white-100;
       }
 
       & > input {
@@ -37,11 +38,11 @@
       }
     }
     .upload-info-text {
-      color: rgba(177, 177, 177, 1);
+      color: $gray-100;
       font-size: 1.2rem;
     }
     .warning {
-      color: rgba(247, 116, 116, 1);
+      color: $red-90;
     }
 
     .upload-content {
@@ -54,6 +55,7 @@
 
     .image-preview-wrapper {
       position: relative;
+      align-self: flex-start;
       .image-preview {
         width: 11rem;
         height: 11rem;
@@ -61,7 +63,7 @@
         max-height: 11rem;
         object-fit: cover;
         border-radius: 0.8rem;
-        border: 1px solid rgba(234, 234, 234, 1);
+        border: 1px solid $white-70;
         margin: 1rem;
         align-self: flex-start;
         justify-self: flex-start;
@@ -74,8 +76,8 @@
         width: 1.8rem;
         height: 1.8rem;
         line-height: 1.8rem;
-        background-color: rgba(82, 82, 82, 1);
-        color: rgba(255, 255, 255, 1);
+        background-color: $black-90;
+        color: $white-100;
         border-radius: 100%;
         text-align: center;
         cursor: pointer;

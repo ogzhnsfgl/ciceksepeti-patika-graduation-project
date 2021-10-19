@@ -3,12 +3,8 @@ import './confirmModal.scss';
 import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { useDispatch } from 'react-redux';
-import putPurchase from 'redux/actions/purchaseActions';
 
-const ConfirmModal = ({ showModal, closeModal, id }) => {
-  const dispatch = useDispatch();
-
+const ConfirmModal = ({ showModal, closeModal, callback }) => {
   useEffect(() => {
     const closeOnEscapeKey = (e) => {
       if ((e.charCode || e.keyCode) === 27) {
@@ -42,7 +38,7 @@ const ConfirmModal = ({ showModal, closeModal, id }) => {
             type="button"
             className="btn btn-confirm"
             onClick={() => {
-              dispatch(putPurchase(id));
+              callback();
               closeModal();
             }}
           >
@@ -58,7 +54,7 @@ const ConfirmModal = ({ showModal, closeModal, id }) => {
 ConfirmModal.propTypes = {
   showModal: propTypes.bool,
   closeModal: propTypes.func,
-  id: propTypes.string,
+  callback: propTypes.func.isRequired,
 };
 ConfirmModal.defaultProps = {
   showModal: false,

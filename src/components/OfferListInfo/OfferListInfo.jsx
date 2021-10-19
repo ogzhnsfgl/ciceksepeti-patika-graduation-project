@@ -3,11 +3,15 @@ import propTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import putAcceptOffer from 'redux/actions/acceptOfferActions';
+import putPurchase from 'redux/actions/purchaseActions';
 import postRejectOffer from 'redux/actions/rejectOfferAction';
 
 const OfferListInfo = ({ type, item }) => {
   const dispatch = useDispatch();
   const [modalShow, setModalShow] = useState(false);
+  const handlePurchase = () => {
+    dispatch(putPurchase(item.product.id));
+  };
 
   const givenOffered = () => (
     <p className="text-offered">Satıcıdan bilgi bekleniyor</p>
@@ -28,7 +32,7 @@ const OfferListInfo = ({ type, item }) => {
       <ConfirmModal
         showModal={modalShow}
         closeModal={() => setModalShow(false)}
-        id={item.product.id}
+        callback={handlePurchase}
       />
     </>
   );

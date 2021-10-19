@@ -23,6 +23,13 @@ const ImageUploader = ({ error: reqError, onChange }) => {
   const uploadState = useSelector((state) => state.upload);
   const { isPending, imageURL, error } = uploadState;
 
+  const handleClearUpload = () => {
+    dispatch(postUploadReset());
+    setSelectedFile(null);
+    setProgress(null);
+    onChange({ target: { name: 'imageUrl', value: false } });
+  };
+
   const handleUpload = useCallback(() => {
     const formData = new FormData();
 
@@ -65,13 +72,6 @@ const ImageUploader = ({ error: reqError, onChange }) => {
       }
     }
   }, [dispatch, handleUpload, selectedFile]);
-
-  const handleClearUpload = () => {
-    dispatch(postUploadReset());
-    setSelectedFile(null);
-    setProgress(null);
-    onChange({ target: { name: 'imageUrl', value: false } });
-  };
 
   return (
     <div className="add__product-content-image">
