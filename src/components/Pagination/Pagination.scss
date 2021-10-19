@@ -1,0 +1,63 @@
+@import '/src/style/variables';
+@import 'style/mixin.scss';
+.pagination-wrapper {
+  width: max-content;
+  margin: 1.5rem auto 0.5rem auto;
+}
+
+.pagination-container {
+  @include display-flex(row, center, center);
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  background-color: $white-100;
+  transition: $general-transition;
+  box-shadow: 0px 3px 12px rgba(30, 54, 72, 0.18);
+
+  .pagination-item:not(.dots) {
+    padding: 0.8rem 0.8rem;
+    margin: 0 0.4rem;
+    border-radius: 0.8rem;
+    opacity: 0.6;
+    transition: $general-transition;
+    &:hover {
+      background-color: $blue-10;
+    }
+    cursor: pointer;
+  }
+
+  .pagination-number {
+    color: $black-100;
+    font-weight: 400;
+  }
+  .dots {
+    margin: 0 0.5rem;
+    color: $blue-100-70;
+  }
+
+  .selected-page {
+    font-weight: 700;
+    opacity: 1;
+    background-color: $blue-100;
+    color: $white-100;
+    transition: $general-transition;
+  }
+}
+
+.arrow::after {
+  content: '>';
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: $blue-100;
+}
+.left {
+  transform: rotate(180deg);
+}
+
+.arrow-disabled::after {
+  pointer-events: none;
+  opacity: 0.4;
+  color: $gray-100;
+}
