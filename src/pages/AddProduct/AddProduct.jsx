@@ -62,7 +62,7 @@ function AddProduct() {
     brandState.error.message,
     colorState.error.message,
     statusState.error.message,
-  ].any((error) => error);
+  ].some((error) => error);
 
   if (isNull) {
     return <LoadingContainer />;
