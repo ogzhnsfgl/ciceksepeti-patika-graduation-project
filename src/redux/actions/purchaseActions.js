@@ -32,7 +32,7 @@ const putPurchase = (id) => async (dispatch) => {
     })
     .finally(() => {
       dispatch(fetchGivenOffers());
-      fetchProductDetail(id);
+      dispatch(fetchProductDetail(id));
     });
 };
 
