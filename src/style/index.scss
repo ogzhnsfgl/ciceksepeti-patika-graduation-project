@@ -39,14 +39,15 @@ button {
 .Toastify__toast-theme--colored.Toastify__toast--error,
 .Toastify__toast-theme--colored.Toastify__toast--success {
   font-size: 1.6rem !important;
-  background-color: rgba(255, 229, 229, 1);
   box-shadow: 0px 3px 12px rgba(30, 54, 72, 0.18);
   border-radius: 0.8rem;
 }
 .Toastify__toast-theme--colored.Toastify__toast--success {
+  background-color: rgba(241, 255, 240, 1);
   color: rgba(70, 175, 50, 1) !important;
 }
 .Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: rgba(255, 229, 229, 1);
   color: rgba(247, 116, 116, 1) !important;
 }
 .Toastify__close-button {
