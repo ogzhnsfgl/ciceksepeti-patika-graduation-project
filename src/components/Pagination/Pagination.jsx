@@ -3,6 +3,7 @@ import './Pagination.scss';
 import { DOTS, usePagination } from 'Hooks/UsePagination';
 import propTypes from 'prop-types';
 import React from 'react';
+import { v4 } from 'uuid';
 
 const Pagination = (props) => {
   const { onPageChange, totalCount, currentPage, pageSize } = props;
@@ -44,7 +45,7 @@ const Pagination = (props) => {
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
             return (
-              <li className="pagination-item dots " key={pageNumber}>
+              <li className="pagination-item dots " key={v4()}>
                 &#8230;
               </li>
             );
@@ -57,7 +58,7 @@ const Pagination = (props) => {
               }`}
               onClick={() => onPageChange(pageNumber)}
               role="none"
-              key={pageNumber}
+              key={v4()}
             >
               {pageNumber}
             </li>

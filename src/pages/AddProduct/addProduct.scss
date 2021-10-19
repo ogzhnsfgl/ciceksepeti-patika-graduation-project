@@ -83,7 +83,7 @@
           margin-right: 1rem;
         }
         @include screenSize('medium') {
-          width: 95%;
+          width: 100%;
         }
       }
 
@@ -161,7 +161,7 @@
   & > input {
     width: 45%;
     @include screenSize('medium') {
-      width: 95%;
+      width: 100%;
     }
   }
   & > p {

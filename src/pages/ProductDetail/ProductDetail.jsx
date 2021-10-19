@@ -109,11 +109,13 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
       <ConfirmModal
         showModal={showConfirmModal}
         closeModal={() => setShowConfirmModal(false)}
         callback={handlePurchase}
       />
+
       <OfferModal
         showModal={showOfferModal}
         closeModal={() => setShowOfferModal(false)}

@@ -23,12 +23,19 @@
 
     .offer__item-content {
       width: 100%;
+      overflow: hidden;
       @include display-flex(row, center, unset);
       height: 100%;
-      img {
+
+      &-img {
+        max-width: 8rem;
         height: 100%;
+        overflow: hidden;
         border-radius: 0.8rem;
-        width: 8rem;
+      }
+
+      img {
+        width: 100%;
         object-fit: cover;
       }
       &-body {

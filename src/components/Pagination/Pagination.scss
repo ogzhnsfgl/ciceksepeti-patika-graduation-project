@@ -19,12 +19,12 @@
     padding: 0.8rem 0.8rem;
     margin: 0 0.4rem;
     border-radius: 0.8rem;
-    opacity: 0.6;
+    cursor: pointer;
     transition: $general-transition;
     &:hover {
-      background-color: $blue-10;
+      background-color: $blue-100;
+      color: $white-100;
     }
-    cursor: pointer;
   }
 
   .pagination-number {

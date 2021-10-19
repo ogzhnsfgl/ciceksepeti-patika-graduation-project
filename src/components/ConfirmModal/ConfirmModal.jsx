@@ -2,7 +2,6 @@ import './confirmModal.scss';
 
 import propTypes from 'prop-types';
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 
 const ConfirmModal = ({ showModal, closeModal, callback }) => {
   useEffect(() => {
@@ -17,7 +16,7 @@ const ConfirmModal = ({ showModal, closeModal, callback }) => {
     };
   }, [closeModal]);
 
-  return ReactDOM.createPortal(
+  return (
     <div className={showModal ? 'modal modal-show' : 'modal'}>
       <div className="modal-content">
         <div className="modal-content-title" id="confirm-modal-title">
@@ -46,8 +45,7 @@ const ConfirmModal = ({ showModal, closeModal, callback }) => {
           </button>
         </div>
       </div>
-    </div>,
-    document.getElementById('root')
+    </div>
   );
 };
 
