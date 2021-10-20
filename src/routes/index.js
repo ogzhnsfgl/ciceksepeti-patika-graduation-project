@@ -20,73 +20,46 @@ const protectedRouterPaths = [
     name: 'registerSignup',
     component: LoginRegister,
     exact: false,
-    props: {},
   },
   {
     path: '/signin',
     name: 'registerSignin',
     component: LoginRegister,
     exact: false,
-    props: {},
   },
   {
     path: '/account',
     name: 'account',
     component: Account,
     exact: false,
-    props: {},
   },
   {
     path: '/addproduct',
     name: 'addProduct',
     component: AddProduct,
     exact: false,
-    props: {},
   },
-];
-
-const definedRoutes = [
-  '/addproduct',
-  '/account',
-  '/signin',
-  '/signup',
-  '/home',
-  '/productdetail/:id',
-  '/404',
-  '/',
 ];
 
 /* Created routes constant to manage all routes */
 const Routes = (
   <Router>
-    <Switch>
-      <Suspense fallback={<LoadingContainer />}>
-        <Route path="/" exact component={Home} />
-        <Route path="/productdetail/:id" exact component={ProductDetail} />
-        {protectedRouterPaths.map(({ path, name, component, props }) => (
-          <ProtectedRoute
-            key={name}
-            path={path}
-            component={component}
-            props={props}
-          />
+    <Suspense fallback={<LoadingContainer />}>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/productdetail/:id" exact>
+          <ProductDetail />
+        </Route>
+        {protectedRouterPaths.map(({ path, name, component }) => (
+          <ProtectedRoute key={name} path={path} component={component} />
         ))}
-        {/* <Route component={NotFound404} /> */}
-        <Route
-          path="*"
-          children={({ match }) => {
-            const condition = definedRoutes.includes(match.url);
-            if (match.url.split('/').includes('productdetail')) {
-              if (match.url.split('/')[2].length < 2) {
-                return <NotFound404 />;
-              }
-              return null;
-            }
-            return !condition && <NotFound404 />;
-          }}
-        />
-      </Suspense>
-    </Switch>
+        <Route path="*">
+          <NotFound404 />
+        </Route>
+      </Switch>
+    </Suspense>
   </Router>
 );
 
