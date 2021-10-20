@@ -7,6 +7,7 @@
   padding: 1.5rem 1.6rem;
   border-radius: 0.8rem;
   margin-bottom: 5rem;
+  max-height: calc(100vh - 18rem);
   @include screenSize('medium') {
     flex-direction: column;
     padding: 0.6rem;
@@ -14,6 +15,9 @@
   &-img {
     min-width: 47%;
     max-width: 47%;
+    max-height: 100%;
+    overflow: hidden;
+    border-radius: 0.8rem;
     @include screenSize('medium') {
       min-width: 100%;
       max-width: 100%;
@@ -21,7 +25,6 @@
     img {
       width: 100%;
       object-fit: cover;
-      border-radius: 0.8rem;
       @include screenSize('medium') {
         width: 100%;
       }
