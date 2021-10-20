@@ -8,6 +8,11 @@
   padding: 2rem;
   border-radius: 0.8rem;
   margin-bottom: 10rem;
+  max-height: calc(100vh - 12rem);
+  overflow-y: auto;
+  @include screenSize('medium') {
+    max-height: calc(100vh - 10rem);
+  }
 
   h1 {
     font-size: 2.5rem;

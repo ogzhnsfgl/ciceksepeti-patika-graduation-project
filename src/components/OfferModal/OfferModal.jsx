@@ -41,15 +41,17 @@ const OfferModal = ({ showModal, closeModal, product }) => {
 
   useEffect(() => {
     const closeOnEscapeKey = (e) => {
-      if ((e.charCode || e.keyCode) === 27) {
-        closeModal();
+      if (showModal) {
+        if ((e.charCode || e.keyCode) === 27) {
+          closeModal();
+        }
       }
     };
     document.body.addEventListener('keydown', closeOnEscapeKey);
     return () => {
       document.body.removeEventListener('keydown', closeOnEscapeKey);
     };
-  }, [closeModal]);
+  }, [closeModal, showModal]);
 
   const handleSubmit = () => {
     if (selectedOption === 3 && isValid && customPrice !== '') {

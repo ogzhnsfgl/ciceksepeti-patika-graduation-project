@@ -1,3 +1,13 @@
+@import 'style/mixin.scss';
+
+.section {
+  max-height: calc(100vh - 8rem);
+  @include screenSize('medium') {
+    max-height: calc(100vh - 6rem);
+  }
+  overflow-y: auto;
+}
+
 .section-banner {
   img {
     width: 100%;

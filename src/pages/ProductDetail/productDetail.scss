@@ -1,5 +1,11 @@
 @import 'style/mixin.scss';
 @import 'style/variables.scss';
+
+.product__detail-wrapper {
+  max-height: calc(100vh - 6rem);
+  overflow: auto;
+}
+
 .product__detail {
   display: flex;
   width: 100%;
