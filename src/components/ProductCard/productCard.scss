@@ -8,6 +8,7 @@
   height: 100%;
   max-width: 28rem;
   min-width: 28rem;
+  max-height: 39rem;
   @include screenSize('small') {
     min-width: 17rem;
     padding: 0.6rem;
