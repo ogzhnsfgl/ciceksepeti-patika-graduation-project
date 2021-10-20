@@ -1,14 +1,9 @@
-<center>
-
-[![Logo](./src/assets/images/logo.svg)](https://ciceksepeti-patika-graduation-project.vercel.app)
-
-</center>
-<center>
-
-[![CicekSepeti-Logo](previews/Ciceksepeti-logo.png)](https://www.ciceksepeti.com/)
-[![Patika-Logo](previews/Patika-logo.png)](https://www.patika.dev/)
-
-</center>
+<p align="center">
+<img src="./src/assets/images/logo.svg" alt="web-gif" width="300"/>
+  <br/>
+<img src="previews/Ciceksepeti-Logo.png" alt="mobile-gif" width="150"/>
+<img src="previews/Patika-Logo.png" alt="mobile-gif" width="90"/>
+</p>
 
 [İkinci El Project](https://ciceksepeti-patika-graduation-project.vercel.app) It's full featured e-commerce app built as Patika & Çiçeksepeti React Bootcamp final project.
 
@@ -108,23 +103,17 @@ npm start
 ![Web-Add-Product-Page.jpg](previews/Web-Add-Product-Page.jpg)
 ![Web-Add-Product-Page-2.jpg](previews/Web-Add-Product-Page-2.jpg)
 
-## Mobile - Login Page
+## Mobile
 
-![Mobile-Login-Page.jpg](previews/Mobile-Login-Page.png)
-
-## Mobile - Home Page
-
-![Mobile-Home-Page.jpg](previews/Mobile-Home-Page.png)
-
-## Mobile - Account Page
-
-![Mobile-Account-Page.jpg](previews/Mobile-Account-Page.png)
-
-## Mobile - Add Product Page
-
-![Mobile-Product-Detail-Page.jpg](previews/Mobile-Product-Detail-Page.png)
-![Mobile-Product-Detail-Page-2.jpg](previews/Mobile-Product-Detail-Page-2.png)
-
+<p align="center">
+<img src="previews/Mobile-Login-Page.png" alt="mobile-prew" width="225"/>
+<img src="previews/Mobile-Home-Page.png" alt="mobile-prew" width="225"/>
+<img src="previews/Mobile-Account-Page.png" alt="mobile-prew" width="225"/>
+<img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="225"/>
+  <img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="225"/>
+  <img src="previews/Mobile-Add-Product-Page.png" alt="mobile-prew" width="225"/>
+  <img src="previews/Mobile-Add-Product-Page-2.png" alt="mobile-prew" width="225"/>
+</p>
 </center>
 
 <br>
