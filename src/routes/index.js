@@ -11,7 +11,7 @@ const LoginRegister = lazy(() => import('pages/LoginRegister'));
 const Account = lazy(() => import('pages/Account'));
 const ProductDetail = lazy(() => import('pages/ProductDetail'));
 const AddProduct = lazy(() => import('pages/AddProduct/'));
-const NotFound404 = lazy(() => import('components/NotFound404/'));
+const NotFound404 = lazy(() => import('pages/NotFound404/'));
 
 /* Created paths array */
 const protectedRouterPaths = [

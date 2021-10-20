@@ -9,6 +9,7 @@
   margin-bottom: 5rem;
   max-height: calc(100vh - 18rem);
   @include screenSize('medium') {
+    max-height: unset;
     flex-direction: column;
     padding: 0.6rem;
   }

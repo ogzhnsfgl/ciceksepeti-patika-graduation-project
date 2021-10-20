@@ -3,6 +3,9 @@
 .error-wrapper {
   @include display-flex(column, center, center);
   width: 60%;
+  @include screenSize('medium') {
+    width: 90%;
+  }
   margin: 2rem auto;
   padding: 2rem;
   background-color: $blue-10;
@@ -10,9 +13,8 @@
   border-radius: 0.8rem;
   text-align: start;
   .error-img {
-    width: 17%;
+    width: 10rem;
     padding: 1rem;
-
     img {
       width: 100%;
     }
