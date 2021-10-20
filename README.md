@@ -106,13 +106,13 @@ npm start
 ## Mobile
 
 <p align="center">
-<img src="previews/Mobile-Login-Page.png" alt="mobile-prew" width="225"/>
-<img src="previews/Mobile-Home-Page.png" alt="mobile-prew" width="225"/>
-<img src="previews/Mobile-Account-Page.png" alt="mobile-prew" width="225"/>
-<img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="225"/>
-  <img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="225"/>
-  <img src="previews/Mobile-Add-Product-Page.png" alt="mobile-prew" width="225"/>
-  <img src="previews/Mobile-Add-Product-Page-2.png" alt="mobile-prew" width="225"/>
+<img src="previews/Mobile-Login-Page.png" alt="mobile-prew" width="215"/>
+<img src="previews/Mobile-Home-Page.png" alt="mobile-prew" width="215"/>
+<img src="previews/Mobile-Account-Page.png" alt="mobile-prew" width="215"/>
+<img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="215"/>
+  <img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="215"/>
+  <img src="previews/Mobile-Add-Product-Page.png" alt="mobile-prew" width="215"/>
+  <img src="previews/Mobile-Add-Product-Page-2.png" alt="mobile-prew" width="215"/>
 </p>
 </center>
 
