@@ -53,7 +53,11 @@ const ProductDetail = () => {
   }
 
   if (errorProductDetail || errorGivenOffers) {
-    return <Error errorMsg={errorProductDetail || errorGivenOffers} />;
+    return (
+      <Error
+        errorMsg={errorProductDetail.message || errorGivenOffers.message}
+      />
+    );
   }
   const {
     title,

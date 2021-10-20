@@ -29,7 +29,7 @@ const fetchAuth = (user, signType) => async (dispatch) => {
     })
     .catch((err) => {
       if (err.response.status === 409) {
-        triggerToast('error', 'Bu kullanıcı zaten kayıtlı!');
+        triggerToast('error', 'Bu kullanıcı zaten sistemde kayıtlı!');
       } else if (err.response.status === 401) {
         triggerToast('error', 'Emailiniz veya parolanız hatalı!');
       } else {

@@ -1,17 +1,20 @@
 @import '/src/style/variables';
 @import '/src/style/mixin';
+
 .error-wrapper {
   @include display-flex(column, center, center);
   width: 60%;
   @include screenSize('medium') {
     width: 90%;
   }
+
   margin: 2rem auto;
   padding: 2rem;
   background-color: $blue-10;
   border: 1px solid $blue-100;
   border-radius: 0.8rem;
   text-align: start;
+
   .error-img {
     width: 10rem;
     padding: 1rem;
@@ -19,6 +22,7 @@
       width: 100%;
     }
   }
+
   .error-message {
     font-size: 2.5rem;
     color: $black-80;
@@ -27,6 +31,7 @@
       padding: 0 0 2rem 0;
     }
   }
+
   .error-link {
     margin-top: 2rem;
     font-size: 1.3rem;

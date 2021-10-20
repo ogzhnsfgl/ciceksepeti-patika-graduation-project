@@ -44,7 +44,11 @@ const Account = () => {
   }
 
   if (givenOffersState.error || receivedOffersState.error) {
-    <Error errorMsg={givenOffersState.error || receivedOffersState.error} />;
+    <Error
+      errorMsg={
+        givenOffersState.error.message || receivedOffersState.error.message
+      }
+    />;
   }
   return (
     <>

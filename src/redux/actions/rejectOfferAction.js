@@ -1,3 +1,4 @@
+import triggerToast from 'helpers/toastify';
 import rejectOfferTypes from 'redux/constants/rejectOfferTypes';
 import authRequest from 'service/authRequest';
 
@@ -23,7 +24,10 @@ const postRejectOffer = (id) => async (dispatch) => {
     .then((res) => {
       dispatch(postRejectOfferSuccess(res.data));
     })
-    .catch((err) => dispatch(postRejectOfferFailure(err)))
+    .catch((err) => {
+      dispatch(postRejectOfferFailure(err));
+      triggerToast('error', err.response.data.message);
+    })
     .finally(() => dispatch(fetchReceivedOffers()));
 };
 

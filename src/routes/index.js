@@ -13,7 +13,7 @@ const ProductDetail = lazy(() => import('pages/ProductDetail'));
 const AddProduct = lazy(() => import('pages/AddProduct/'));
 const NotFound404 = lazy(() => import('pages/NotFound404/'));
 
-/* Created paths array */
+/* Created protected paths array */
 const protectedRouterPaths = [
   {
     path: '/signup',

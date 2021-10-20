@@ -1,3 +1,4 @@
+import triggerToast from 'helpers/toastify';
 import acceptOfferTypes from 'redux/constants/acceptOfferTypes';
 import authRequest from 'service/authRequest';
 
@@ -23,7 +24,10 @@ const putAcceptOffer = (id) => async (dispatch) => {
     .then((res) => {
       dispatch(putAcceptOfferSuccess(res.data));
     })
-    .catch((err) => dispatch(putAcceptOfferFailure(err)))
+    .catch((err) => {
+      triggerToast('error', 'Bir hata meydana geldi!');
+      dispatch(putAcceptOfferFailure(err));
+    })
     .finally(() => dispatch(fetchReceivedOffers()));
 };
 
