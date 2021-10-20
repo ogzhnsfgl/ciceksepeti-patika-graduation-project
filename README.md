@@ -1,70 +1,139 @@
-# Getting Started with Create React App
+<center>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Logo](./src/assets/images/logo.svg)](https://ciceksepeti-patika-graduation-project.vercel.app)
 
-## Available Scripts
+</center>
+<center>
 
-In the project directory, you can run:
+[![CicekSepeti-Logo](previews/Ciceksepeti-logo.png)](https://www.ciceksepeti.com/)
+[![Patika-Logo](previews/Patika-logo.png)](https://www.patika.dev/)
 
-### `yarn start`
+</center>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[İkinci El Project](https://ciceksepeti-patika-graduation-project.vercel.app) It's full featured e-commerce app built as Patika & Çiçeksepeti React Bootcamp final project.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Live demo available here :
+[Live Demo](https://ciceksepeti-patika-graduation-project.vercel.app)
 
-### `yarn test`
+## Content
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [About Project](#about-project)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Previews](#previews)
+- [App Performance](#app-performance)
 
-### `yarn build`
+<br>
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# About Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- İkinci El Project is an E-Commerce app that allows users create, buy and sell products.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- If you already have an account you can sign-in. Else, you can register easily.
+- You can offer products you want and product owner can accept or reject your offered price.
+- The app developed for both web and mobile. All pages have responsive UI.
 
-### `yarn eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ReactJS
+- Redux
+- Redux-Thunk
+- SASS
+- Axios
+- Toastify
+- uuid
+- prop-types
+- Vercel
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- First, clone the project:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+git clone https://github.com/Ogzhnsfgl/ciceksepeti-patika-graduation-project.git
+```
 
-## Learn More
+- Then, start the project on localhost:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# install dependencies with npm
+npm install
+# or install dependencies with yarn
+yarn
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# serve at localhost:3000
+npm start
 
-### Code Splitting
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
+<br>
 
-### Analyzing the Bundle Size
+## About Project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- İkinci El Project is an E-Commerce app that allows users create, buy and sell products.
 
-### Making a Progressive Web App
+- If you already have an account you can sign-in. Else, you can register easily.
+- You can offer products you want and product owner can accept or reject your offered price.
+- The app developed for both web and mobile. All pages have responsive UI.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<br>
+<br>
 
-### Advanced Configuration
+# Previews
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<center>
 
-### Deployment
+## Web - Login Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Web - Login Page](previews/Web-Login-Page.jpg)
 
-### `yarn build` fails to minify
+## Web - Home Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Web - Home Page](previews/Web-Home-Page.jpg)
+
+## Web - Product Detail Page
+
+![Web - Account Page](previews/Web-Product-Detail-Page.jpg)
+![Web - Account Page 2](previews/Web-Product-Detail-Page-2.jpg)
+
+## Web - Account Page
+
+![Web - Account Page](previews/Web-Account-Page.jpg)
+![Web - Account Page-2](previews/Web-Account-Page-2.jpg)
+
+## Web - Add Product Page
+
+![Web-Add-Product-Page.jpg](previews/Web-Add-Product-Page.jpg)
+![Web-Add-Product-Page-2.jpg](previews/Web-Add-Product-Page-2.jpg)
+
+## Mobile - Login Page
+
+![Mobile-Login-Page.jpg](previews/Mobile-Login-Page.png)
+
+## Mobile - Home Page
+
+![Mobile-Home-Page.jpg](previews/Mobile-Home-Page.png)
+
+## Mobile - Account Page
+
+![Mobile-Account-Page.jpg](previews/Mobile-Account-Page.png)
+
+## Mobile - Add Product Page
+
+![Mobile-Product-Detail-Page.jpg](previews/Mobile-Product-Detail-Page.png)
+![Mobile-Product-Detail-Page-2.jpg](previews/Mobile-Product-Detail-Page-2.png)
+
+</center>
+
+<br>
+<br>
+
+# App Performance
+
+<center>
+
+![LightHouse Score](previews/Lighthouse-Report.jpg)
+
+</center>
