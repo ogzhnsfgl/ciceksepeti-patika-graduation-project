@@ -16,12 +16,16 @@ const CategoryTabs = () => {
   const query = useQuery();
   const currentQuery = query.get('category') ? query.get('category') : 'hepsi';
 
+  if (!categoryState.categoryList) {
+    return null;
+  }
+
   return (
     <div className="category-container">
-      <ul className="category-list">
+      <div className="category-list">
         {navBarList?.map((category) => (
           <Link to={`?category=${category.title} `} key={category.id}>
-            <li
+            <div
               className={
                 currentQuery?.trim() === category.title.trim()
                   ? 'category-list-item item-active'
@@ -29,10 +33,10 @@ const CategoryTabs = () => {
               }
             >
               {category.title.trim()}
-            </li>
+            </div>
           </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

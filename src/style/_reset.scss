@@ -146,3 +146,8 @@ a {
   outline: none;
   border: none;
 }
+
+html {
+  max-height: 100vh;
+  overflow: hidden;
+}
