@@ -13,6 +13,9 @@ const fetchProductDetailFailure = (error) => ({
   type: productDetailTypes.FETCH_PRODUCT_DETAIL_FAILURE,
   payload: error,
 });
+export const fetchProductDetailReset = () => ({
+  type: productDetailTypes.FETCH_PRODUCT_DETAIL_RESET,
+});
 
 const fetchProductDetail = (id) => async (dispatch) => {
   dispatch(fetchProductDetailPending());

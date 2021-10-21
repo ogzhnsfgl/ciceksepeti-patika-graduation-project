@@ -24,6 +24,8 @@ const productDetailReducer = (state = initialState, action) => {
         product: null,
         error: action.payload,
       };
+    case productDetailTypes.FETCH_PRODUCT_DETAIL_RESET:
+      return initialState;
     default:
       return state;
   }

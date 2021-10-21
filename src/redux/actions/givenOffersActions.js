@@ -13,6 +13,9 @@ const fetchGivenOffersFailure = (error) => ({
   type: givenOffersTypes.FETCH_GIVEN_OFFERS_FAILURE,
   payload: error,
 });
+export const fetchGivenOffersReset = () => ({
+  type: givenOffersTypes.FETCH_GIVEN_OFFERS_RESET,
+});
 
 const fetchGivenOffers = () => async (dispatch) => {
   dispatch(fetchGivenOffersPending());

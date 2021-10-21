@@ -24,6 +24,8 @@ const givenOffersReducer = (state = initialState, action) => {
         givenOffers: null,
         error: action.payload,
       };
+    case givenOffersTypes.FETCH_GIVEN_OFFERS_RESET:
+      return initialState;
     default:
       return state;
   }
