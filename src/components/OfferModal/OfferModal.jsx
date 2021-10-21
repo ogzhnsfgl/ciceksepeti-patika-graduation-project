@@ -90,6 +90,7 @@ const OfferModal = ({ showModal, closeModal, product }) => {
             >
               <span className="checkbox" />
               <span>%20&apos;si Kadar Teklif Ver</span>
+              <span className="price">{currencyFormetter(price * 0.2)} TL</span>
             </div>
             <div
               role="none"
@@ -97,7 +98,8 @@ const OfferModal = ({ showModal, closeModal, product }) => {
               className={`option ${selectedOption === 1 ? 'selected' : ''}`}
             >
               <span className="checkbox" />
-              <span>%30&apos;u Kadar Teklif Ver</span>
+              <span className="option-title">%30&apos;u Kadar Teklif Ver</span>
+              <span className="price">{currencyFormetter(price * 0.3)} TL</span>
             </div>
             <div
               role="none"
@@ -105,7 +107,8 @@ const OfferModal = ({ showModal, closeModal, product }) => {
               className={`option ${selectedOption === 2 ? 'selected' : ''}`}
             >
               <span className="checkbox" />
-              <span>%40&apos;i Kadar Teklif Ver</span>
+              <span>%40&apos;ı Kadar Teklif Ver</span>
+              <span className="price">{currencyFormetter(price * 0.4)} TL</span>
             </div>
             <div
               role="none"

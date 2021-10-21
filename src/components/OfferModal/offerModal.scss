@@ -41,9 +41,7 @@
         margin-right: 0.5rem;
       }
     }
-    .title {
-      width: 40%;
-    }
+
     .price {
       justify-self: flex-end;
       font-size: 1.8rem;
@@ -52,11 +50,12 @@
     }
   }
   .offer-options {
+    width: 100%;
     .option-custom {
       background-color: $white-90;
     }
     .option {
-      @include display-flex(row, center, unset);
+      @include display-flex(row, center, flex-start);
       padding: 1.4rem 1rem;
       border-radius: 0.8rem;
       font-size: 1.5rem;
@@ -64,6 +63,7 @@
       border: 1px solid $gray-90;
       cursor: pointer;
       transition: all 0.5s;
+      width: 100%;
 
       &:hover {
         border: 1px solid $blue-100;
@@ -77,6 +77,20 @@
         border-radius: 100% !important;
         position: relative;
         overflow: hidden;
+      }
+      .option-title {
+        text-align: left;
+        width: 50%;
+      }
+      .price {
+        justify-self: flex-end;
+        text-align: center;
+        margin-left: auto;
+        padding: 0.3rem 1rem;
+        background: $blue-100;
+        border-radius: 0.8rem;
+        font-weight: 700;
+        color: $white-100;
       }
 
       .custom-offer {
