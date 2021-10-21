@@ -1,0 +1,86 @@
+@import 'style/mixin.scss';
+@import 'style/variables.scss';
+
+.product-added-success {
+  @include display-flex(column, center, center);
+  width: 50%;
+  @include screenSize('large') {
+    width: 100%;
+  }
+  margin: 0 auto;
+  background-color: $white-100;
+  font-size: 1.6rem;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 0.8rem;
+
+  .add-product-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #525252;
+  }
+  .product-info-wrapper {
+    border-radius: 0.8rem;
+    border: 1px solid $blue-100;
+    padding: 1rem;
+    max-width: 20rem;
+    max-height: 30rem;
+    overflow: hidden;
+    cursor: pointer;
+    img {
+      width: 100%;
+      max-height: 20rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $blue-100;
+    }
+  }
+
+  .btn-wrapper {
+    @include display-flex(row, center, center);
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    height: 4.5rem;
+    max-width: 30rem;
+    width: 40%;
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 0.8rem;
+    transition: all 0.4s ease-in-out;
+    padding: 1rem;
+    transition: $general-transition;
+
+    @include screenSize('medium') {
+      font-size: 1.5rem;
+      padding: 0rem 1rem;
+    }
+  }
+
+  .btn-home {
+    margin-right: 1rem;
+    background-color: $blue-100;
+    color: $white-100;
+
+    &:hover {
+      background-color: $blue-10;
+      color: $blue-100;
+      outline: 1px solid $blue-100;
+    }
+  }
+  .btn-product {
+    background-color: $blue-10;
+    color: $blue-100;
+    &:hover {
+      background-color: $blue-100;
+      color: $white-100;
+      outline: 1px solid $blue-10;
+    }
+  }
+}
