@@ -37,8 +37,8 @@ const OfferListInfo = ({ type, item }) => {
     </>
   );
   const givenRejected = () => <p className="text-rejected">Rededildi</p>;
-
   const givenPurchased = () => <p className="text-purchased">Satın alındı</p>;
+  const givenSoldOut = () => <p className="text-soldout">Ürün satıldı</p>;
 
   const receivedOffered = () => (
     <>
@@ -67,25 +67,31 @@ const OfferListInfo = ({ type, item }) => {
   const receivedAccepted = () => <p className="text-confirm">Onaylandı</p>;
   const receivedPurchased = () => <p className="text-purchased">Satıldı</p>;
 
+  // TODO:Should be refactor below logic
+
   switch (type) {
     case 'givenOffers':
       switch (item.status) {
-        case 'offered':
-          return givenOffered();
-
         case 'accepted':
           if (item.isSold === 'sold') {
             return givenPurchased();
           }
           return givenAccepted();
-
+        case 'offered':
+          if (item.isSold === 'sold') {
+            return givenSoldOut();
+          }
+          return givenOffered();
         default:
           return givenRejected();
       }
 
     case 'receivedOffers':
       if (item.isSold) {
-        return receivedPurchased();
+        if (item.status === 'accepted') {
+          return receivedPurchased();
+        }
+        return receivedRejected();
       }
       switch (item.status) {
         case 'accepted':

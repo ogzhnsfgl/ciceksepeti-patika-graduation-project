@@ -8,7 +8,9 @@ import OfferListItem from 'components/OfferListItem/OfferListItem';
 import OfferTabs from 'components/OfferTabs/OfferTabs';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import fetchGivenOffers from 'redux/actions/givenOffersActions';
+import fetchGivenOffers, {
+  fetchGivenOffersReset,
+} from 'redux/actions/givenOffersActions';
 import fetchReceivedOffers from 'redux/actions/receivedOffersAction';
 
 const Account = () => {
@@ -26,6 +28,7 @@ const Account = () => {
     }
     return () => {
       mounted = true;
+      dispatch(fetchGivenOffersReset());
     };
   }, [dispatch]);
 

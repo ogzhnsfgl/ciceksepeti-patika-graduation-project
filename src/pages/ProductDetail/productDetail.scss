@@ -43,9 +43,10 @@
     font-size: 1.5rem;
     color: $black-90;
     @include screenSize('medium') {
+      @include display-flex(column, unset, unset);
       padding: 0.6rem;
       width: 100%;
-      @include display-flex(column, unset, unset);
+      margin-bottom: 2rem;
     }
 
     & > * {
@@ -133,7 +134,8 @@
       }
       .btn {
         height: 4.5rem;
-        width: 23.5rem;
+        max-width: 23.5rem;
+        width: 47%;
         font-size: 1.8rem;
         border: none;
         border-radius: 0.8rem;

@@ -33,6 +33,7 @@ const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
       </div>
     );
   }
+
   let givenOffer;
   givenOffers?.forEach((offer) => {
     if (offer?.product.id.trim() === product.id.trim()) {
@@ -43,15 +44,21 @@ const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
   return (
     <>
       <div className="content-buttons">
-        {!product?.isSold && (
+        <Button
+          text="Satın Al"
+          className="btn btn-buy"
+          clickEvent={() => setShowConfirmModal(true)}
+        />
+
+        {!product.isOfferable && (
           <>
             <Button
-              text="Satın Al"
-              className="btn btn-buy"
-              clickEvent={() => setShowConfirmModal(true)}
+              text="Bu Ürüne Teklif Verilemez"
+              className="btn btn-offer btn-disabled"
             />
           </>
         )}
+
         {product?.isOfferable && givenOffer && (
           <Button
             text="Teklifi Geri Çek"
@@ -61,21 +68,13 @@ const ProductDetailInfo = ({ setShowConfirmModal, setShowOfferModal }) => {
             }
           />
         )}
+
         {product?.isOfferable && !givenOffer && (
           <>
             <Button
               text="Teklif Ver"
               className="btn btn-offer"
               clickEvent={() => setShowOfferModal(true)}
-            />
-          </>
-        )}
-
-        {!product.isOfferable && (
-          <>
-            <Button
-              text="Bu Ürüne Teklif Verilemez"
-              className="btn btn-offer btn-disabled"
             />
           </>
         )}
