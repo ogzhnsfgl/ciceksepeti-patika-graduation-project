@@ -36,6 +36,7 @@ const OfferListInfo = ({ type, item }) => {
       />
     </>
   );
+
   const givenRejected = () => <p className="text-rejected">Rededildi</p>;
   const givenPurchased = () => <p className="text-purchased">Satın alındı</p>;
   const givenSoldOut = () => <p className="text-soldout">Ürün satıldı</p>;

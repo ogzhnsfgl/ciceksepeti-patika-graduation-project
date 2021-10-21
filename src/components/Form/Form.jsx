@@ -29,7 +29,6 @@ const Form = () => {
   } = password;
   const dispatch = useDispatch();
   const btnText = formType === '/signin' ? 'Giriş Yap' : 'Üye Ol';
-  const userState = useSelector((state) => state.auth);
 
   const handleOnChange = (e) => {
     setformControl({
@@ -65,7 +64,7 @@ const Form = () => {
     if (checkAuth()) {
       history.push('/');
     }
-  }, [history, userState]);
+  }, [history, auth]);
 
   return (
     <div className="form__wrapper">
