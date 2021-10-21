@@ -2,7 +2,6 @@ import triggerToast from 'helpers/toastify';
 import createProductTypes from 'redux/constants/createProductTypes';
 import authRequest from 'service/authRequest';
 
-import fetchProducts from './productsAction';
 import { postUploadReset } from './uploadActions';
 
 const postCreateProductSuccess = (product) => ({
@@ -34,7 +33,6 @@ const postCreateProduct = (data) => async (dispatch) => {
     })
     .finally(() => {
       dispatch(postUploadReset());
-      dispatch(fetchProducts());
     });
 };
 
