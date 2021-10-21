@@ -14,12 +14,13 @@ const GivenOfferBadge = ({ id }) => {
     }
     return null;
   });
+
   if (!givenOffer) {
     return null;
   }
 
   return (
-    <div className="content-given-offer">
+    <div className={`content-given-offer offer-${givenOffer.status}`}>
       Verilen teklif:{'  '}
       <span className="given-price">
         {currencyFormetter(givenOffer.offeredPrice)}
