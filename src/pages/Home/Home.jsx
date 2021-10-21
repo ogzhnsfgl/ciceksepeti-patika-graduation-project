@@ -7,17 +7,15 @@ import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import ProductsContainer from 'components/ProductsContainer';
 import filterProducts from 'helpers/filterProducts';
+import UseCategories from 'Hooks/UseCategories';
+import UseProducts from 'Hooks/UseProducts';
 import useQuery from 'Hooks/UseQuery';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import fetchCategory from 'redux/actions/categoryAction';
-import fetchProducts from 'redux/actions/productsAction';
+import React from 'react';
 
 const Home = () => {
   const query = useQuery();
-  const productsState = useSelector((state) => state.products);
-  const categoryState = useSelector((state) => state.category);
-  const dispatch = useDispatch();
+  const productsState = UseProducts();
+  const categoryState = UseCategories();
 
   const {
     products,
@@ -27,20 +25,10 @@ const Home = () => {
 
   const { isPending: isPendingCategory, error: errorCategory } = categoryState;
 
-  useEffect(() => {
-    let mounted = false;
-    if (!mounted) {
-      dispatch(fetchProducts());
-      dispatch(fetchCategory());
-    }
-    return () => {
-      mounted = true;
-    };
-  }, [dispatch]);
-
   if (errorProducts || errorCategory) {
     return <Error errorMsg={errorProducts.message || errorCategory.message} />;
   }
+
   if (isPendingProducts || isPendingCategory) {
     return <LoadingContainer />;
   }
@@ -50,6 +38,7 @@ const Home = () => {
     query.get('category'),
     isPendingProducts
   );
+
   return (
     <>
       <Navbar />

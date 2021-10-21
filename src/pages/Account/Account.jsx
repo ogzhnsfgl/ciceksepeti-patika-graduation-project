@@ -6,31 +6,14 @@ import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar/Navbar';
 import OfferListItem from 'components/OfferListItem/OfferListItem';
 import OfferTabs from 'components/OfferTabs/OfferTabs';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import fetchGivenOffers, {
-  fetchGivenOffersReset,
-} from 'redux/actions/givenOffersActions';
-import fetchReceivedOffers from 'redux/actions/receivedOffersAction';
+import UseGivenOffers from 'Hooks/UseGivenOffers';
+import UseReceivedOffers from 'Hooks/UseReceivedOffer';
+import React, { useState } from 'react';
 
 const Account = () => {
-  const receivedOffersState = useSelector((state) => state.receivedOffers);
-  const givenOffersState = useSelector((state) => state.givenOffers);
-  const dispatch = useDispatch();
+  const givenOffersState = UseGivenOffers(false);
+  const receivedOffersState = UseReceivedOffers();
   const [selectedTab, setSelectedTab] = useState('receivedOffers');
-
-  useEffect(() => {
-    let mounted = false;
-
-    if (!mounted) {
-      dispatch(fetchGivenOffers());
-      dispatch(fetchReceivedOffers());
-    }
-    return () => {
-      mounted = true;
-      dispatch(fetchGivenOffersReset());
-    };
-  }, [dispatch]);
 
   let renderList;
 
@@ -42,10 +25,6 @@ const Account = () => {
     renderList = givenOffersState.givenOffers;
   }
 
-  if (givenOffersState.isPending || receivedOffersState.isPending) {
-    <LoadingContainer />;
-  }
-
   if (givenOffersState.error || receivedOffersState.error) {
     <Error
       errorMsg={
@@ -53,6 +32,11 @@ const Account = () => {
       }
     />;
   }
+
+  if (!givenOffersState.givenOffers || !receivedOffersState.receivedOffers) {
+    <LoadingContainer />;
+  }
+
   return (
     <>
       <Navbar />
