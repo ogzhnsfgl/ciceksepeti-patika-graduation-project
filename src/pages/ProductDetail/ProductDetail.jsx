@@ -6,53 +6,26 @@ import GivenOfferBadge from 'components/GivenOfferBadge';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import OfferModal from 'components/OfferModal/OfferModal';
-import checkAuth from 'helpers/checkAuth';
 import currencyFormetter from 'helpers/currenyFormater';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import UseGivenOffers from 'Hooks/UseGivenOffers';
+import UseProductDetail from 'Hooks/UseProductDetail';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import fetchGivenOffers from 'redux/actions/givenOffersActions';
-import fetchProductDetail, {
-  fetchProductDetailReset,
-} from 'redux/actions/productDetailAction';
 import putPurchase from 'redux/actions/purchaseActions';
 
 import ProductDetailInfo from './ProductDetailInfo/ProductDetailInfo';
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const productDetail = useSelector((state) => state.productDetail);
-  const givenOffersState = useSelector((state) => state.givenOffers);
-  const dispatch = useDispatch();
-
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showOfferModal, setShowOfferModal] = useState(false);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const productDetail = UseProductDetail(id);
+  const givenOffers = UseGivenOffers(true);
 
-  const {
-    isPending: isPendingProductDetail,
-    product,
-    error: errorProductDetail,
-  } = productDetail;
-
-  const { isPending: isPendingGivenOffers, error: errorGivenOffers } =
-    givenOffersState;
-
-  useEffect(() => {
-    dispatch(fetchProductDetail(id));
-    return () => {
-      dispatch(fetchProductDetailReset());
-    };
-  }, [dispatch, id]);
-
-  useEffect(() => {
-    if (!product?.isSold && product?.isOfferable && checkAuth()) {
-      dispatch(fetchGivenOffers(id));
-    }
-  }, [dispatch, id, product]);
-
-  if (isPendingProductDetail || isPendingGivenOffers) {
-    return <LoadingContainer />;
-  }
+  const { product, error: errorProductDetail } = productDetail;
+  const { error: errorGivenOffers } = givenOffers;
 
   if (errorProductDetail || errorGivenOffers) {
     return (
@@ -61,6 +34,11 @@ const ProductDetail = () => {
       />
     );
   }
+
+  if (!product) {
+    return <LoadingContainer />;
+  }
+
   const {
     title,
     status,

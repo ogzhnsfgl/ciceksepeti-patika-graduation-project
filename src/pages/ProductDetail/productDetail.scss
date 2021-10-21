@@ -85,28 +85,34 @@
         font-size: 2rem;
         margin: 0;
       }
-    }
 
-    .content-given-offer {
-      background-color: $white-80;
-      color: $gray-100;
-      width: 25rem;
-      border-radius: 0.8rem;
-      padding: 1rem;
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      font-weight: 500;
+      .content-given-offer {
+        background-color: $white-80;
+        color: $gray-100;
+        width: 25rem;
+        border-radius: 0.8rem;
+        padding: 1rem;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        font-weight: 500;
 
-      .given-price {
-        color: $black-90;
-        font-weight: 700;
-        &::after {
-          content: ' TL';
+        .given-price {
+          color: $black-90;
+          font-weight: 700;
+          &::after {
+            content: ' TL';
+          }
+        }
+        @include screenSize('medium') {
+          width: unset;
         }
       }
-      @include screenSize('medium') {
-        width: unset;
-      }
+    }
+    .offer-rejected {
+      color: $red-90 !important;
+    }
+    .offer-accepted {
+      color: $green-100 !important;
     }
 
     .info-wrapper {
