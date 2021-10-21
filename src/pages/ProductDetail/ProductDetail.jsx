@@ -12,7 +12,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import fetchGivenOffers from 'redux/actions/givenOffersActions';
-import fetchProductDetail from 'redux/actions/productDetailAction';
+import fetchProductDetail, {
+  fetchProductDetailReset,
+} from 'redux/actions/productDetailAction';
 import putPurchase from 'redux/actions/purchaseActions';
 
 import ProductDetailInfo from './ProductDetailInfo/ProductDetailInfo';
@@ -36,16 +38,16 @@ const ProductDetail = () => {
     givenOffersState;
 
   useEffect(() => {
-    let mounted = false;
-    if (!mounted && product?.id !== id) {
-      dispatch(fetchProductDetail(id));
-      if (checkAuth()) {
-        dispatch(fetchGivenOffers(id));
-      }
-    }
+    dispatch(fetchProductDetail(id));
     return () => {
-      mounted = true;
+      dispatch(fetchProductDetailReset());
     };
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    if (!product?.isSold && product?.isOfferable && checkAuth()) {
+      dispatch(fetchGivenOffers(id));
+    }
   }, [dispatch, id, product]);
 
   if (isPendingProductDetail || isPendingGivenOffers) {
