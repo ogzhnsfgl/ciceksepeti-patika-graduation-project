@@ -97,7 +97,9 @@ const AddProductForm = ({
         onChange={handleChange}
       />
       <p className={errors?.price ? 'not-valid-ico' : ''}>TL</p>
-      {errors?.price && <span>Lütfen geçerli bir tutar giriniz.</span>}
+      {errors?.price && (
+        <span>Lütfen geçerli bir tutar giriniz. (Örnek: 123.45)</span>
+      )}
     </div>
     <div className="form-row offer-row">
       <label htmlFor="offeropt">Teklif Opsiyonu</label>
