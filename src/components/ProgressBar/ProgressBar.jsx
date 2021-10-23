@@ -16,7 +16,7 @@ const ProgressBar = ({ progressVal }) => {
     backgroundColor: '#4B9CE2',
     borderRadius: 'inherit',
     textAlign: 'right',
-    transition: 'width 1s ease-in-out',
+    transition: 'width .6s ease-in-out',
   };
 
   const progressTextSetyles = {
@@ -48,7 +48,7 @@ const ProgressBar = ({ progressVal }) => {
 };
 
 ProgressBar.propTypes = {
-  progressVal: propTypes.string.isRequired,
+  progressVal: propTypes.number.isRequired,
 };
 
 export default ProgressBar;
