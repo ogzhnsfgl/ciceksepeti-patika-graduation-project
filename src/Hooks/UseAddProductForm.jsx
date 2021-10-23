@@ -1,3 +1,4 @@
+import checkValidField from 'helpers/formValidation';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import postCreateProduct from 'redux/actions/createProductActions';
@@ -20,11 +21,18 @@ const useForm = (validate) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({
+    setValues(() => ({
       ...values,
       [name]: value,
-    });
-    setErrors({ ...errors, [name]: false });
+    }));
+    if (name === 'price') {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: !checkValidField('price', value),
+      }));
+    } else {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
   };
 
   const isReadyToPost = () => {
