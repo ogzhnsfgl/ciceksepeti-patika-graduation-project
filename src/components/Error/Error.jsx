@@ -1,13 +1,11 @@
 import './error.scss';
 
 import errorImg from 'assets/images/error-img.png';
-import Navbar from 'components/Navbar/Navbar';
 import propTypes from 'prop-types';
 import React from 'react';
 
 const Error = ({ errorMsg }) => (
   <>
-    <Navbar />
     <div className="container">
       <div className="error-wrapper">
         <div className="error-img">

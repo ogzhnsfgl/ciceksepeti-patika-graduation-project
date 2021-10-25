@@ -2,7 +2,7 @@ import './home.scss';
 
 import banner from 'assets/images/home-banner.webp';
 import CategoryTabs from 'components/CategoryTabs/CategoryTabs';
-import Error from 'components/Error/Error';
+import ErrorWrapper from 'components/Error/';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
 import ProductsContainer from 'components/ProductsContainer';
@@ -26,7 +26,9 @@ const Home = () => {
   const { isPending: isPendingCategory, error: errorCategory } = categoryState;
 
   if (errorProducts || errorCategory) {
-    return <Error errorMsg={errorProducts.message || errorCategory.message} />;
+    return (
+      <ErrorWrapper errorMsg={errorProducts.message || errorCategory.message} />
+    );
   }
 
   if (isPendingProducts || isPendingCategory) {

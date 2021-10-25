@@ -1,7 +1,7 @@
 import './productDetail.scss';
 
 import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
-import Error from 'components/Error/Error';
+import ErrorWrapper from 'components/Error';
 import GivenOfferBadge from 'components/GivenOfferBadge';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar';
@@ -29,7 +29,7 @@ const ProductDetail = () => {
 
   if (errorProductDetail || errorGivenOffers) {
     return (
-      <Error
+      <ErrorWrapper
         errorMsg={errorProductDetail.message || errorGivenOffers.message}
       />
     );
