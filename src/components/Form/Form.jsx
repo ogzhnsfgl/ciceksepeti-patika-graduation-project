@@ -1,7 +1,7 @@
 import './form.scss';
 
 import Button from 'components/Button/Button';
-import FormInputFields from 'components/FormInputFields/FormInputFields';
+import FormInputFields from 'components/FormInputFields';
 import checkAuth from 'helpers/checkAuth';
 import checkValidField from 'helpers/formValidation';
 import React, { useEffect, useState } from 'react';
