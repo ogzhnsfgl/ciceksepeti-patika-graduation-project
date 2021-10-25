@@ -35,7 +35,7 @@ const Pagination = (props) => {
   return (
     <div className="pagination-wrapper">
       <ul className="pagination-container">
-        <li className="pagination-item" onClick={onPrevious} role="none">
+        <li className="pagination-arrow" onClick={onPrevious} role="none">
           <div
             className={`arrow left ${
               currentPage === 1 ? 'arrow-disabled' : ' '
@@ -65,7 +65,7 @@ const Pagination = (props) => {
           );
         })}
 
-        <li className="pagination-item " onClick={onNext} role="none">
+        <li className="pagination-arrow " onClick={onNext} role="none">
           <div
             className={`arrow right ${
               currentPage === lastPage ? 'arrow-disabled' : ''
