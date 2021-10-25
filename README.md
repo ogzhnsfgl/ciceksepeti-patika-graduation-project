@@ -37,6 +37,7 @@ Live demo available here :
 - SASS
 - Axios
 - Toastify
+- Reach UI/Listbox
 - uuid
 - prop-types
 - Vercel
@@ -59,7 +60,16 @@ yarn
 
 # serve at localhost:3000
 npm start
+pmark
+```
 
+- To start unit testing:
+
+```bash
+# with npm
+npm run test
+# or with yarn
+yarn run test
 ```
 
 <br>
