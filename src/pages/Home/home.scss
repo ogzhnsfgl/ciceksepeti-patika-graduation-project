@@ -11,8 +11,9 @@
 .section-banner {
   height: 27.5vw;
   max-height: 43rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
   img {
     width: 100%;
-    border-radius: 0.8rem;
   }
 }
