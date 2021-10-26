@@ -6,9 +6,8 @@
   border-radius: 0.8rem;
 
   &-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    @include display-flex(row, center, flex-start);
+
     padding: 0.8rem 3rem;
 
     p {

@@ -1,3 +1,5 @@
+/* Mixin for media queries */
+
 @mixin screenSize($size) {
   @if ($size == 'xxlarge') {
     @media screen and (max-width: 1480px) {
@@ -31,6 +33,8 @@
     }
   }
 }
+
+/* Mixin for flexbox */
 
 @mixin display-flex(
   $flex-direction: row,

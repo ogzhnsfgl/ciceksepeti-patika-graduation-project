@@ -16,9 +16,7 @@ header {
 
 .navbar {
   &-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include display-flex(row, center, space-between);
     line-height: 8rem;
     @include screenSize('medium') {
       line-height: 6rem;
@@ -26,8 +24,7 @@ header {
   }
 
   &-logo {
-    display: flex;
-    align-items: center;
+    @include display-flex(row, center, unset);
     height: 8rem;
     @include screenSize('medium') {
       height: 6rem;

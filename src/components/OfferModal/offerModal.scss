@@ -93,8 +93,7 @@
       }
 
       .custom-offer {
-        display: flex;
-        align-items: center;
+        @include display-flex(row, center, unset);
         width: 100%;
         color: $gray-110;
         input {

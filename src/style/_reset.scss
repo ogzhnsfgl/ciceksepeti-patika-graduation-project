@@ -147,6 +147,7 @@ a {
   border: none;
 }
 
+/* For prevent horizontal scroll on Firefox */
 html {
   max-height: 100vh;
   overflow: hidden;

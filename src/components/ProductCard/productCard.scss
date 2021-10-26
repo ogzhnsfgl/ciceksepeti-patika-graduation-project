@@ -12,7 +12,9 @@
   min-height: 39rem;
   @include screenSize('small') {
     min-width: 17rem;
-    min-height: unset;
+    max-width: 17rem;
+    min-height: 26.6rem;
+    max-height: 26.6rem;
     padding: 0.6rem;
   }
   &-img {
@@ -20,8 +22,8 @@
     border-radius: 0.8rem;
     min-height: 85%;
     @include screenSize('small') {
-      min-height: 70%;
-      max-height: 70%;
+      min-height: 72%;
+      max-height: 72%;
     }
     img {
       width: 100%;
@@ -31,9 +33,9 @@
   }
   .card__item-content {
     @include display-flex(column, unset, space-between);
-    @include screenSize('small') {
-      height: 30%;
-    }
+    // @include screenSize('small') {
+    //   height: 30%;
+    // }
   }
   &-info {
     @include display-flex(row, unset, space-between);
