@@ -1,7 +1,8 @@
+/* eslint-disable no-debugger */
 import './account.scss';
 
 import profilePicture from 'assets/icons/profile-picture.png';
-import Error from 'components/Error/Error';
+import ErrorWrapper from 'components/Error/ErrorWrapper';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar/Navbar';
 import OfferListItem from 'components/OfferListItem/OfferListItem';
@@ -26,15 +27,17 @@ const Account = () => {
   }
 
   if (givenOffersState.error || receivedOffersState.error) {
-    <Error
-      errorMsg={
-        givenOffersState.error.message || receivedOffersState.error.message
-      }
-    />;
+    return (
+      <ErrorWrapper
+        errorMsg={
+          givenOffersState.error.message || receivedOffersState.error.message
+        }
+      />
+    );
   }
 
   if (!givenOffersState.givenOffers || !receivedOffersState.receivedOffers) {
-    <LoadingContainer />;
+    return <LoadingContainer />;
   }
 
   return (

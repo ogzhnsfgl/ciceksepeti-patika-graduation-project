@@ -33,9 +33,6 @@
   }
   .card__item-content {
     @include display-flex(column, unset, space-between);
-    // @include screenSize('small') {
-    //   height: 30%;
-    // }
   }
   &-info {
     @include display-flex(row, unset, space-between);

@@ -4,13 +4,14 @@ import { DOTS, usePagination } from 'Hooks/UsePagination';
 import useQuery from 'Hooks/UseQuery';
 import propTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 const Pagination = (props) => {
   const { onPageChange, totalCount, currentPage, pageSize } = props;
   const query = useQuery();
   const currentCat = query.get('category') || 'hepsi';
+  const history = useHistory();
 
   const paginationRange = usePagination({
     currentPage,
@@ -24,64 +25,76 @@ const Pagination = (props) => {
 
   const lastPage = paginationRange[paginationRange.length - 1];
 
+  const handleNext = () => {
+    history.push(
+      `/?category=${currentCat}&pages=${
+        currentPage !== lastPage ? currentPage + 1 : currentPage
+      } `
+    );
+  };
+  const handlePrev = () => {
+    history.push(
+      `/?category=${currentCat}&pages=${
+        currentPage !== 1 ? currentPage - 1 : currentPage
+      } `
+    );
+  };
+
+  const handleClick = (page) => {
+    onPageChange(page);
+    history.push(`/?category=${currentCat}&pages=${page}`);
+  };
+
   return (
     <div className="pagination-wrapper">
-      <ul className="pagination-container">
-        <Link
-          to={`?category=${currentCat}&pages=${
-            currentPage !== 1 ? currentPage - 1 : currentPage
-          } `}
+      <div className="pagination-container">
+        <div
+          className="pagination-arrow"
+          role="none"
+          onClick={handlePrev}
           key={v4()}
         >
-          <li className="pagination-arrow" role="none">
-            <div
-              className={`arrow left ${
-                currentPage === 1 ? 'arrow-disabled' : ' '
-              }`}
-            />
-          </li>
-        </Link>
+          <div
+            className={`arrow left ${
+              currentPage === 1 ? 'arrow-disabled' : ' '
+            }`}
+          />
+        </div>
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
             return (
-              <li className="pagination-item dots " key={v4()}>
+              <li className="pagination-item dots " key={v4()} role="none">
                 &#8230;
               </li>
             );
           }
 
           return (
-            <Link
-              to={`?category=${currentCat}&pages=${pageNumber} `}
+            <div
+              className={`pagination-item pagination-number ${
+                pageNumber === currentPage ? 'selected-page ' : ''
+              }`}
+              onClick={() => handleClick(pageNumber)}
+              role="none"
               key={v4()}
             >
-              <li
-                className={`pagination-item pagination-number ${
-                  pageNumber === currentPage ? 'selected-page ' : ''
-                }`}
-                onClick={() => onPageChange(pageNumber)}
-                role="none"
-              >
-                {pageNumber}
-              </li>
-            </Link>
+              <span role="none">{pageNumber}</span>
+            </div>
           );
         })}
-        <Link
-          to={`?category=${currentCat}&pages=${
-            currentPage !== lastPage ? currentPage + 1 : currentPage
-          } `}
+        <div
+          className="pagination-arrow "
+          role="none"
+          onClick={handleNext}
           key={v4()}
         >
-          <li className="pagination-arrow " role="none">
-            <div
-              className={`arrow right ${
-                currentPage === lastPage ? 'arrow-disabled' : ''
-              }`}
-            />
-          </li>
-        </Link>
-      </ul>
+          <div
+            className={`arrow right ${
+              currentPage === lastPage ? 'arrow-disabled' : ''
+            }`}
+          />
+        </div>
+      </div>
     </div>
   );
 };

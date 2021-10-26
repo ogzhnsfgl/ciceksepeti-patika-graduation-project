@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Item count per page
-const PageSize = 20;
+const PageSize = 15;
 
 const ProductsContainer = ({ data }) => {
   const query = useQuery();
