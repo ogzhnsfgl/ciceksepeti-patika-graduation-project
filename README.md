@@ -120,7 +120,7 @@ yarn run test
 <img src="previews/Mobile-Home-Page.png" alt="mobile-prew" width="215"/>
 <img src="previews/Mobile-Account-Page.png" alt="mobile-prew" width="215"/>
 <img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="215"/>
-  <img src="previews/Mobile-Product-Detail-Page.png" alt="mobile-prew" width="215"/>
+  <img src="previews/Mobile-Product-Detail-Page-2.png" alt="mobile-prew" width="215"/>
   <img src="previews/Mobile-Add-Product-Page.png" alt="mobile-prew" width="215"/>
   <img src="previews/Mobile-Add-Product-Page-2.png" alt="mobile-prew" width="215"/>
 </p>
@@ -131,8 +131,6 @@ yarn run test
 
 # App Performance
 
-<center>
-
-![LightHouse Score](previews/Lighthouse-Report.jpg)
-
-</center>
+<p align="center">
+  <img src="previews/Lighthouse-Report.jpg" alt="mobile-prew" width="600"/>
+</p>
