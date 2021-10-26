@@ -2,7 +2,7 @@ import './addProduct.scss';
 
 import AddProductForm from 'components/AddProductForm';
 import AddProductResult from 'components/AddProductResult';
-import Error from 'components/Error/Error';
+import ErrorWrapper from 'components/Error/ErrorWrapper';
 import ImageUploader from 'components/ImageUploader/ImageUploader';
 import LoadingContainer from 'components/LoadingContainer/LoadingContainer';
 import Navbar from 'components/Navbar/Navbar';
@@ -45,14 +45,16 @@ function AddProduct() {
   ].some((error) => error);
 
   if (isError) {
-    <Error
-      errorMsg={
-        categoryState.error.message ||
-        brandState.error.message ||
-        colorState.error.message ||
-        statusState.error.message
-      }
-    />;
+    return (
+      <ErrorWrapper
+        errorMsg={
+          categoryState.error.message ||
+          brandState.error.message ||
+          colorState.error.message ||
+          statusState.error.message
+        }
+      />
+    );
   }
 
   if (isNull) {
