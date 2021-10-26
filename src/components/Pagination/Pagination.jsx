@@ -50,9 +50,9 @@ const Pagination = (props) => {
       <div className="pagination-container">
         <div
           className="pagination-arrow"
-          role="none"
           onClick={handlePrev}
           key={v4()}
+          role="none"
         >
           <div
             className={`arrow left ${
@@ -63,9 +63,9 @@ const Pagination = (props) => {
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
             return (
-              <li className="pagination-item dots " key={v4()} role="none">
-                &#8230;
-              </li>
+              <div className="pagination-item dots " key={v4()} role="none">
+                ...
+              </div>
             );
           }
 

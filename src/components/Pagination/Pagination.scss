@@ -42,8 +42,12 @@
     font-weight: 400;
   }
   .dots {
-    margin: 0 0.5rem;
+    margin: 0 -0.5rem;
     color: $blue-100-70;
+
+    &::marker {
+      display: none;
+    }
   }
 
   .selected-page {
