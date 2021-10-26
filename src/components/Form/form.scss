@@ -10,6 +10,7 @@
   border-radius: 0.8rem;
   background-color: $white-100;
   max-width: 35vw;
+
   @include screenSize('xlarge') {
     padding: 7rem 2rem;
     width: 100%;
@@ -19,17 +20,19 @@
     max-width: 50vw;
   }
   @include screenSize('medium') {
-    max-width: 75vw;
+    max-width: 90vw;
   }
 }
 
 .form__header {
   text-align: center;
   padding: 0 0 5rem 0;
+  color: $black-100;
 
   &-title {
     font-size: 3.2rem;
     padding: 1rem;
+    font-weight: 700;
   }
 }
 
