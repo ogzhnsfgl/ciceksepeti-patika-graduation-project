@@ -14,7 +14,7 @@ const CategoryTabs = () => {
 
   /* Check query to mark related category */
   const query = useQuery();
-  const currentQuery = query.get('category') ? query.get('category') : 'hepsi';
+  const currentQuery = query.get('category') || 'hepsi';
 
   if (!categoryState.categoryList) {
     return null;
@@ -24,7 +24,7 @@ const CategoryTabs = () => {
     <div className="category-container">
       <div className="category-list">
         {navBarList?.map((category) => (
-          <Link to={`?category=${category.title} `} key={category.id}>
+          <Link to={`?category=${category.title}&pages=1`} key={category.id}>
             <div
               className={
                 currentQuery?.trim() === category.title.trim()
