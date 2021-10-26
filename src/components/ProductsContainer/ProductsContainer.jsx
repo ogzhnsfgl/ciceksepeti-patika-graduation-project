@@ -2,18 +2,33 @@ import './productsContainer.scss';
 
 import Pagination from 'components/Pagination/Pagination';
 import ProductCard from 'components/ProductCard/ProductCard';
+import useQuery from 'Hooks/UseQuery';
 import propTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const PageSize = 10;
+// Item count per page
+const PageSize = 20;
 
 const ProductsContainer = ({ data }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const query = useQuery();
+
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(query.get('pages'), 10) || 1
+  );
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [data]);
+    const lastPage = Math.ceil(data.length / PageSize);
+    let queryPage = parseInt(query.get('pages'), 10);
+
+    /* Check upper bound of pagination, if request higher than page count set last page */
+    if (queryPage > lastPage) {
+      query.set('pages', lastPage);
+      queryPage = lastPage;
+    }
+
+    setCurrentPage(queryPage || 1);
+  }, [data, query]);
 
   const firstPageIndex = (currentPage - 1) * PageSize;
   const lastPageIndex = firstPageIndex + PageSize;

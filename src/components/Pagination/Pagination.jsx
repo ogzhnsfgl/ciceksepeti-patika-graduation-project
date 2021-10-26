@@ -1,12 +1,16 @@
 import './Pagination.scss';
 
 import { DOTS, usePagination } from 'Hooks/UsePagination';
+import useQuery from 'Hooks/UseQuery';
 import propTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { v4 } from 'uuid';
 
 const Pagination = (props) => {
   const { onPageChange, totalCount, currentPage, pageSize } = props;
+  const query = useQuery();
+  const currentCat = query.get('category') || 'hepsi';
 
   const paginationRange = usePagination({
     currentPage,
@@ -20,28 +24,23 @@ const Pagination = (props) => {
 
   const lastPage = paginationRange[paginationRange.length - 1];
 
-  const onNext = () => {
-    if (currentPage !== lastPage) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  const onPrevious = () => {
-    if (currentPage !== 1) {
-      onPageChange(currentPage - 1);
-    }
-  };
-
   return (
     <div className="pagination-wrapper">
       <ul className="pagination-container">
-        <li className="pagination-arrow" onClick={onPrevious} role="none">
-          <div
-            className={`arrow left ${
-              currentPage === 1 ? 'arrow-disabled' : ' '
-            }`}
-          />
-        </li>
+        <Link
+          to={`?category=${currentCat}&pages=${
+            currentPage !== 1 ? currentPage - 1 : currentPage
+          } `}
+          key={v4()}
+        >
+          <li className="pagination-arrow" role="none">
+            <div
+              className={`arrow left ${
+                currentPage === 1 ? 'arrow-disabled' : ' '
+              }`}
+            />
+          </li>
+        </Link>
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
             return (
@@ -52,26 +51,36 @@ const Pagination = (props) => {
           }
 
           return (
-            <li
-              className={`pagination-item pagination-number ${
-                pageNumber === currentPage ? 'selected-page ' : ''
-              }`}
-              onClick={() => onPageChange(pageNumber)}
-              role="none"
+            <Link
+              to={`?category=${currentCat}&pages=${pageNumber} `}
               key={v4()}
             >
-              {pageNumber}
-            </li>
+              <li
+                className={`pagination-item pagination-number ${
+                  pageNumber === currentPage ? 'selected-page ' : ''
+                }`}
+                onClick={() => onPageChange(pageNumber)}
+                role="none"
+              >
+                {pageNumber}
+              </li>
+            </Link>
           );
         })}
-
-        <li className="pagination-arrow " onClick={onNext} role="none">
-          <div
-            className={`arrow right ${
-              currentPage === lastPage ? 'arrow-disabled' : ''
-            }`}
-          />
-        </li>
+        <Link
+          to={`?category=${currentCat}&pages=${
+            currentPage !== lastPage ? currentPage + 1 : currentPage
+          } `}
+          key={v4()}
+        >
+          <li className="pagination-arrow " role="none">
+            <div
+              className={`arrow right ${
+                currentPage === lastPage ? 'arrow-disabled' : ''
+              }`}
+            />
+          </li>
+        </Link>
       </ul>
     </div>
   );

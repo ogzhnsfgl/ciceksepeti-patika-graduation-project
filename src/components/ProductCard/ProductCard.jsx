@@ -11,7 +11,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className="card__item">
       <div className="card__item-img">
-        <img src={imageUrl} alt="item-img" lazy />
+        <img src={imageUrl} alt="item-img" lazy="true" />
       </div>
       <div className="card__item-content">
         <div className="card__item-info">
