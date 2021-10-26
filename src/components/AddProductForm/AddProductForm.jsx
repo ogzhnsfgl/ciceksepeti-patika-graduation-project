@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
-import ComboboxCopy from 'components/Combobox/';
+import Combobox from 'components/Combobox/';
 import ToggleSwitch from 'components/ToggleSwitch/';
+import propTypes from 'prop-types';
 import React from 'react';
 
 const AddProductForm = ({
@@ -43,7 +43,7 @@ const AddProductForm = ({
     <div className="form-row-multi">
       <div className="input-group">
         <label htmlFor="category">Kategori</label>
-        <ComboboxCopy
+        <Combobox
           setSelect={handleChange}
           error={errors?.category}
           name="category"
@@ -53,7 +53,7 @@ const AddProductForm = ({
       </div>
       <div className="input-group">
         <label htmlFor="brand">Marka</label>
-        <ComboboxCopy
+        <Combobox
           setSelect={handleChange}
           error={errors?.brand}
           name="brand"
@@ -65,7 +65,7 @@ const AddProductForm = ({
     <div className="form-row-multi">
       <div className="input-group">
         <label htmlFor="color">Renk</label>
-        <ComboboxCopy
+        <Combobox
           setSelect={handleChange}
           error={errors?.color}
           name="color"
@@ -75,7 +75,7 @@ const AddProductForm = ({
       </div>
       <div className="input-group">
         <label htmlFor="status">Kullanım Durumu</label>
-        <ComboboxCopy
+        <Combobox
           setSelect={handleChange}
           error={errors?.status}
           name="status"
@@ -102,10 +102,28 @@ const AddProductForm = ({
       )}
     </div>
     <div className="form-row offer-row">
-      <label htmlFor="offeropt">Teklif Opsiyonu</label>
+      {values.isOfferable ? (
+        <label htmlFor="offeropt" className="offeropt-active">
+          Fiyat ve teklif opsiyonu
+        </label>
+      ) : (
+        <label htmlFor="offeropt" className="offeropt">
+          Teklif Opsiyonu
+        </label>
+      )}
       <ToggleSwitch value={values.isOfferable} onChange={handleChange} />
     </div>
   </div>
 );
+
+AddProductForm.propTypes = {
+  categoryState: propTypes.object.isRequired,
+  brandState: propTypes.object.isRequired,
+  colorState: propTypes.object.isRequired,
+  statusState: propTypes.object.isRequired,
+  handleChange: propTypes.func.isRequired,
+  values: propTypes.object.isRequired,
+  errors: propTypes.object.isRequired,
+};
 
 export default AddProductForm;
