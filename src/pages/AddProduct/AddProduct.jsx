@@ -13,9 +13,11 @@ import UseCategories from 'Hooks/UseCategories';
 import UseColors from 'Hooks/UseColors';
 import UseCreateProduct from 'Hooks/UseCreateProduct';
 import UseStatus from 'Hooks/UseStatus';
+import useTitle from 'Hooks/UseTitle';
 import React, { useEffect, useState } from 'react';
 
 function AddProduct() {
+  useTitle('Ürün Ekle');
   const categoryState = UseCategories();
   const colorState = UseColors();
   const brandState = UseBrands();

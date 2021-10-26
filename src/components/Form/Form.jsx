@@ -4,6 +4,7 @@ import Button from 'components/Button/Button';
 import FormInputFields from 'components/FormInputFields';
 import checkAuth from 'helpers/checkAuth';
 import checkValidField from 'helpers/formValidation';
+import useTitle from 'Hooks/UseTitle';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
@@ -29,6 +30,8 @@ const Form = () => {
   } = password;
   const dispatch = useDispatch();
   const btnText = formType === '/signin' ? 'Giriş Yap' : 'Üye Ol';
+
+  useTitle(`${btnText}`);
 
   const handleOnChange = (e) => {
     setformControl({

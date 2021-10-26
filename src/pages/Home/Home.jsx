@@ -10,12 +10,14 @@ import filterProducts from 'helpers/filterProducts';
 import UseCategories from 'Hooks/UseCategories';
 import UseProducts from 'Hooks/UseProducts';
 import useQuery from 'Hooks/UseQuery';
+import useTitle from 'Hooks/UseTitle';
 import React from 'react';
 
 const Home = () => {
   const query = useQuery();
   const productsState = UseProducts();
   const categoryState = UseCategories();
+  useTitle('Anasayfa');
 
   const {
     products,

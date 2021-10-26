@@ -9,6 +9,7 @@ import OfferModal from 'components/OfferModal/OfferModal';
 import currencyFormetter from 'helpers/currenyFormater';
 import UseGivenOffers from 'Hooks/UseGivenOffers';
 import UseProductDetail from 'Hooks/UseProductDetail';
+import useTitle from 'Hooks/UseTitle';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -17,6 +18,7 @@ import putPurchase from 'redux/actions/purchaseActions';
 import ProductDetailInfo from '../../components/ProductDetailInfo';
 
 const ProductDetail = () => {
+  useTitle('İkici El Project | Hesabım');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showOfferModal, setShowOfferModal] = useState(false);
   const { id } = useParams();
@@ -26,6 +28,8 @@ const ProductDetail = () => {
 
   const { product, error: errorProductDetail } = productDetail;
   const { error: errorGivenOffers } = givenOffers;
+
+  useTitle(`${product?.title || 'Yükleniyor'}`);
 
   if (errorProductDetail || errorGivenOffers) {
     return (

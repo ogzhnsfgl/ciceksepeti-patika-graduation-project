@@ -9,13 +9,14 @@ import OfferListItem from 'components/OfferListItem/OfferListItem';
 import OfferTabs from 'components/OfferTabs/OfferTabs';
 import UseGivenOffers from 'Hooks/UseGivenOffers';
 import UseReceivedOffers from 'Hooks/UseReceivedOffer';
+import useTitle from 'Hooks/UseTitle';
 import React, { useState } from 'react';
 
 const Account = () => {
   const givenOffersState = UseGivenOffers(false);
   const receivedOffersState = UseReceivedOffers();
   const [selectedTab, setSelectedTab] = useState('receivedOffers');
-
+  useTitle('Hesabım');
   let renderList;
 
   if (selectedTab === 'receivedOffers') {
