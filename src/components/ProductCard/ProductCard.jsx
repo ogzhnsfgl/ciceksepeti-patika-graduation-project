@@ -1,6 +1,6 @@
 import './productCard.scss';
 
-import ConfirmModal from 'components/ConfirmModal/ConfirmModal';
+import ConfirmModal from 'components/ConfirmModal';
 import currencyFormetter from 'helpers/currenyFormater';
 import propTypes from 'prop-types';
 import React from 'react';
