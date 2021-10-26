@@ -33,13 +33,16 @@ FormInputFields.propTypes = {
   name: propTypes.string.isRequired,
   type: propTypes.string.isRequired,
   label: propTypes.string.isRequired,
-  placeholder: propTypes.string.isRequired,
+  placeholder: propTypes.string,
   value: propTypes.string.isRequired,
   errorMsg: propTypes.string.isRequired,
   onChangeEvent: propTypes.func.isRequired,
   touchState: propTypes.bool.isRequired,
   validState: propTypes.bool.isRequired,
   showError: propTypes.bool.isRequired,
+};
+FormInputFields.defaultProps = {
+  placeholder: undefined,
 };
 
 export default FormInputFields;
