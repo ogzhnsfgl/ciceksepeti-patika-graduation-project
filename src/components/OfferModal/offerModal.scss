@@ -80,7 +80,6 @@
       }
       .option-title {
         text-align: left;
-        width: 50%;
       }
       .price {
         justify-self: flex-end;
@@ -106,7 +105,6 @@
         }
         input:focus,
         input:active {
-          color: $blue-100;
           border: none;
           outline: none;
         }
@@ -132,9 +130,6 @@
         background-repeat: no-repeat;
         background-size: 10px;
       }
-      input {
-        color: $blue-100;
-      }
     }
 
     .validation-warning {
@@ -143,6 +138,7 @@
       font-size: 1.2rem;
       padding: 0 0.5rem;
       margin-top: -0.5rem;
+      text-align: left;
     }
   }
 }

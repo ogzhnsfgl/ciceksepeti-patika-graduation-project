@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding: 0.8rem 1.3rem;
+    padding: 0.8rem 3rem;
 
     p {
       margin-left: 1rem;
@@ -28,11 +28,12 @@
   margin-top: 1rem;
 
   .offer-list {
-    margin-top: 2rem;
-    padding: 1.3rem 1.3rem;
+    margin-top: 1.5rem;
+    padding: 0 3rem;
     max-height: calc(100vh - 24rem);
     @include screenSize('medium') {
       max-height: calc(100vh - 22rem);
+      padding: 0 1rem;
     }
     overflow: auto;
   }

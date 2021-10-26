@@ -3,10 +3,11 @@
 .content-header {
   @include display-flex(row, unset, unset);
   border-bottom: 1px solid $white-80;
+  padding-left: 3rem;
 
   & > * {
     padding: 1.5rem 0 0.8rem 0;
-    margin: 0 1.3rem;
+    margin-right: 2.6rem;
     color: $gray-100;
     font-size: 1.5rem;
   }
@@ -17,6 +18,7 @@
     outline: none;
     border-bottom: 1px solid transparent;
     transition: $general-transition;
+    font-weight: 700;
   }
   .selected {
     color: rgba(75, 156, 226, 1);

@@ -68,8 +68,6 @@ const OfferListInfo = ({ type, item }) => {
   const receivedAccepted = () => <p className="text-confirm">Onaylandı</p>;
   const receivedPurchased = () => <p className="text-purchased">Satıldı</p>;
 
-  // TODO:Should be refactor below logic
-
   switch (type) {
     case 'givenOffers':
       switch (item.status) {

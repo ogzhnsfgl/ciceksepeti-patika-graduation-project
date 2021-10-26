@@ -19,6 +19,9 @@
     font-weight: 700;
     margin-bottom: 2rem;
     color: $black-90;
+    @include screenSize('medium') {
+      font-size: 2rem;
+    }
   }
 
   &-content {
@@ -48,9 +51,10 @@
         border: none;
         border-radius: 0.8rem;
         outline: none;
-        padding: 1rem 2rem;
+        padding: 1rem 1.5rem;
         @include screenSize('medium') {
           margin-bottom: 1rem;
+          padding: 1rem 0.15rem;
         }
       }
       input:active,
@@ -60,11 +64,12 @@
         outline: 1px solid $blue-100;
         background-color: $blue-10;
       }
+
       input::placeholder,
       textarea::placeholder {
         color: rgba(153, 160, 167, 1);
-        padding: 0.5rem 1rem;
         @include screenSize('large') {
+          padding: 0.5rem 1rem;
           font-size: 1.4rem;
         }
       }
@@ -84,8 +89,10 @@
       .offer-row {
         @include display-flex(row, center, space-between);
         width: 45%;
-        & > label {
+
+        .offeropt {
           margin-right: 1rem;
+          color: $gray-100;
         }
         @include screenSize('medium') {
           width: 100%;
@@ -116,6 +123,7 @@
       width: 50%;
       margin-left: 2rem;
       @include screenSize('medium') {
+        margin-top: 2.6rem;
         width: 100%;
         padding: 0;
         margin-left: 0;
@@ -146,10 +154,6 @@
       margin-top: 1rem;
     }
   }
-}
-
-.selected {
-  color: black !important;
 }
 
 .not-valid {

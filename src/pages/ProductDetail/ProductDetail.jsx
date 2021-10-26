@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import putPurchase from 'redux/actions/purchaseActions';
 
-import ProductDetailInfo from './ProductDetailInfo/ProductDetailInfo';
+import ProductDetailInfo from '../../components/ProductDetailInfo';
 
 const ProductDetail = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);

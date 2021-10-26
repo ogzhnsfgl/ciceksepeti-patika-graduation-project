@@ -172,6 +172,8 @@
       .btn-soldout {
         background-color: $orange-10;
         color: $orange-100;
+        width: 100%;
+        cursor: default;
       }
       .btn-disabled {
         opacity: 0.8;

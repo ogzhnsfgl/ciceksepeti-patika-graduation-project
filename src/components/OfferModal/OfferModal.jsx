@@ -24,12 +24,15 @@ const OfferModal = ({ showModal, closeModal, product }) => {
     switch (selectedOption) {
       case 0:
         setOfferBody({ offeredPrice: product.price * 0.2 });
+        setCustomPrice('');
         break;
       case 1:
         setOfferBody({ offeredPrice: product.price * 0.3 });
+        setCustomPrice('');
         break;
       case 2:
         setOfferBody({ offeredPrice: product.price * 0.4 });
+        setCustomPrice('');
         break;
       default:
         setOfferBody({ offeredPrice: parseFloat(customPrice) });
@@ -115,7 +118,11 @@ const OfferModal = ({ showModal, closeModal, product }) => {
               onClick={() => setSelectedOption(3)}
               className={`option custom-offer ${
                 selectedOption === 3 && isValid ? 'selected' : ''
-              } ${selectedOption === 3 && !isValid ? 'selected-notValid' : ''}
+              } ${
+                selectedOption === 3 && customPrice && !isValid
+                  ? 'selected-notValid'
+                  : ''
+              }
 
               `}
             >
@@ -126,11 +133,12 @@ const OfferModal = ({ showModal, closeModal, product }) => {
                   placeholder="Teklif belirle"
                   value={customPrice}
                   onChange={(e) => setCustomPrice(e.target.value)}
+                  autoComplete="off"
                 />
                 <p>TL</p>
               </div>
             </div>
-            {selectedOption === 3 && !isValid && (
+            {selectedOption === 3 && customPrice && !isValid && (
               <span className="validation-warning">
                 Geçerli bir tutar giriniz! (Örnek: 1234.56)
               </span>

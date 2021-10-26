@@ -9,8 +9,10 @@
   max-width: 28rem;
   min-width: 28rem;
   max-height: 39rem;
+  min-height: 39rem;
   @include screenSize('small') {
     min-width: 17rem;
+    min-height: unset;
     padding: 0.6rem;
   }
   &-img {
@@ -66,6 +68,9 @@
       content: 'TL';
       display: inline-block;
       margin-left: 0.4rem;
+    }
+    @include screenSize('small') {
+      font-size: 1.5rem;
     }
   }
 }
