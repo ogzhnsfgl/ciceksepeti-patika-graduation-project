@@ -9,6 +9,10 @@
     border: 1px dashed $gray-100;
     border-radius: 0.8rem;
     min-height: 20rem;
+    @include screenSize('medium') {
+      min-height: unset;
+      max-height: 11.3rem;
+    }
     position: relative;
 
     .btn-upload {
@@ -47,9 +51,18 @@
 
     .upload-content {
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       & > * {
         padding: 1rem;
         font-size: 1.4rem;
+      }
+
+      .hidden-mobile {
+        @include screenSize('medium') {
+          display: none;
+        }
       }
     }
 

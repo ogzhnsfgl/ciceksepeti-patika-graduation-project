@@ -103,9 +103,11 @@ const ImageUploader = ({ error: reqError, onChange }) => {
           <div className="upload-content">
             <DragDropContainer fileDrop={setSelectedFile} />
             <img src={uploadIco} alt="upload-ico" />
-            <p>
+
+            <p className="hidden-mobile">
               Sürükleyip bırakarak yükle <br /> veya
             </p>
+
             <button className="btn-upload" type="button">
               Görsel Seçin
               <input

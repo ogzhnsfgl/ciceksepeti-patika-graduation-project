@@ -71,6 +71,13 @@ header {
       margin-right: 0.3rem;
       line-height: 4rem;
     }
+
+    .btn-add-product {
+      @include screenSize('medium') {
+        width: 4rem;
+      }
+    }
+
     .btn-add-product::before {
       content: '';
       height: 1.3rem;
@@ -80,10 +87,14 @@ header {
       margin-right: 0.3rem;
       line-height: 4rem;
     }
-
-    .mobile {
-      width: 4rem;
-      height: 4rem;
+    .btn-add-product::after {
+      content: 'Ürün Ekle';
+      display: inline-block;
+      margin-right: 0.3rem;
+      line-height: 4rem;
+      @include screenSize('medium') {
+        content: '';
+      }
     }
   }
 }

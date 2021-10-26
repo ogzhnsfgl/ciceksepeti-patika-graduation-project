@@ -2,13 +2,11 @@ import './navbar.scss';
 
 import logo from 'assets/images/logo.svg';
 import checkAuth from 'helpers/checkAuth';
-import UseWindowSize from 'Hooks/UseWindowSize';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 const Navbar = () => {
   const [isAuth, setisAuth] = useState(checkAuth());
-  const isMobile = UseWindowSize();
   const history = useHistory();
   const isAccountPage = history.location.pathname === '/account';
 
@@ -39,21 +37,14 @@ const Navbar = () => {
           )}
           {isAuth && (
             <>
-              {isMobile ? (
-                <Link to="/addproduct">
-                  <button
-                    type="button"
-                    className="navbar-btn btn-add-product mobile"
-                    aria-label="addProduct"
-                  />
-                </Link>
-              ) : (
-                <Link to="/addproduct">
-                  <button type="button" className="navbar-btn btn-add-product">
-                    Ürün Ekle
-                  </button>
-                </Link>
-              )}
+              <Link to="/addproduct">
+                <button
+                  type="button"
+                  className="navbar-btn btn-add-product"
+                  aria-label="addProduct"
+                />
+              </Link>
+
               {isAccountPage ? (
                 <button
                   type="button"
