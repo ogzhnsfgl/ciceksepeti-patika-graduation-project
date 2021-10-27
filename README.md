@@ -19,15 +19,16 @@ Live demo available here :
 - [App Performance](#app-performance)
 
 <br>
-<br>
 
-# About Project
+# Introduction
 
 - İkinci El Project is an E-Commerce app that allows users create, buy and sell products.
 
 - If you already have an account you can sign-in. Else, you can register easily.
 - You can offer products you want and product owner can accept or reject your offered price.
 - The app developed for both web and mobile. All pages have responsive UI.
+
+<br>
 
 ## Technologies Used
 
@@ -41,6 +42,8 @@ Live demo available here :
 - uuid
 - prop-types
 - Vercel
+
+<br>
 
 ## Installation
 
@@ -71,17 +74,6 @@ npm run test
 # or with yarn
 yarn run test
 ```
-
-<br>
-<br>
-
-## About Project
-
-- İkinci El Project is an E-Commerce app that allows users create, buy and sell products.
-
-- If you already have an account you can sign-in. Else, you can register easily.
-- You can offer products you want and product owner can accept or reject your offered price.
-- The app developed for both web and mobile. All pages have responsive UI.
 
 <br>
 <br>
