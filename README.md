@@ -5,14 +5,13 @@
 <img src="previews/Patika-Logo.png" alt="mobile-gif" width="90"/>
 </p>
 
-[İkinci El Project](https://ciceksepeti-patika-graduation-project.vercel.app) It's full featured e-commerce app built as Patika & Çiçeksepeti React Bootcamp final project.
+It's full featured e-commerce app built as Patika & Çiçeksepeti React Bootcamp final project.
 
-Live demo available here :
-[Live Demo](https://ciceksepeti-patika-graduation-project.vercel.app)
+Live demo available here: [ <b> Live Demo</b> ](https://ciceksepeti-patika-graduation-project.vercel.app)
 
 ## Content
 
-- [About Project](#about-project)
+- [Introduction](#introduction)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Previews](#previews)
