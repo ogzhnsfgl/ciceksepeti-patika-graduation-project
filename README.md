@@ -122,6 +122,16 @@ yarn run test
 
 # App Performance
 
+## Web
+
 <p align="center">
+
   <img src="previews/Lighthouse-Report.jpg" alt="mobile-prew" width="600"/>
+</p>
+
+## Mobile
+
+<p align="center">
+
+  <img src="previews/Lighthouse-Report-Mobile.jpg" alt="mobile-prew" width="600"/>
 </p>
